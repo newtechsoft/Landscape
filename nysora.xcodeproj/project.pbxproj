@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25AC32A419994C2A00C872F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A319994C2A00C872F7 /* main.m */; };
+		25AC32A719994C2A00C872F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A619994C2A00C872F7 /* AppDelegate.m */; };
+		25AC32AA19994C2A00C872F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A919994C2A00C872F7 /* ViewController.m */; };
+		25AC32AD19994C2A00C872F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AC32AB19994C2A00C872F7 /* Main.storyboard */; };
+		25AC32AF19994C2A00C872F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25AC32AE19994C2A00C872F7 /* Images.xcassets */; };
+		25AC32BB19994C2A00C872F7 /* nysoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32BA19994C2A00C872F7 /* nysoraTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25AC32B519994C2A00C872F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25AC329619994C2A00C872F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25AC329D19994C2A00C872F7;
+			remoteInfo = nysora;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		25AC329E19994C2A00C872F7 /* nysora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nysora.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25AC32A219994C2A00C872F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25AC32A319994C2A00C872F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		25AC32A519994C2A00C872F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		25AC32A619994C2A00C872F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		25AC32A819994C2A00C872F7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		25AC32A919994C2A00C872F7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		25AC32AC19994C2A00C872F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		25AC32AE19994C2A00C872F7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		25AC32B419994C2A00C872F7 /* nysoraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nysoraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25AC32B919994C2A00C872F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25AC32BA19994C2A00C872F7 /* nysoraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nysoraTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25AC329B19994C2A00C872F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25AC32B119994C2A00C872F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25AC329519994C2A00C872F7 = {
+			isa = PBXGroup;
+			children = (
+				25AC32A019994C2A00C872F7 /* nysora */,
+				25AC32B719994C2A00C872F7 /* nysoraTests */,
+				25AC329F19994C2A00C872F7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25AC329F19994C2A00C872F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25AC329E19994C2A00C872F7 /* nysora.app */,
+				25AC32B419994C2A00C872F7 /* nysoraTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25AC32A019994C2A00C872F7 /* nysora */ = {
+			isa = PBXGroup;
+			children = (
+				25AC32A519994C2A00C872F7 /* AppDelegate.h */,
+				25AC32A619994C2A00C872F7 /* AppDelegate.m */,
+				25AC32A819994C2A00C872F7 /* ViewController.h */,
+				25AC32A919994C2A00C872F7 /* ViewController.m */,
+				25AC32AB19994C2A00C872F7 /* Main.storyboard */,
+				25AC32AE19994C2A00C872F7 /* Images.xcassets */,
+				25AC32A119994C2A00C872F7 /* Supporting Files */,
+			);
+			path = nysora;
+			sourceTree = "<group>";
+		};
+		25AC32A119994C2A00C872F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25AC32A219994C2A00C872F7 /* Info.plist */,
+				25AC32A319994C2A00C872F7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25AC32B719994C2A00C872F7 /* nysoraTests */ = {
+			isa = PBXGroup;
+			children = (
+				25AC32BA19994C2A00C872F7 /* nysoraTests.m */,
+				25AC32B819994C2A00C872F7 /* Supporting Files */,
+			);
+			path = nysoraTests;
+			sourceTree = "<group>";
+		};
+		25AC32B819994C2A00C872F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25AC32B919994C2A00C872F7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25AC329D19994C2A00C872F7 /* nysora */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25AC32BE19994C2A00C872F7 /* Build configuration list for PBXNativeTarget "nysora" */;
+			buildPhases = (
+				25AC329A19994C2A00C872F7 /* Sources */,
+				25AC329B19994C2A00C872F7 /* Frameworks */,
+				25AC329C19994C2A00C872F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = nysora;
+			productName = nysora;
+			productReference = 25AC329E19994C2A00C872F7 /* nysora.app */;
+			productType = "com.apple.product-type.application";
+		};
+		25AC32B319994C2A00C872F7 /* nysoraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25AC32C119994C2A00C872F7 /* Build configuration list for PBXNativeTarget "nysoraTests" */;
+			buildPhases = (
+				25AC32B019994C2A00C872F7 /* Sources */,
+				25AC32B119994C2A00C872F7 /* Frameworks */,
+				25AC32B219994C2A00C872F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25AC32B619994C2A00C872F7 /* PBXTargetDependency */,
+			);
+			name = nysoraTests;
+			productName = nysoraTests;
+			productReference = 25AC32B419994C2A00C872F7 /* nysoraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25AC329619994C2A00C872F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Upload LLC";
+				TargetAttributes = {
+					25AC329D19994C2A00C872F7 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					25AC32B319994C2A00C872F7 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 25AC329D19994C2A00C872F7;
+					};
+				};
+			};
+			buildConfigurationList = 25AC329919994C2A00C872F7 /* Build configuration list for PBXProject "nysora" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 25AC329519994C2A00C872F7;
+			productRefGroup = 25AC329F19994C2A00C872F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25AC329D19994C2A00C872F7 /* nysora */,
+				25AC32B319994C2A00C872F7 /* nysoraTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25AC329C19994C2A00C872F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25AC32AD19994C2A00C872F7 /* Main.storyboard in Resources */,
+				25AC32AF19994C2A00C872F7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25AC32B219994C2A00C872F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25AC329A19994C2A00C872F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25AC32AA19994C2A00C872F7 /* ViewController.m in Sources */,
+				25AC32A719994C2A00C872F7 /* AppDelegate.m in Sources */,
+				25AC32A419994C2A00C872F7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25AC32B019994C2A00C872F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25AC32BB19994C2A00C872F7 /* nysoraTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		25AC32B619994C2A00C872F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25AC329D19994C2A00C872F7 /* nysora */;
+			targetProxy = 25AC32B519994C2A00C872F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		25AC32AB19994C2A00C872F7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25AC32AC19994C2A00C872F7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		25AC32BC19994C2A00C872F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25AC32BD19994C2A00C872F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25AC32BF19994C2A00C872F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = nysora/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		25AC32C019994C2A00C872F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = nysora/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		25AC32C219994C2A00C872F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/nysora.app/nysora";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = nysoraTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		25AC32C319994C2A00C872F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/nysora.app/nysora";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = nysoraTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25AC329919994C2A00C872F7 /* Build configuration list for PBXProject "nysora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AC32BC19994C2A00C872F7 /* Debug */,
+				25AC32BD19994C2A00C872F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25AC32BE19994C2A00C872F7 /* Build configuration list for PBXNativeTarget "nysora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AC32BF19994C2A00C872F7 /* Debug */,
+				25AC32C019994C2A00C872F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		25AC32C119994C2A00C872F7 /* Build configuration list for PBXNativeTarget "nysoraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AC32C219994C2A00C872F7 /* Debug */,
+				25AC32C319994C2A00C872F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 25AC329619994C2A00C872F7 /* Project object */;
+}
