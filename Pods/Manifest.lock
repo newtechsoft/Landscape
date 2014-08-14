@@ -1,0 +1,13 @@
+PODS:
+  - GRMustache (7.0.2):
+    - JRSwizzle (~> 1.0)
+  - JRSwizzle (1.0)
+
+DEPENDENCIES:
+  - GRMustache (~> 7.0.2)
+
+SPEC CHECKSUMS:
+  GRMustache: 7cce2570d81711b90d91d2e539f6f575a703db22
+  JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
+
+COCOAPODS: 0.33.1

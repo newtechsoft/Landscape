@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *json;
+
+@property (nonatomic, strong) UIColor *backgroundColor;
+@property (nonatomic, weak) UILabel *textLabel;
 
 @end
-
