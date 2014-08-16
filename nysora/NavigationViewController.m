@@ -7,8 +7,10 @@
 //
 
 #import "NavigationViewController.h"
+#import "MMDrawerController.h"
 
 @interface NavigationViewController ()
+
 
 @end
 
@@ -27,6 +29,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //Initializing the MMDrawerController views
+//    UIViewController * leftDrawer = [[UIViewController alloc] init];
+//    UIViewController* centerViewController = [[UIViewController alloc] init];
+//
+//    
+//    MMDrawerController * drawerController = [[MMDrawerController alloc]
+//                                             initWithCenterViewController:centerViewController
+//                                             leftDrawerViewController:leftDrawer];
 }
 
 - (void)didReceiveMemoryWarning
