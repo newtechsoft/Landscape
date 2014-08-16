@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="pdm-ce-pK3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - NYSORA-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -23,16 +23,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="NYSORA" id="Ns8-h6-VGS"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="blocksTableView" destination="UMd-2h-x1d" id="lgR-Fb-eeT"/>
-                        <segue destination="CSc-cf-EPS" kind="modal" identifier="blockViewSegue" id="jVQ-AH-oZQ"/>
+                        <segue destination="CSc-cf-EPS" kind="push" identifier="blockViewSegue" id="6Mc-aC-2PN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="391" y="313"/>
+            <point key="canvasLocation" x="2703" y="1217"/>
         </scene>
         <!--Block View Controller-->
         <scene sceneID="coe-w2-ybf">
@@ -58,12 +59,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="headersTableView" destination="iCv-1e-VBc" id="QZQ-no-2lP"/>
-                        <segue destination="4na-oc-i81" kind="modal" identifier="headerViewSegue" id="2Wo-jM-ajH"/>
+                        <segue destination="4na-oc-i81" kind="push" identifier="headerViewSegue" id="heF-IK-XuQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhe-wT-4E3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821" y="313"/>
+            <point key="canvasLocation" x="2733" y="477"/>
         </scene>
         <!--Header View Controller-->
         <scene sceneID="yMQ-fh-28W">
@@ -93,7 +94,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqS-bH-tHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1242" y="313"/>
+            <point key="canvasLocation" x="2513" y="-360"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m0h-Vz-95f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pdm-ce-pK3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rqn-Y2-Oe2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="pS3-fz-byg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lKF-rh-nfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="1261"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>

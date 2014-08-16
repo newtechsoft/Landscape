@@ -95,6 +95,10 @@
         NSLog(@"%d", self.selectedRow);
         
         bv.whichBlockAmI = self.selectedRow + 1; //Remember array indices start at 0
+        
+        //Here I am trying to get the name of the Block that was selected so that we can show it as the title on the navigation bar for the next screen. This will be passed to the next navigation controller.
+        bv.whichBlockNameAmI = [self.arrayOfBlocks[bv.whichBlockAmI - 1] objectForKey:@"blockName"];
+        
     }
 }
 

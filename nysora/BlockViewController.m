@@ -43,6 +43,8 @@
     self.whichBlockIdAmI = [json objectForKey:@"blockId"];
     //self.arrayOfHeaders = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", nil];
     
+    //Set title in the navigation bar
+    self.navigationItem.title = self.whichBlockNameAmI;
     
 }
 
@@ -111,6 +113,8 @@
         hv.whichBlockAmIIn = self.whichBlockIdAmI;
         //Pass the header number
         hv.whichHeaderAmI = self.selectedRow;
+        //Pass the header name
+        hv.whichHeaderNameAmI = [self.arrayOfHeaders[hv.whichHeaderAmI] objectForKey:@"headerName"];
         //Pass the actual json
         hv.json = self.arrayOfHeaders[self.selectedRow];
     }

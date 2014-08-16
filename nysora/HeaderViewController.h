@@ -11,6 +11,7 @@
 @interface HeaderViewController : UIViewController
 
 @property (nonatomic, strong) NSString *whichBlockAmIIn;
+@property (nonatomic, strong) NSString *whichHeaderNameAmI;
 @property (nonatomic) int whichHeaderAmI;
 @property (nonatomic, strong) NSDictionary *json;
 

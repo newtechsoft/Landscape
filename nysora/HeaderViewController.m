@@ -48,6 +48,9 @@
     NSURL *baseURL = [NSURL fileURLWithPath:bundlePath];
     
     [self.headerWebView loadHTMLString:htmlOutput baseURL:baseURL];
+    
+    //Set title in the navigation bar
+    self.navigationItem.title = self.whichHeaderNameAmI;
 }
 
 #pragma mark - Helper functions

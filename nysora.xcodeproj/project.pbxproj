@@ -16,6 +16,7 @@
 		25AC32BB19994C2A00C872F7 /* nysoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32BA19994C2A00C872F7 /* nysoraTests.m */; };
 		25AC32C619994DF100C872F7 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32C519994DF100C872F7 /* BlockViewController.m */; };
 		25CB70BB199B885B00266A9B /* content in Resources */ = {isa = PBXBuildFile; fileRef = 25CB70BA199B885B00266A9B /* content */; };
+		81E3D158199E634E009B87A9 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3D157199E634E009B87A9 /* NavigationViewController.m */; };
 		82D529B6C225476AB5C80EFD /* libPods-nysora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E058E19BAC7A45E0A8D8FB95 /* libPods-nysora.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,8 @@
 		25AC32C519994DF100C872F7 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
 		25CB70BA199B885B00266A9B /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = content; path = nysora/content; sourceTree = "<group>"; };
 		643EB06037384CB98740547C /* Pods-nysora.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nysora.xcconfig"; path = "Pods/Pods-nysora.xcconfig"; sourceTree = "<group>"; };
+		81E3D156199E634E009B87A9 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		81E3D157199E634E009B87A9 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		E058E19BAC7A45E0A8D8FB95 /* libPods-nysora.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nysora.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,6 +76,8 @@
 		25169E67199A08FA0000304B /* vcs */ = {
 			isa = PBXGroup;
 			children = (
+				81E3D156199E634E009B87A9 /* NavigationViewController.h */,
+				81E3D157199E634E009B87A9 /* NavigationViewController.m */,
 				25AC32A819994C2A00C872F7 /* ViewController.h */,
 				25AC32A919994C2A00C872F7 /* ViewController.m */,
 				25AC32C419994DF100C872F7 /* BlockViewController.h */,
@@ -288,6 +293,7 @@
 			files = (
 				25AC32AA19994C2A00C872F7 /* ViewController.m in Sources */,
 				25AC32A719994C2A00C872F7 /* AppDelegate.m in Sources */,
+				81E3D158199E634E009B87A9 /* NavigationViewController.m in Sources */,
 				25AC32C619994DF100C872F7 /* BlockViewController.m in Sources */,
 				25AC32A419994C2A00C872F7 /* main.m in Sources */,
 				25169E6A199A091C0000304B /* HeaderViewController.m in Sources */,
