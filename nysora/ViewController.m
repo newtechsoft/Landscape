@@ -6,22 +6,25 @@
 //  Copyright (c) 2014 Upload LLC. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ViewController.h"
 #import "BlockViewController.h"
-#import "MMExampleDrawerVisualStateManager.h"
-#import "UIViewController+MMDrawerController.h"
-#import "MMDrawerBarButtonItem.h"
 #import "DrawerViewController.h"
 #import "NavigationViewController.h"
 
-#import <QuartzCore/QuartzCore.h>
+#import "MMExampleDrawerVisualStateManager.h"
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
 
-//typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
-//    MMCenterViewControllerSectionLeftViewState,
-//    MMCenterViewControllerSectionLeftDrawerAnimation,
-//    MMCenterViewControllerSectionRightViewState,
-//    MMCenterViewControllerSectionRightDrawerAnimation,
-//};
+
+
+
+typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
+    MMCenterViewControllerSectionLeftViewState,
+    MMCenterViewControllerSectionLeftDrawerAnimation,
+    MMCenterViewControllerSectionRightViewState,
+    MMCenterViewControllerSectionRightDrawerAnimation,
+};
 
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate> //This is where we're telling the compiler that this view controller should conform to these two protocols
@@ -29,7 +32,6 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfBlocks;
 @property (nonatomic) int selectedRow;
 
-@property (weak, nonatomic) IBOutlet UITableView *blocksTableView;
 
 @end
 
@@ -48,15 +50,15 @@
     [super viewDidLoad];
     
     //Initiate and allocate the table view within the bounds of the window.
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _blocksTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     
 //    [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     
     //Add a subview
-    [self.view addSubview:self.tableView];
-//    [self.view addSubview:self.blocksTableView];
+//    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.blocksTableView];
     
-    
+    [self.blocksTableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     //Apply double tap gestures
     UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
     [doubleTap setNumberOfTapsRequired:2];
@@ -94,7 +96,7 @@
                                                  green:208.0/255.0
                                                   blue:208.0/255.0
                                                  alpha:1.0]];
-    [self.tableView setBackgroundView:backView];
+    [self.blocksTableView setBackgroundView:backView];
 
 }
 
@@ -164,9 +166,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:MyIdentifier];
     }
+    
+    //Add in what information will be on each cell row. Iterate through the array of blocks
     cell.textLabel.text = [self.arrayOfBlocks[indexPath.row] objectForKey:@"blockName"];
     return cell;
 }
+
 
 
 #pragma mark - Table view delegate
@@ -175,6 +180,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedRow = indexPath.row;
+    
+    //Working on manually creating the segue
+    //BlockViewController *blockViewController = [[BlockViewController alloc] initWithNibName:<#(NSString *)#> bundle:<#(NSBundle *)#>
+    
     [self performSegueWithIdentifier:@"blockViewSegue" sender:self];
     
 }
