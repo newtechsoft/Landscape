@@ -114,12 +114,7 @@
 		25AC329519994C2A00C872F7 = {
 			isa = PBXGroup;
 			children = (
-				81D0E9FE19A14CB2009B9A79 /* UIViewController+MMDrawerController.m */,
-				81D0E9F819A14985009B9A79 /* MMDrawerVisualState.m */,
-				81D0E9F619A10523009B9A79 /* MMDrawerBarButtonItem.m */,
-				81D0E9EF19A1009A009B9A79 /* MMDrawerController.m */,
-				81D0EA0619A25758009B9A79 /* MMTableViewCell.h */,
-				81D0EA0719A25758009B9A79 /* MMTableViewCell.m */,
+				25FE773B19A2A07700332992 /* MMDrawerController */,
 				25CB70BA199B885B00266A9B /* content */,
 				25AC32A019994C2A00C872F7 /* nysora */,
 				25AC32B719994C2A00C872F7 /* nysoraTests */,
@@ -177,6 +172,19 @@
 				25AC32B919994C2A00C872F7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25FE773B19A2A07700332992 /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				81D0E9FE19A14CB2009B9A79 /* UIViewController+MMDrawerController.m */,
+				81D0E9F819A14985009B9A79 /* MMDrawerVisualState.m */,
+				81D0E9F619A10523009B9A79 /* MMDrawerBarButtonItem.m */,
+				81D0E9EF19A1009A009B9A79 /* MMDrawerController.m */,
+				81D0EA0619A25758009B9A79 /* MMTableViewCell.h */,
+				81D0EA0719A25758009B9A79 /* MMTableViewCell.m */,
+			);
+			name = MMDrawerController;
 			sourceTree = "<group>";
 		};
 		81D0E9FD19A14A00009B9A79 /* VisualStateManager */ = {

@@ -102,7 +102,6 @@
 		D4F4DB62961A469ABF823B0A /* GRMustacheFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C76097394402C9CB11462 /* GRMustacheFilter.m */; };
 		D513AA867855426390B5FC70 /* GRMustacheConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 607698C5EACA434EBD86D76F /* GRMustacheConfiguration.h */; };
 		D7C27236E571449AA39D2D7D /* GRMustacheFilteredExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A141E0BCEC45FE8561EF40 /* GRMustacheFilteredExpression.m */; };
-		D8961667151E4AE5AC67E39A /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E646F41A4D44DC99E144E51 /* MMDrawerController+Subclass.h */; };
 		DD4EF3AC777E4D479B11351F /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E646F41A4D44DC99E144E51 /* MMDrawerController+Subclass.h */; };
 		E133A207BB124B54A6E85AAF /* NSValueTransformer+GRMustache.h in Headers */ = {isa = PBXBuildFile; fileRef = 473E8561370149D58A8302C7 /* NSValueTransformer+GRMustache.h */; };
 		E38F52E826C1458A95123BA0 /* GRMustacheContext_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A42F3025EB43838099E8AC /* GRMustacheContext_private.h */; };
@@ -673,7 +672,6 @@
 			files = (
 				349446218D7D47F9B6D5C348 /* MMDrawerBarButtonItem.h in Headers */,
 				DD4EF3AC777E4D479B11351F /* MMDrawerController+Subclass.h in Headers */,
-				D8961667151E4AE5AC67E39A /* MMDrawerController+Subclass.h in Headers */,
 				63EDEDB8D0EE4793925A3624 /* MMDrawerController.h in Headers */,
 				BAF043FF8F1547DE8F390010 /* MMDrawerVisualState.h in Headers */,
 				59641000CC554D00B9EE1678 /* UIViewController+MMDrawerController.h in Headers */,
@@ -776,7 +774,7 @@
 		140E1759E31344FA8774EEF4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 			};
 			buildConfigurationList = 863D7AF1BA0046F1814EAE7E /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";

@@ -26,11 +26,11 @@
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
     //Allocate and initiate the drawer, center view and navigation controller
-    UIViewController * leftSideDrawerViewController = [[DrawerViewController alloc] init];
+    UIViewController *leftSideDrawerViewController = [[DrawerViewController alloc] init];
     
-    UIViewController * centerViewController = [[ViewController alloc] init];
+    UIViewController *centerViewController = [[ViewController alloc] init];
     
-    UINavigationController * navigationController = [[NavigationViewController alloc] initWithRootViewController:centerViewController];
+    UINavigationController *navigationController = [[NavigationViewController alloc] initWithRootViewController:centerViewController];
     //Sets the restoration ID so the user can close the app and still come back to the same area when they reopen it
     [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];
     
@@ -82,6 +82,9 @@
     //This is important - here we set the root view controller to the drawer
     [self.window setRootViewController:self.drawerController];
     
+    //Set navigation controller title
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+
     return YES;
 }
 

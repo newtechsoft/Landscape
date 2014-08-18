@@ -52,10 +52,8 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     //Initiate and allocate the table view within the bounds of the window.
     _blocksTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     
-//    [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     
     //Add a subview
-//    [self.view addSubview:self.tableView];
     [self.view addSubview:self.blocksTableView];
     
     [self.blocksTableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
@@ -84,11 +82,11 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
     //Set the bar color for the navigation bar
     UIColor * barColor = [UIColor
-                            colorWithRed:78.0/255.0
-                            green:156.0/255.0
-                            blue:206.0/255.0
+                            colorWithRed:60/255.0f
+                            green:130/255.0f
+                            blue:146/255.0f
                             alpha:1.0];
-    [self.navigationController.navigationBar setTintColor:barColor];
+    [self.navigationController.navigationBar setBarTintColor:barColor];
 
     
     UIView *backView = [[UIView alloc] init];
@@ -102,6 +100,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 //Set up animations during the different stages of the view controller
 -(void)viewWillAppear:(BOOL)animated{
+    self.title = @"NYSORA";
     [super viewWillAppear:animated];
     NSLog(@"Center will appear");
 }
@@ -126,7 +125,9 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     //Create an instance of the MMDrawerBarButtonItem
     //Create an action based on when the button is pressed
     //Set the navigation item for the navigation bar to the button created
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    //Set the color of the button
+    [leftDrawerButton setTintColor:[UIColor whiteColor]];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
@@ -182,9 +183,18 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     self.selectedRow = indexPath.row;
     
     //Working on manually creating the segue
-    //BlockViewController *blockViewController = [[BlockViewController alloc] initWithNibName:<#(NSString *)#> bundle:<#(NSBundle *)#>
     
-    [self performSegueWithIdentifier:@"blockViewSegue" sender:self];
+    //To pass data between view controllers, in our case which block the user has selected
+    //You instantiate an instance of the view controller in question
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    BlockViewController *bv = [storyboard instantiateViewControllerWithIdentifier:@"BlockViewController"];
+    bv.whichBlockAmI = self.selectedRow + 1;
+    NSLog(@"%d", self.selectedRow);
+    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
+    [nav pushViewController:bv animated:YES];
+    
+    //[self performSegueWithIdentifier:@"blockViewSegue" sender:self];
     
 }
 

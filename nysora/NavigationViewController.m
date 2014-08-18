@@ -21,12 +21,14 @@
 
 //This changes the status bar style
 -(UIStatusBarStyle)preferredStatusBarStyle{
-    if(self.mm_drawerController.showsStatusBarBackgroundView){
+    /*if(self.mm_drawerController.showsStatusBarBackgroundView){
         return UIStatusBarStyleLightContent;
     }
     else {
         return UIStatusBarStyleDefault;
-    }
+    }*/
+    return UIStatusBarStyleLightContent;
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

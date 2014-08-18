@@ -2,7 +2,19 @@
     "blockId" : "29",
 	"headers" : [
         {
-                 "headerName" : "Equipment"
+            "headerName" : "Video & Image",
+            "htmlFile" : "29-2",
+            "videos" : {
+                 "29-4" : {
+                    "src" : "content/29/29-4.mp4"
+                 }
+            },
+            "imgs" : {
+                 "29-5" : {
+                    "src" : "content/29/29-2.png",
+                    "alt" : "Figure 29-2"
+                 }
+            }
         },
 		{
 			"headerName" : "General Considerations",

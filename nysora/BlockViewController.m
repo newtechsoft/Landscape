@@ -29,6 +29,16 @@
     return self;
 }
 
+-(instancetype)init
+{
+    self = [super init];
+    if(self) {
+        //Custom init
+        NSLog(@"hej");
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

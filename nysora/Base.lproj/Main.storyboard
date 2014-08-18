@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="pdm-ce-pK3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="pdm-ce-pK3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
         <!--View Controller - NYSORA-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="NYSORA" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -28,17 +28,16 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="blocksTableView" destination="UMd-2h-x1d" id="lgR-Fb-eeT"/>
-                        <segue destination="CSc-cf-EPS" kind="push" identifier="blockViewSegue" id="6Mc-aC-2PN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2703" y="1217"/>
+            <point key="canvasLocation" x="2037" y="1261"/>
         </scene>
         <!--Block View Controller-->
         <scene sceneID="coe-w2-ybf">
             <objects>
-                <viewController id="CSc-cf-EPS" customClass="BlockViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlockViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CSc-cf-EPS" customClass="BlockViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CTS-n6-xcs"/>
                         <viewControllerLayoutGuide type="bottom" id="3p5-7G-UuT"/>
@@ -64,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhe-wT-4E3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2733" y="477"/>
+            <point key="canvasLocation" x="2461" y="1261"/>
         </scene>
         <!--Header View Controller-->
         <scene sceneID="yMQ-fh-28W">
@@ -94,46 +93,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqS-bH-tHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2513" y="-360"/>
+            <point key="canvasLocation" x="2819" y="1261"/>
         </scene>
-        <!--Drawer View Controller-->
-        <scene sceneID="8LM-0Q-vem">
-            <objects>
-                <tableViewController id="r1X-oa-FnX" customClass="DrawerViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oUa-6Q-7HJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2C0-2o-yXn">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2C0-2o-yXn" id="Vxs-dq-MOi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="r1X-oa-FnX" id="qPI-ux-NTB"/>
-                            <outlet property="delegate" destination="r1X-oa-FnX" id="8ed-ws-hBt"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hoe-tl-pam" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1508" y="355"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - NYSORA-->
         <scene sceneID="m0h-Vz-95f">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pdm-ce-pK3" sceneMemberID="viewController">
+                <navigationController title="NYSORA" automaticallyAdjustsScrollViewInsets="NO" id="pdm-ce-pK3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rqn-Y2-Oe2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="wsa-U0-bEg">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="pS3-fz-byg"/>
                     </connections>
