@@ -14,5 +14,6 @@
 
 @property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, weak) UILabel *textLabel;
+@property (nonatomic,strong) UITableView * tableView;
 
 @end

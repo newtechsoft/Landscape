@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="2513" y="-360"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Drawer View Controller-->
         <scene sceneID="8LM-0Q-vem">
             <objects>
-                <tableViewController id="r1X-oa-FnX" sceneMemberID="viewController">
+                <tableViewController id="r1X-oa-FnX" customClass="DrawerViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oUa-6Q-7HJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

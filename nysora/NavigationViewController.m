@@ -8,6 +8,9 @@
 
 #import "NavigationViewController.h"
 #import "MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
+#import "DrawerViewController.h"
+#import "UIViewController+MMDrawerController.h"
 
 @interface NavigationViewController ()
 
@@ -15,6 +18,16 @@
 @end
 
 @implementation NavigationViewController
+
+//This changes the status bar style
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    if(self.mm_drawerController.showsStatusBarBackgroundView){
+        return UIStatusBarStyleLightContent;
+    }
+    else {
+        return UIStatusBarStyleDefault;
+    }
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,15 +43,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //Initializing the MMDrawerController views
-//    UIViewController * leftDrawer = [[UIViewController alloc] init];
-//    UIViewController* centerViewController = [[UIViewController alloc] init];
-//
-//    
-//    MMDrawerController * drawerController = [[MMDrawerController alloc]
-//                                             initWithCenterViewController:centerViewController
-//                                             leftDrawerViewController:leftDrawer];
-}
+ }
+
 
 - (void)didReceiveMemoryWarning
 {

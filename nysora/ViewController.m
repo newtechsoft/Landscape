@@ -8,6 +8,21 @@
 
 #import "ViewController.h"
 #import "BlockViewController.h"
+#import "MMExampleDrawerVisualStateManager.h"
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
+#import "DrawerViewController.h"
+#import "NavigationViewController.h"
+
+#import <QuartzCore/QuartzCore.h>
+
+//typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
+//    MMCenterViewControllerSectionLeftViewState,
+//    MMCenterViewControllerSectionLeftDrawerAnimation,
+//    MMCenterViewControllerSectionRightViewState,
+//    MMCenterViewControllerSectionRightDrawerAnimation,
+//};
+
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate> //This is where we're telling the compiler that this view controller should conform to these two protocols
 
@@ -19,21 +34,98 @@
 @end
 
 @implementation ViewController
-            
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self setRestorationIdentifier:@"MMExampleCenterControllerRestorationKey"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    //Initiate and allocate the table view within the bounds of the window.
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    
+//    [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+    
+    //Add a subview
+    [self.view addSubview:self.tableView];
+//    [self.view addSubview:self.blocksTableView];
+    
+    
+    //Apply double tap gestures
+    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    [doubleTap setNumberOfTapsRequired:2];
+    [self.view addGestureRecognizer:doubleTap];
+    
+    UITapGestureRecognizer * twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerDoubleTap:)];
+    [twoFingerDoubleTap setNumberOfTapsRequired:2];
+    [twoFingerDoubleTap setNumberOfTouchesRequired:2];
+    [self.view addGestureRecognizer:twoFingerDoubleTap];
     
     //Set the delegate and data source for the blocksTableView
     self.blocksTableView.dataSource = self;
     self.blocksTableView.delegate = self;
     
-    //This is the array that holds all the blocks
-    //In the app, rather than simple strings, each of these items should be an instance of the block class
-    //Kind of like this = [NSMutableArray arrayWithObjects: [Block createBlockFromFile:blockName1], [Block createBlockFromFile:blockName2], nil]
+    
     self.json = [self fetchJSONData];
     NSLog(@"%@", self.json);
-    self.arrayOfBlocks = [self.json objectForKey:@"blocks"]; //[NSMutableArray arrayWithObjects:@"block1", @"block2", @"block3", @"block4", nil];
+    self.arrayOfBlocks = [self.json objectForKey:@"blocks"];
+    
+    //Apply the left menu button to self
+    [self setupLeftMenuButton];
+    
+
+    //Set the bar color for the navigation bar
+    UIColor * barColor = [UIColor
+                            colorWithRed:78.0/255.0
+                            green:156.0/255.0
+                            blue:206.0/255.0
+                            alpha:1.0];
+    [self.navigationController.navigationBar setTintColor:barColor];
+
+    
+    UIView *backView = [[UIView alloc] init];
+    [backView setBackgroundColor:[UIColor colorWithRed:208.0/255.0
+                                                 green:208.0/255.0
+                                                  blue:208.0/255.0
+                                                 alpha:1.0]];
+    [self.tableView setBackgroundView:backView];
+
+}
+
+//Set up animations during the different stages of the view controller
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSLog(@"Center will appear");
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSLog(@"Center did appear");
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSLog(@"Center will disappear");
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    NSLog(@"Center did disappear");
+}
+
+//Setup the left menu button
+-(void)setupLeftMenuButton{
+    //Create an instance of the MMDrawerBarButtonItem
+    //Create an action based on when the button is pressed
+    //Set the navigation item for the navigation bar to the button created
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
 #pragma mark - Helper Functions
@@ -51,8 +143,9 @@
 //THE FUNCTION THAT GETS CALLED WHEN THE TABLE VIEW ASKS HOW MANY ROWS THERE SHOULD BE
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return [self.arrayOfBlocks count];    //return the number of rows in the array that holds all the blocks
+
+    //return the number of rows in the array that holds all the blocks
+    return [self.arrayOfBlocks count];
 }
 
 //THE FUNCTION THAT GETS CALLED WHEN THE TABLE VIEW ASKS FOR THE CONTENT IN A SPECIFIC ROW (indexPath)
@@ -75,10 +168,15 @@
     return cell;
 }
 
+
+#pragma mark - Table view delegate
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedRow = indexPath.row;
     [self performSegueWithIdentifier:@"blockViewSegue" sender:self];
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -102,9 +200,20 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+
+#pragma mark - Button Handlers
+-(void)leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+-(void)doubleTap:(UITapGestureRecognizer*)gesture{
+    [self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
+}
+
+-(void)twoFingerDoubleTap:(UITapGestureRecognizer*)gesture{
+    [self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideRight completion:nil];
 }
 
 @end

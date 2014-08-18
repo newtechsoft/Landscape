@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E645C49C-F8BA-4F10-9EEC-F869C8077A75</string>
+	<key>IDESourceControlProjectName</key>
+	<string>nysora</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</key>
+		<string>https://bitbucket.org/MartinGreenberg/nysora.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>nysora.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/MartinGreenberg/nysora.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>nysora</string>
+		</dict>
+	</array>
+</dict>
+</plist>
