@@ -52,9 +52,13 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Some navigation bar setup
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:nil action:nil];
+
     //Set title of the view controller
     self.title = @"NYSORA";
-    
+
     
     //Initiate and allocate the table view within the bounds of the window.
     self.blocksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 320, self.view.frame.size.height-(200)) style:UITableViewStylePlain];
@@ -146,6 +150,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
             numOfSections++;
         }
     }
+    
     return numOfSections;
 }
 
@@ -176,10 +181,19 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     //1. get section
     NSInteger sectionId = indexPath.section;
     NSInteger rowCount = 0;
+    NSLog(@"I'm looking for: section %d, row %d", sectionId, indexPath.row);
     for(NSInteger i=0;i<[self.arrayOfBlocks count];i++) {
-        
+        NSLog(@"section id for current iteration: %d", [self.arrayOfBlocks[i][@"sectionId"] integerValue]);
+        if([self.arrayOfBlocks[i][@"sectionId"] integerValue] == sectionId) {
+            if(rowCount == indexPath.row) {
+                NSLog(@"match");
+                cell.blockNameLabel.text = [self.arrayOfBlocks[i] objectForKey:@"blockName"];
+            } else {
+                rowCount++;
+            }
+        }
     }
-    cell.blockNameLabel.text = [self.arrayOfBlocks[indexPath.row] objectForKey:@"blockName"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 

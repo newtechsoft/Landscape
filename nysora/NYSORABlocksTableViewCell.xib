@@ -22,18 +22,11 @@
                     <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bM4-m7-Tnk">
                         <rect key="frame" x="0.0" y="10" width="60" height="60"/>
                     </imageView>
-                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-F1-Cqd">
-                        <rect key="frame" x="280" y="30" width="20" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="blockNameLabel" destination="uDM-EF-VWL" id="nwH-yX-bnI"/>
                 <outlet property="blockPreviewImageView" destination="bM4-m7-Tnk" id="V6h-4Z-Gmy"/>
-                <outlet property="rightChevronLabel" destination="qTM-F1-Cqd" id="Duw-iZ-SdV"/>
             </connections>
             <point key="canvasLocation" x="353" y="319"/>
         </tableViewCell>

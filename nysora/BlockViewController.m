@@ -8,10 +8,12 @@
 
 #import "BlockViewController.h"
 #import "HeaderViewController.h"
+#import "NYSORAHeaderTableViewCell.h"
 
 @interface BlockViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *headersTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
 @property (strong, nonatomic) NSMutableArray *arrayOfHeaders;
 @property (nonatomic) int selectedRow;
@@ -33,8 +35,7 @@
 {
     self = [super init];
     if(self) {
-        //Custom init
-        NSLog(@"hej");
+
     }
     return self;
 }
@@ -43,9 +44,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    //Edit the navigation back item
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    //Set up the table
     self.headersTableView.delegate = self;
     self.headersTableView.dataSource = self;
+    
+    //Set up the imageview
+    self.previewImageView.backgroundColor = [UIColor grayColor];
     
     //Load in the JSON source    
     NSDictionary *json = [self fetchJSONData];
@@ -72,6 +78,9 @@
 
 #pragma mark delegate and datasource functions
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
 //THE FUNCTION THAT GETS CALLED WHEN THE TABLE VIEW ASKS HOW MANY ROWS THERE SHOULD BE
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -81,22 +90,24 @@
 
 //THE FUNCTION THAT GETS CALLED WHEN THE TABLE VIEW ASKS FOR THE CONTENT IN A SPECIFIC ROW (indexPath)
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NYSORAHeaderTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     //table views are pretty weird, and a lot of this is far from intuitive. It's just the way it's designed and there's unfortunately no other way of doing it
     
     static NSString *MyIdentifier = @"MyIdentifier";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    NYSORAHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[NYSORAHeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:MyIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [self.arrayOfHeaders[indexPath.row] objectForKey:@"headerName"] ];
+    cell.headerNameLabel.text = [NSString stringWithFormat:@"%@", [self.arrayOfHeaders[indexPath.row] objectForKey:@"headerName"] ];
+    cell.headerNumberLabel.text = [NSString stringWithFormat: @"%d", (indexPath.row + 1)];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -104,6 +115,7 @@
 {
     self.selectedRow = indexPath.row;
     [self performSegueWithIdentifier:@"headerViewSegue" sender:self];
+    [self.headersTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Navigation

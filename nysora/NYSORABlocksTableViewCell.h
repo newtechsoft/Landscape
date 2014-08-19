@@ -10,7 +10,6 @@
 
 @interface NYSORABlocksTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *blockNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *rightChevronLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *blockPreviewImageView;
 
 @end

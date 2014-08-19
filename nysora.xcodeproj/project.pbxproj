@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25169E6A199A091C0000304B /* HeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25169E69199A091C0000304B /* HeaderViewController.m */; };
+		252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 252C263F19A3F962005BF985 /* NYSORAHeaderTableViewCell.m */; };
 		25AC32A419994C2A00C872F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A319994C2A00C872F7 /* main.m */; };
 		25AC32A719994C2A00C872F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A619994C2A00C872F7 /* AppDelegate.m */; };
 		25AC32AA19994C2A00C872F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A919994C2A00C872F7 /* ViewController.m */; };
@@ -43,6 +44,8 @@
 /* Begin PBXFileReference section */
 		25169E68199A091C0000304B /* HeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderViewController.h; sourceTree = "<group>"; };
 		25169E69199A091C0000304B /* HeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderViewController.m; sourceTree = "<group>"; };
+		252C263E19A3F962005BF985 /* NYSORAHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSORAHeaderTableViewCell.h; sourceTree = "<group>"; };
+		252C263F19A3F962005BF985 /* NYSORAHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORAHeaderTableViewCell.m; sourceTree = "<group>"; };
 		25AC329E19994C2A00C872F7 /* nysora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nysora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AC32A219994C2A00C872F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AC32A319994C2A00C872F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,6 +117,15 @@
 				25169E69199A091C0000304B /* HeaderViewController.m */,
 			);
 			name = vcs;
+			sourceTree = "<group>";
+		};
+		252C263D19A3F943005BF985 /* headersTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				252C263E19A3F962005BF985 /* NYSORAHeaderTableViewCell.h */,
+				252C263F19A3F962005BF985 /* NYSORAHeaderTableViewCell.m */,
+			);
+			name = headersTableViewCell;
 			sourceTree = "<group>";
 		};
 		25AC329519994C2A00C872F7 = {
@@ -196,6 +208,7 @@
 		25FE773C19A32B7900332992 /* custom views */ = {
 			isa = PBXGroup;
 			children = (
+				252C263D19A3F943005BF985 /* headersTableViewCell */,
 				25FE773D19A32BAF00332992 /* blocksTableViewCell */,
 			);
 			name = "custom views";
@@ -399,6 +412,7 @@
 			files = (
 				81D0E9FF19A14CB2009B9A79 /* UIViewController+MMDrawerController.m in Sources */,
 				25FE774119A32BE400332992 /* NYSORABlocksTableViewCell.m in Sources */,
+				252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */,
 				81D0E9F919A14985009B9A79 /* MMDrawerVisualState.m in Sources */,
 				81D0E9F719A10523009B9A79 /* MMDrawerBarButtonItem.m in Sources */,
 				81D0E9F019A1009A009B9A79 /* MMDrawerController.m in Sources */,
