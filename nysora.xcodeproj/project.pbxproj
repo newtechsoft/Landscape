@@ -16,6 +16,8 @@
 		25AC32BB19994C2A00C872F7 /* nysoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32BA19994C2A00C872F7 /* nysoraTests.m */; };
 		25AC32C619994DF100C872F7 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32C519994DF100C872F7 /* BlockViewController.m */; };
 		25CB70BB199B885B00266A9B /* content in Resources */ = {isa = PBXBuildFile; fileRef = 25CB70BA199B885B00266A9B /* content */; };
+		25FE774119A32BE400332992 /* NYSORABlocksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FE773F19A32BE400332992 /* NYSORABlocksTableViewCell.m */; };
+		25FE774219A32BE400332992 /* NYSORABlocksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FE774019A32BE400332992 /* NYSORABlocksTableViewCell.xib */; };
 		81D0E9F019A1009A009B9A79 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9EF19A1009A009B9A79 /* MMDrawerController.m */; };
 		81D0E9F519A103B0009B9A79 /* DrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9F419A103B0009B9A79 /* DrawerViewController.m */; };
 		81D0E9F719A10523009B9A79 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9F619A10523009B9A79 /* MMDrawerBarButtonItem.m */; };
@@ -56,6 +58,9 @@
 		25AC32C419994DF100C872F7 /* BlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockViewController.h; sourceTree = "<group>"; };
 		25AC32C519994DF100C872F7 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
 		25CB70BA199B885B00266A9B /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = content; path = nysora/content; sourceTree = "<group>"; };
+		25FE773E19A32BE400332992 /* NYSORABlocksTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSORABlocksTableViewCell.h; sourceTree = "<group>"; };
+		25FE773F19A32BE400332992 /* NYSORABlocksTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORABlocksTableViewCell.m; sourceTree = "<group>"; };
+		25FE774019A32BE400332992 /* NYSORABlocksTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSORABlocksTableViewCell.xib; sourceTree = "<group>"; };
 		29A71D2A35F84D4EB46B1F58 /* libPods-nysoraTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nysoraTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		643EB06037384CB98740547C /* Pods-nysora.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nysora.xcconfig"; path = "Pods/Pods-nysora.xcconfig"; sourceTree = "<group>"; };
 		81D0E9EF19A1009A009B9A79 /* MMDrawerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MMDrawerController.m; path = Pods/MMDrawerController/MMDrawerController/MMDrawerController.m; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 		25AC32A019994C2A00C872F7 /* nysora */ = {
 			isa = PBXGroup;
 			children = (
+				25FE773C19A32B7900332992 /* custom views */,
 				81D0E9FD19A14A00009B9A79 /* VisualStateManager */,
 				25169E67199A08FA0000304B /* vcs */,
 				25AC32A519994C2A00C872F7 /* AppDelegate.h */,
@@ -185,6 +191,24 @@
 				81D0EA0719A25758009B9A79 /* MMTableViewCell.m */,
 			);
 			name = MMDrawerController;
+			sourceTree = "<group>";
+		};
+		25FE773C19A32B7900332992 /* custom views */ = {
+			isa = PBXGroup;
+			children = (
+				25FE773D19A32BAF00332992 /* blocksTableViewCell */,
+			);
+			name = "custom views";
+			sourceTree = "<group>";
+		};
+		25FE773D19A32BAF00332992 /* blocksTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				25FE773E19A32BE400332992 /* NYSORABlocksTableViewCell.h */,
+				25FE773F19A32BE400332992 /* NYSORABlocksTableViewCell.m */,
+				25FE774019A32BE400332992 /* NYSORABlocksTableViewCell.xib */,
+			);
+			name = blocksTableViewCell;
 			sourceTree = "<group>";
 		};
 		81D0E9FD19A14A00009B9A79 /* VisualStateManager */ = {
@@ -292,6 +316,7 @@
 				25CB70BB199B885B00266A9B /* content in Resources */,
 				25AC32AD19994C2A00C872F7 /* Main.storyboard in Resources */,
 				25AC32AF19994C2A00C872F7 /* Images.xcassets in Resources */,
+				25FE774219A32BE400332992 /* NYSORABlocksTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D0E9FF19A14CB2009B9A79 /* UIViewController+MMDrawerController.m in Sources */,
+				25FE774119A32BE400332992 /* NYSORABlocksTableViewCell.m in Sources */,
 				81D0E9F919A14985009B9A79 /* MMDrawerVisualState.m in Sources */,
 				81D0E9F719A10523009B9A79 /* MMDrawerBarButtonItem.m in Sources */,
 				81D0E9F019A1009A009B9A79 /* MMDrawerController.m in Sources */,

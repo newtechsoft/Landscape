@@ -2,19 +2,17 @@
 	"blocks" : [
 		{
 			"blockId" : "29",
-			"blockName" : "Ultra1"
+			"blockName" : "Cervical Plexus Block",
+			"sectionId" : 0
 		},
 		{
 			"blockId" : "45",
-			"blockName" : "Ultra2"
-		},
-		{
-			"blockId" : "33",
-			"blockName" : "Ben's block"
-		},
-		{
-			"blockId" : "4",
-			"blockName" : "Ultra3"
-		},
-	]
+			"blockName" : "Interscalene Brachial Plexus Block",
+			"sectionId" : 1
+		}
+	],
+    "sections" : [
+    	"Cervical Blocks",
+    	"Brachial Blocks"
+    ]
 }
