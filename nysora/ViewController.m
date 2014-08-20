@@ -29,8 +29,9 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate> //This is where we're telling the compiler that this view controller should conform to these two protocols
 
-@property (nonatomic, strong) NSMutableArray *arrayOfBlocks;
+
 @property (nonatomic) int selectedRow;
+
 
 
 @end
@@ -73,7 +74,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     
     self.json = [self fetchJSONData];
-    NSLog(@"%@", self.json);
+//    NSLog(@"%@", self.json);
     self.arrayOfBlocks = [self.json objectForKey:@"blocks"];
     
     //Apply the left menu button to self
@@ -102,22 +103,22 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 -(void)viewWillAppear:(BOOL)animated{
     self.title = @"NYSORA";
     [super viewWillAppear:animated];
-    NSLog(@"Center will appear");
+//    NSLog(@"Center will appear");
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSLog(@"Center did appear");
+//    NSLog(@"Center did appear");
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    NSLog(@"Center will disappear");
+//    NSLog(@"Center will disappear");
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    NSLog(@"Center did disappear");
+//    NSLog(@"Center did disappear");
 }
 
 //Setup the left menu button
@@ -190,7 +191,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     BlockViewController *bv = [storyboard instantiateViewControllerWithIdentifier:@"BlockViewController"];
     bv.whichBlockAmI = self.selectedRow + 1;
-    NSLog(@"%d", self.selectedRow);
+//    NSLog(@"%d", self.selectedRow);
     UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
     [nav pushViewController:bv animated:YES];
     
@@ -209,7 +210,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
         
         //Then you set any property of that view controller, from within this function
         //Like so
-        NSLog(@"%d", self.selectedRow);
+//        NSLog(@"%d", self.selectedRow);
         
         bv.whichBlockAmI = self.selectedRow + 1; //Remember array indices start at 0
         

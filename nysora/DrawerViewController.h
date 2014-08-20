@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+MMDrawerController.h"
+
 
 @interface DrawerViewController : UITableViewController
+@property (nonatomic, strong) NSDictionary *json;
+@property (nonatomic, strong) UITableView * tableViewDrawer;
+@property (nonatomic, strong) NSMutableArray *arrayOfBlocksDrawer;
+
 
 @end
