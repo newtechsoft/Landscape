@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NYSORAHeadersPaginationView.h"
 
 @interface HeaderViewController : UIViewController
 
@@ -14,5 +15,7 @@
 @property (nonatomic, strong) NSString *whichHeaderNameAmI;
 @property (nonatomic) int whichHeaderAmI;
 @property (nonatomic, strong) NSDictionary *json;
+
+@property (nonatomic, strong) NYSORAHeadersPaginationView *paginationView;
 
 @end
