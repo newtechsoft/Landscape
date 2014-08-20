@@ -114,7 +114,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
                                                  green:208.0/255.0
                                                   blue:208.0/255.0
                                                  alpha:1.0]];
-    [self.blocksTableView setBackgroundView:backView];
+    [self.blocksTableView setBackgroundView:backView];*/
 
 }
 
@@ -278,37 +278,6 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 #pragma mark - Drawer menu functions
 
-//Set up animations during the different stages of the view controller
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    //NSLog(@"Center will appear");
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    //NSLog(@"Center did appear");
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    //NSLog(@"Center will disappear");
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    //NSLog(@"Center did disappear");
-}
-
-//Setup the left menu button
--(void)setupLeftMenuButton{
-    //Create an instance of the MMDrawerBarButtonItem
-    //Create an action based on when the button is pressed
-    //Set the navigation item for the navigation bar to the button created
-    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    //Set the color of the button
-    [leftDrawerButton setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-}
 
 -(void)leftDrawerButtonPress:(id)sender{
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
