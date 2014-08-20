@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *whichBlockAmIIn;
 @property (nonatomic, strong) NSString *whichHeaderNameAmI;
+@property (nonatomic) NSInteger howManyHeadersAreThere;
 @property (nonatomic) int whichHeaderAmI;
 @property (nonatomic, strong) NSDictionary *json;
 

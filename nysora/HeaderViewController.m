@@ -33,9 +33,7 @@
     // Do any additional setup after loading the view.
     
     //NSLog(@"%d", self.whichHeaderAmI);
-    //Add the pagination
-    self.paginationView = [[NYSORAHeadersPaginationView alloc] initWithFrame:CGRectMake(0, 64, 320, 40)];
-    [self.view addSubview:self.paginationView];
+
     //Init the json string
     //NSLog(@"%@", self.json);
     NSError *error = nil;
@@ -54,6 +52,14 @@
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichHeaderNameAmI;
+    
+    //Add the pagination
+    self.paginationView = [[NYSORAHeadersPaginationView alloc] initWithFrame:CGRectMake(0, 64, 320, 40)];
+    [self.paginationView setNumberOfHeaders:self.howManyHeadersAreThere];
+    [self.paginationView setCurrentHeader:self.whichHeaderAmI];
+    [self.paginationView setHeaderName:self.whichHeaderNameAmI];
+    [self.view addSubview:self.paginationView];
+    
 }
 
 #pragma mark - Helper functions

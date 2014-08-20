@@ -10,4 +10,11 @@
 
 @interface NYSORAHeadersPaginationView : UIView
 
+@property (strong, nonatomic) UIPageControl *pageControl;
+@property (strong, nonatomic) UILabel *headerNameLabel;
+
+- (void)setCurrentHeader:(NSInteger)currentHeader;
+- (void)setNumberOfHeaders:(NSInteger)numberOfHeaders;
+- (void)setHeaderName:(NSString *)headerName;
+
 @end

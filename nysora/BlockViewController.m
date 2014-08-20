@@ -137,6 +137,8 @@
         hv.whichHeaderAmI = self.selectedRow;
         //Pass the header name
         hv.whichHeaderNameAmI = [self.arrayOfHeaders[hv.whichHeaderAmI] objectForKey:@"headerName"];
+        //Pass the total number of headers
+        hv.howManyHeadersAreThere = [self.arrayOfHeaders count];
         //Pass the actual json
         hv.json = self.arrayOfHeaders[self.selectedRow];
     }
