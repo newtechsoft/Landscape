@@ -71,7 +71,6 @@
     //titleImageView.contentMode = UIViewContentModeCenter;
     self.navigationItem.titleView = backView;
     
-    
     //Based on the iOS version - set the tint color of the nav bar
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
         // iOS 6.1 or earlier
