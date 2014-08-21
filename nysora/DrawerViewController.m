@@ -6,43 +6,64 @@
 //  Copyright (c) 2014 Upload LLC. All rights reserved.
 //
 
+#import "ViewController.h"
 #import "DrawerViewController.h"
+#import "MMTableViewCell.h"
+#import "MMSideDrawerTableViewCell.h"
+#import "NavigationViewController.h"
 
-@interface DrawerViewController ()
-
+@interface DrawerViewController () <UITableViewDataSource, UITableViewDelegate>
 @end
 
 @implementation DrawerViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+
+    _tableViewDrawer = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //Set the delegate and data source to self
+    [self.tableViewDrawer setDelegate:self];
+    [self.tableViewDrawer setDataSource:self];
+    
+    //Set a subview
+    [self.view addSubview:self.tableViewDrawer];
+    
+    //Load in the JSON source
+    NSDictionary *json = [self fetchJSONData];
+//    NSLog(@"%@", self.json);
+    self.arrayOfBlocksDrawer = [json objectForKey:@"blocks"];
+    NSLog(@"%@", self.arrayOfBlocksDrawer );
+    
+    //Set the background color
+    UIColor * tableViewBackgroundColor;
+    
+        tableViewBackgroundColor = [UIColor colorWithRed:110.0/255.0
+                                                   green:113.0/255.0
+                                                    blue:115.0/255.0
+                                                   alpha:1.0];
+   [self.tableView setBackgroundColor:tableViewBackgroundColor];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    [self.view setBackgroundColor:[UIColor colorWithRed:66.0/255.0
+                                                  green:69.0/255.0
+                                                   blue:71.0/255.0
+                                                  alpha:1.0]];
+    
+    UIColor * barColor = [UIColor colorWithRed:161.0/255.0
+                                         green:164.0/255.0
+                                          blue:166.0/255.0
+                                         alpha:1.0];
+    [self setTitle:@"Menu"];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(NSDictionary *)fetchJSONData
 {
     // Return the number of sections.
     return 0;
@@ -51,67 +72,29 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return [self.arrayOfBlocksDrawer count];
+//    NSLog(@"This is to check the number of blocks being counted: %@", self.arrayOfBlocksDrawer);
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+        
+    //table views are pretty weird, and a lot of this is far from intuitive. It's just the way it's designed and there's unfortunately no other way of doing it
+        
+    static NSString *MyIdentifier = @"MyIdentifier";
+        
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:MyIdentifier];
+    }
+        
+    //Add in what information will be on each cell row. Iterate through the array of blocks
+    cell.textLabel.text = [self.arrayOfBlocksDrawer[indexPath.row] objectForKey:@"blockName"];
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

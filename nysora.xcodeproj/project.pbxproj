@@ -27,6 +27,7 @@
 		81D0E9FC19A149F6009B9A79 /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9FB19A149F6009B9A79 /* MMExampleDrawerVisualStateManager.m */; };
 		81D0E9FF19A14CB2009B9A79 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9FE19A14CB2009B9A79 /* UIViewController+MMDrawerController.m */; };
 		81D0EA0819A25758009B9A79 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0EA0719A25758009B9A79 /* MMTableViewCell.m */; };
+		81D0EA0B19A3BEE1009B9A79 /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0EA0A19A3BEE1009B9A79 /* MMSideDrawerTableViewCell.m */; };
 		81E3D158199E634E009B87A9 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3D157199E634E009B87A9 /* NavigationViewController.m */; };
 		82D529B6C225476AB5C80EFD /* libPods-nysora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E058E19BAC7A45E0A8D8FB95 /* libPods-nysora.a */; };
 		8FCB1902BC04438DA01D6884 /* libPods-nysoraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A71D2A35F84D4EB46B1F58 /* libPods-nysoraTests.a */; };
@@ -79,6 +80,8 @@
 		81D0E9FE19A14CB2009B9A79 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MMDrawerController.m"; path = "Pods/MMDrawerController/MMDrawerController/UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		81D0EA0619A25758009B9A79 /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
 		81D0EA0719A25758009B9A79 /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
+		81D0EA0919A3BEE1009B9A79 /* MMSideDrawerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSideDrawerTableViewCell.h; sourceTree = "<group>"; };
+		81D0EA0A19A3BEE1009B9A79 /* MMSideDrawerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerTableViewCell.m; sourceTree = "<group>"; };
 		81E3D156199E634E009B87A9 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		81E3D157199E634E009B87A9 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		D530560F18504155A246FE48 /* Pods-nysoraTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nysoraTests.xcconfig"; path = "Pods/Pods-nysoraTests.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 				81D0E9EF19A1009A009B9A79 /* MMDrawerController.m */,
 				81D0EA0619A25758009B9A79 /* MMTableViewCell.h */,
 				81D0EA0719A25758009B9A79 /* MMTableViewCell.m */,
+				81D0EA0919A3BEE1009B9A79 /* MMSideDrawerTableViewCell.h */,
+				81D0EA0A19A3BEE1009B9A79 /* MMSideDrawerTableViewCell.m */,
 			);
 			name = MMDrawerController;
 			sourceTree = "<group>";

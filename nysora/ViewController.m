@@ -32,8 +32,9 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate> //This is where we're telling the compiler that this view controller should conform to these two protocols
 
-@property (nonatomic, strong) NSMutableArray *arrayOfBlocks;
+
 @property (nonatomic) int selectedRow;
+
 
 
 @end
@@ -210,7 +211,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     BlockViewController *bv = [storyboard instantiateViewControllerWithIdentifier:@"BlockViewController"];
     bv.whichBlockAmI = self.selectedRow + 1;
-    NSLog(@"%d", self.selectedRow);
+//    NSLog(@"%d", self.selectedRow);
     UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
     [nav pushViewController:bv animated:YES];
     
@@ -231,7 +232,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
         
         //Then you set any property of that view controller, from within this function
         //Like so
-        NSLog(@"%d", self.selectedRow);
+//        NSLog(@"%d", self.selectedRow);
         
         bv.whichBlockAmI = self.selectedRow + 1; //Remember array indices start at 0
         
