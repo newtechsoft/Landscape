@@ -1,39 +1,110 @@
 {
-    "blockId" : "29",
-	"headers" : [
+    "blockId": "29",
+    "headers": [
         {
-            "headerName" : "Video & Image",
-            "htmlFile" : "29-2",
-            "videos" : {
-                 "29-4" : {
-                    "src" : "content/29/29-4.mp4"
-                 }
+            "headerName": "Video & Image",
+            "htmlFile": "29-0",
+            "videos": {
+                "29-4": {
+                    "src": "content/29/29-4.mp4"
+                }
             },
-            "imgs" : {
-                 "29-5" : {
-                    "src" : "content/29/29-2.png",
-                    "alt" : "Figure 29-2"
-                 }
+            "imgs": {
+                "29-5": {
+                    "src": "content/29/29-2.png",
+                    "alt": "Figure 29-2"
+                }
             }
         },
-		{
-			"headerName" : "General Considerations",
-            "htmlFile" : "29-0"
-		},
-		{
-			"headerName" : "Ultrasound Anatomy",
-            "htmlFile" : "29-1",
-            "imgs" : {
-                 "29-2" : {
-                    "src" : "content/29/29-2.png",
-                    "alt" : "Figure 29-2"
-                 },
-                 "29-3" : {
-                    "src" : "content/29/29-3.png",
-                    "alt" : "Figure 29-2"
-                 }
+        {
+            "headerName": "General Considerations",
+            "htmlFile": "29-1"
+        },
+        {
+            "headerName": "Ultrasound Anatomy",
+            "htmlFile": "29-2",
+            "imgs": {
+                "29-2": {
+                    "src": "content/29/29-2.png",
+                    "alt": "Figure 29-2"
+                },
+                "29-3": {
+                    "src": "content/29/29-3.png",
+                    "alt": "Figure 29-3"
+                }
             }
-		}
-
-	]
+        },
+        {
+            "headerName": "Distribution of Blockade",
+            "htmlFile": "29-3",
+            "imgs": {
+                "29-2": {
+                    "src": "content/29/29-4.png",
+                    "alt": "Figure 29-4"
+                }
+            }
+        },
+        {
+            "headerName": "Equipment",
+            "htmlFile": "29-4"
+        },
+        {
+            "headerName": "Landmarks and Patient Positioning",
+            "htmlFile": "29-5"
+        },
+        {
+            "headerName": "Technique",
+            "htmlFile": "29-6",
+            "imgs": {
+                "29-5": {
+                    "src": "content/29/29-5.png",
+                    "alt": "Figure 29-5"
+                },
+                "29-6": {
+                    "src": "content/29/29-6.png",
+                    "alt": "Figure 29-6"
+                },
+                "29-7A": {
+                    "src": "content/29/29-7A.png",
+                    "alt": "Figure 29-7A"
+                },
+                "29-7B": {
+                    "src": "content/29/29-7B.png",
+                    "alt": "Figure 29-7B"
+                },
+                "29-8A": {
+                    "src": "content/29/29-8A.png",
+                    "alt": "Figure 29-8A"
+                },
+                "29-8B": {
+                    "src": "content/29/29-8B.png",
+                    "alt": "Figure 29-8B"
+                }
+            }
+        },
+        {
+            "headerName": "Continuous Ultrasound Guided Interscalene Block",
+            "htmlFile": "29-7",
+            "imgs": {
+                "29-9": {
+                    "src": "content/29/29-9.png",
+                    "alt": "Figure 29-9"
+                },
+                "29-10": {
+                    "src": "content/29/29-10.png",
+                    "alt": "Figure 29-10"
+                }
+            }
+        },
+        {
+            "headerName": "Flow Chart",
+            "htmlFile": "29-8",
+            "imgs": {
+                "29-11": {
+                    "src": "content/29/29-11.png",
+                    "alt": "Figure 29-11"
+                }
+            }
+        }
+    ]
 }

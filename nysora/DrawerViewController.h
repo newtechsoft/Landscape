@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSDictionary *json;
 @property (nonatomic, strong) UITableView * tableViewDrawer;
 @property (nonatomic, strong) NSMutableArray *arrayOfBlocksDrawer;
+@property (strong, nonatomic) UIImageView *drawerHeader;
 
 
 @end
