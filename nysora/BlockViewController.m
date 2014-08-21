@@ -35,7 +35,8 @@
 {
     self = [super init];
     if(self) {
-
+        //Custom init
+//        NSLog(@"hej");
     }
     return self;
 }

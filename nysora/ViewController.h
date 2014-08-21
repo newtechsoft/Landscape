@@ -14,7 +14,9 @@
 
 @property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, weak) UILabel *textLabel;
-@property (strong, nonatomic) UITableView *blocksTableView;
+@property (nonatomic,strong) UITableView * blocksTableView;
+@property (nonatomic, strong) NSMutableArray *arrayOfBlocks;
 @property (strong, nonatomic) UIImageView *previewImageView;
+
 
 @end

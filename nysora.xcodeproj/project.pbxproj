@@ -433,6 +433,7 @@
 				252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */,
 				81D0E9F919A14985009B9A79 /* MMDrawerVisualState.m in Sources */,
 				81D0E9F719A10523009B9A79 /* MMDrawerBarButtonItem.m in Sources */,
+				81D0EA0B19A3BEE1009B9A79 /* MMSideDrawerTableViewCell.m in Sources */,
 				2545192419A51D44000E9AE1 /* NYSORAHeadersPaginationView.m in Sources */,
 				81D0E9F019A1009A009B9A79 /* MMDrawerController.m in Sources */,
 				81D0EA0819A25758009B9A79 /* MMTableViewCell.m in Sources */,

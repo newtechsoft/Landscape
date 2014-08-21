@@ -32,10 +32,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //NSLog(@"%d", self.whichHeaderAmI);
-
+//    NSLog(@"%d", self.whichHeaderAmI);
+    
     //Init the json string
-    //NSLog(@"%@", self.json);
+//    NSLog(@"%@", self.json);
     NSError *error = nil;
     
     //Load the template
@@ -43,7 +43,7 @@
     
     //Process the template
     NSString *htmlOutput = [GRMustacheTemplate renderObject:self.json fromString:templateString error:&error];
-    //NSLog(@"%@", htmlOutput);
+//    NSLog(@"%@", htmlOutput);
     //Show it in the webview
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:bundlePath];
@@ -66,7 +66,7 @@
 
 -(NSString *)fetchTemplateData
 {
-    //NSLog(@"%@", self.json);
+//    NSLog(@"%@", self.json);
     NSString *path = [NSString stringWithFormat:@"content/%@/%@", self.whichBlockAmIIn, [self.json objectForKey:@"htmlFile"]];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:path ofType:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
