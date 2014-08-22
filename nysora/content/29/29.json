@@ -1,7 +1,8 @@
 {
     "blockId": "29",
     "blockName" : "Cervical Plexus Block",
-    "summaryImage" : "summary",
+    "summaryPath" : "content/29/summary",
+    "summaryText" : "This is where the summary goes",
     "headers": [
         {
             "headerName": "General Considerations",

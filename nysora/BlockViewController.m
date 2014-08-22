@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *headersTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
+@property (strong, nonatomic) UITextView *summaryTextView;
+
 @property (strong, nonatomic) NSMutableArray *arrayOfHeaders;
 @property (nonatomic) int selectedRow;
 
@@ -36,7 +38,6 @@
     self = [super init];
     if(self) {
         //Custom init
-//        NSLog(@"hej");
     }
     return self;
 }
@@ -63,6 +64,24 @@
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichBlockNameAmI;
+    
+    //Set the summary image
+    NSString* imageName = [[NSBundle mainBundle] pathForResource:[json objectForKey:@"summaryPath"] ofType:@"png"];
+    self.previewImageView.image = [UIImage imageWithContentsOfFile:imageName];
+    self.previewImageView.backgroundColor = [UIColor whiteColor];
+    if(self.previewImageView.image == nil) {
+        NSLog(@"Couldnt find image at path %@", imageName);
+        
+    }
+    
+    //Set the summary
+    self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 200)];
+    [self.summaryTextView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
+    [self.summaryTextView setTextColor:[UIColor whiteColor]];
+    self.summaryTextView.textContainerInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
+    self.summaryTextView.textAlignment = NSTextAlignmentCenter;
+    [self.summaryTextView setText:[json objectForKey:@"summaryText"]];
+    [self.view addSubview:self.summaryTextView];
     
 }
 
