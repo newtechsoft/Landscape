@@ -10,6 +10,7 @@
 		25169E6A199A091C0000304B /* HeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25169E69199A091C0000304B /* HeaderViewController.m */; };
 		252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 252C263F19A3F962005BF985 /* NYSORAHeaderTableViewCell.m */; };
 		2545192419A51D44000E9AE1 /* NYSORAHeadersPaginationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545192319A51D44000E9AE1 /* NYSORAHeadersPaginationView.m */; };
+		25A59F2D19A7DB0F00D7936F /* content in Resources */ = {isa = PBXBuildFile; fileRef = 25CB70BA199B885B00266A9B /* content */; };
 		25AC32A419994C2A00C872F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A319994C2A00C872F7 /* main.m */; };
 		25AC32A719994C2A00C872F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A619994C2A00C872F7 /* AppDelegate.m */; };
 		25AC32AA19994C2A00C872F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A919994C2A00C872F7 /* ViewController.m */; };
@@ -356,6 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A59F2D19A7DB0F00D7936F /* content in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
