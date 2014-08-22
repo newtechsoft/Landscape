@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *blockNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *blockPreviewImageView;
 
+-(void)setBlockThumbnailWithImagePath:(NSString *)imagePath;
+
 @end

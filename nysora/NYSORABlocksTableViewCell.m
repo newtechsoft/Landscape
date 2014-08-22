@@ -22,4 +22,13 @@
     // Configure the view for the selected state
 }
 
+-(void)setBlockThumbnailWithImagePath:(NSString *)imagePath
+{
+    self.blockPreviewImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+    self.blockPreviewImageView.backgroundColor = [UIColor blackColor];
+    if(self.blockPreviewImageView.image == nil) {
+        NSLog(@"Couldnt find image at path %@", imagePath);
+    }
+}
+
 @end

@@ -214,6 +214,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
         if([self.arrayOfBlocks[i][@"sectionId"] integerValue] == sectionId) {
             if(rowCount == indexPath.row) {
                 cell.blockNameLabel.text = [self.arrayOfBlocks[i] objectForKey:@"blockName"];
+                [cell setBlockThumbnailWithImagePath:[self.arrayOfBlocks[i] objectForKey:@"thumbnailPath"]];
             } else {
                 rowCount++;
             }
