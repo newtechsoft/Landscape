@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) UILabel *headerNameLabel;
+@property (strong, nonatomic) CALayer *tinyCircle;
 
 - (void)setCurrentHeader:(NSInteger)currentHeader;
 - (void)setNumberOfHeaders:(NSInteger)numberOfHeaders;

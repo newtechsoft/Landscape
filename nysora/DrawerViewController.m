@@ -39,9 +39,7 @@
     
     //Load in the JSON source
     NSDictionary *json = [self fetchJSONData];
-    //    NSLog(@"%@", self.json);
     self.arrayOfBlocksDrawer = [json objectForKey:@"blocks"];
-    NSLog(@"%@", self.arrayOfBlocksDrawer );
     
     //Set the background color
     UIColor * tableViewBackgroundColor;
@@ -66,7 +64,7 @@
     UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NYSORA_Logo_Simple"]];
     
     //    titleImageView.frame.size.width, titleImageView.frame.size.height
-    //titleImageView.frame = CGRectMake(7, -2, 180,70);
+    titleImageView.frame = CGRectMake(7, -2, 180,70);
     [backView addSubview:titleImageView];
     //titleImageView.contentMode = UIViewContentModeCenter;
     self.navigationItem.titleView = backView;
@@ -131,7 +129,7 @@
                                            alpha:1];
     
     //Set the color of the text in the drawer table view cell
-    cell.textColor = [UIColor colorWithRed:60.0/255.0
+    cell.textLabel.textColor = [UIColor colorWithRed:60.0/255.0
                                      green:130.0/255.0
                                       blue:146.0/255.0
                                      alpha:1];

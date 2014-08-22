@@ -17,7 +17,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface AppDelegate ()
-@property (nonatomic,strong) MMDrawerController * drawerController;
+@property (nonatomic,strong) MMDrawerController *drawerController;
 
 @end
 
@@ -56,8 +56,8 @@
 
     //Set the Maximum Drawer Width
 //    [self.drawerController setMaximumRightDrawerWidth:200.0];
-    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeTapCenterView|MMCloseDrawerGestureModeTapNavigationBar];
     
     
     //I have no idea what this means
@@ -71,14 +71,7 @@
          }
      }];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    if(OSVersionIsAtLeastiOS7()){
-        //Set the UI colors here
-        UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
-                                              green:173.0/255.0
-                                               blue:234.0/255.0
-                                              alpha:1.0];
-        [self.window setTintColor:tintColor];
-//    }
+
     //This is important - here we set the root view controller to the drawer
     [self.window setRootViewController:self.drawerController];
     

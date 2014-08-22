@@ -30,7 +30,7 @@
         //Set up the circle
         CALayer *circleLayer = [[CALayer alloc] init];
         circleLayer.masksToBounds = YES;
-        circleLayer.frame = CGRectMake( 10, 10, 40, 40);
+        circleLayer.frame = CGRectMake(10, 10, 40, 40);
         circleLayer.bounds = CGRectMake(0, 0, 40, 40);
         circleLayer.borderWidth = 2;
         circleLayer.borderColor = [UIColor

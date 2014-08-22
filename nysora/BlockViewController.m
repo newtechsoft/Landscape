@@ -58,6 +58,7 @@
     NSDictionary *json = [self fetchJSONData];
     self.arrayOfHeaders = [json objectForKey:@"headers"];
     self.whichBlockIdAmI = [json objectForKey:@"blockId"];
+    self.whichBlockNameAmI = [json objectForKey:@"blockName"];
     //self.arrayOfHeaders = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", nil];
     
     //Set title in the navigation bar
@@ -134,6 +135,8 @@
         //Like so
         //Pass the block Id
         hv.whichBlockAmIIn = self.whichBlockIdAmI;
+        
+        hv.whichBlockNameAmIIn = self.whichBlockNameAmI;
         //Pass the header number
         hv.whichHeaderAmI = self.selectedRow;
         //Pass the header name
@@ -141,7 +144,7 @@
         //Pass the total number of headers
         hv.howManyHeadersAreThere = [self.arrayOfHeaders count];
         //Pass the actual json
-        hv.json = self.arrayOfHeaders[self.selectedRow];
+        hv.json = self.arrayOfHeaders;
     }
 }
 

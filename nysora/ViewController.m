@@ -32,10 +32,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate> //This is where we're telling the compiler that this view controller should conform to these two protocols
 
-
-@property (nonatomic) int selectedRow;
-
-
+@property (nonatomic) NSInteger selectedRow;
 
 @end
 
@@ -55,11 +52,10 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     //Some navigation bar setup
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 
     //Set title of the view controller
     self.title = @"NYSORA";
-
     
     //Initiate and allocate the table view within the bounds of the window.
     self.blocksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 320, self.view.frame.size.height-(200)) style:UITableViewStylePlain];
@@ -76,17 +72,16 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     self.previewImageView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.previewImageView];
     
-    //[self.blocksTableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-    //Apply double tap gestures
-    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    /*Apply double tap gestures
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
     [doubleTap setNumberOfTapsRequired:2];
     [self.view addGestureRecognizer:doubleTap];
     
-    UITapGestureRecognizer * twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerDoubleTap:)];
+    UITapGestureRecognizer *twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerDoubleTap:)];
     [twoFingerDoubleTap setNumberOfTapsRequired:2];
     [twoFingerDoubleTap setNumberOfTouchesRequired:2];
     [self.view addGestureRecognizer:twoFingerDoubleTap];
-    
+    */
     //Set the delegate and data source for the blocksTableView
     self.blocksTableView.dataSource = self;
     self.blocksTableView.delegate = self;
@@ -215,12 +210,9 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     //1. get section
     NSInteger sectionId = indexPath.section;
     NSInteger rowCount = 0;
-    NSLog(@"I'm looking for: section %d, row %d", sectionId, indexPath.row);
     for(NSInteger i=0;i<[self.arrayOfBlocks count];i++) {
-        NSLog(@"section id for current iteration: %d", [self.arrayOfBlocks[i][@"sectionId"] integerValue]);
         if([self.arrayOfBlocks[i][@"sectionId"] integerValue] == sectionId) {
             if(rowCount == indexPath.row) {
-                NSLog(@"match");
                 cell.blockNameLabel.text = [self.arrayOfBlocks[i] objectForKey:@"blockName"];
             } else {
                 rowCount++;
@@ -280,16 +272,16 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 
 
--(void)leftDrawerButtonPress:(id)sender{
+-(void) leftDrawerButtonPress:(id)sender{
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
--(void)doubleTap:(UITapGestureRecognizer*)gesture{
-    [self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
+-(void) doubleTap:(UITapGestureRecognizer*)gesture{
+    //[self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
 }
 
--(void)twoFingerDoubleTap:(UITapGestureRecognizer*)gesture{
-    [self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideRight completion:nil];
+-(void) twoFingerDoubleTap:(UITapGestureRecognizer*)gesture{
+    //[self.mm_drawerController bouncePreviewForDrawerSide:MMDrawerSideRight completion:nil];
 }
 
 @end

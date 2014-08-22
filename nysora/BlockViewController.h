@@ -10,7 +10,7 @@
 
 @interface BlockViewController : UIViewController
 
-@property (nonatomic) int whichBlockAmI;
+@property (nonatomic) NSInteger whichBlockAmI;
 @property (nonatomic, strong) NSString *whichBlockNameAmI;
 @property (nonatomic, strong) NSString *whichBlockIdAmI;
 
