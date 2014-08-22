@@ -27,6 +27,7 @@
     NSString* imageName = [[NSBundle mainBundle] pathForResource:imagePath ofType:@"png"];
     self.blockPreviewImageView.image = [UIImage imageWithContentsOfFile:imageName];
     self.blockPreviewImageView.backgroundColor = [UIColor whiteColor];
+    
     if(self.blockPreviewImageView.image == nil) {
         NSLog(@"Couldnt find image at path %@", imagePath);
     }

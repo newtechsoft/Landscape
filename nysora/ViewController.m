@@ -49,11 +49,17 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     //Some navigation bar setup
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-
+    UIImage *imageForNavBar = [UIImage imageNamed:@"NYSORA_Logo_Simple"];
+    UIImageView *imageViewForNavBar = [[UIImageView alloc] initWithFrame:CGRectMake(0, 12, 120, 30)];
+    imageViewForNavBar.image = imageForNavBar;
+    imageViewForNavBar.contentMode = UIViewContentModeScaleAspectFit;
+    UIView *shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 42)];
+    [shadowView addSubview:imageViewForNavBar];
+    self.navigationItem.titleView = shadowView;
     //Set title of the view controller
     self.title = @"NYSORA";
     
@@ -215,6 +221,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
             if(rowCount == indexPath.row) {
                 cell.blockNameLabel.text = [self.arrayOfBlocks[i] objectForKey:@"blockName"];
                 [cell setBlockThumbnailWithImagePath:[self.arrayOfBlocks[i] objectForKey:@"thumbnailPath"]];
+                cell.tag = i;
             } else {
                 rowCount++;
             }
@@ -237,7 +244,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     BlockViewController *bv = [storyboard instantiateViewControllerWithIdentifier:@"BlockViewController"];
     bv.whichBlockAmI = self.selectedRow + 1;
-//    NSLog(@"%d", self.selectedRow);
+    bv.whichBlockIdAmI = self.arrayOfBlocks[[tableView cellForRowAtIndexPath:indexPath].tag][@"blockId"];
     UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
     [nav pushViewController:bv animated:YES];
     

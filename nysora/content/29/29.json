@@ -1,8 +1,8 @@
 {
     "blockId": "29",
-    "blockName" : "Cervical Plexus Block",
+    "blockName" : "Interscalene Brachial Plexus",
     "summaryPath" : "content/29/summary",
-    "summaryText" : "This is where the summary goes",
+    "summaryText" : "This is where the summary goes for the Interscalene Brachial Plexus Block",
     "headers": [
         {
             "headerName": "General Considerations",

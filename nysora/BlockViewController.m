@@ -89,7 +89,8 @@
 
 -(NSDictionary *)fetchJSONData
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"content/29/29" ofType:@"json"];
+    NSString *jsonPath = [NSString stringWithFormat:@"content/%@/%@", self.whichBlockIdAmI, self.whichBlockIdAmI];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonPath ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     return json;
