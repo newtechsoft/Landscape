@@ -79,7 +79,7 @@
     [label setFont:@"Helvetica-Bold"];
     [label setFontSize:11];
     [label setFrame:CGRectMake(0, 1, 16, 16)];
-    [label setString:[NSString stringWithFormat:@"%d", (self.pageControl.currentPage+1)]];
+    [label setString:[NSString stringWithFormat:@"%ld", (self.pageControl.currentPage+1)]];
     [label setAlignmentMode:kCAAlignmentCenter];
     [label setForegroundColor:[[UIColor colorWithRed:60/255.0f
                                                green:130/255.0f

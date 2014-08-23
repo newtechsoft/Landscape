@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NYSORAFeaturedContentView.h"
 
 @interface ViewController : UIViewController
 
@@ -17,6 +18,6 @@
 @property (nonatomic,strong) UITableView * blocksTableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfBlocks;
 @property (strong, nonatomic) UIImageView *previewImageView;
-
+@property (strong, nonatomic) NYSORAFeaturedContentView *featuredContentView;
 
 @end

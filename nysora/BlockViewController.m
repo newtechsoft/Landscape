@@ -80,6 +80,7 @@
     [self.summaryTextView setTextColor:[UIColor whiteColor]];
     self.summaryTextView.textContainerInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
     self.summaryTextView.textAlignment = NSTextAlignmentCenter;
+    self.summaryTextView.editable = NO;
     [self.summaryTextView setText:[json objectForKey:@"summaryText"]];
     [self.view addSubview:self.summaryTextView];
     

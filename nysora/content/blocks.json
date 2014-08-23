@@ -22,5 +22,24 @@
     	"Cervical Blocks",
     	"Brachial Blocks",
     	"Forearm Blocks"
+    ],
+    "featuredContent" : [
+        {
+            "imagePath" : "content/29/summary",
+            "text" : "This content is featured",
+            "link" : {
+                "blockId" : "29",
+                "htmlFile" : "29-1"
+                         
+            }
+        },
+        {
+            "imagePath" : "content/29/summary",
+            "text" : "So is this content",
+            "link" : {
+                "blockId" : "33",
+                "htmlFile" : "33-3"
+            }
+        }
     ]
 }

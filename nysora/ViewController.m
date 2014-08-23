@@ -72,22 +72,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     //Add a subview
     [self.view addSubview:self.blocksTableView];
-    
-    //Initiate and allocate the preview image
-    self.previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, 320, 200)];
-    self.previewImageView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:self.previewImageView];
-    
-    /*Apply double tap gestures
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-    [doubleTap setNumberOfTapsRequired:2];
-    [self.view addGestureRecognizer:doubleTap];
-    
-    UITapGestureRecognizer *twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerDoubleTap:)];
-    [twoFingerDoubleTap setNumberOfTapsRequired:2];
-    [twoFingerDoubleTap setNumberOfTouchesRequired:2];
-    [self.view addGestureRecognizer:twoFingerDoubleTap];
-    */
+
     //Set the delegate and data source for the blocksTableView
     self.blocksTableView.dataSource = self;
     self.blocksTableView.delegate = self;
@@ -96,6 +81,10 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     self.json = [self fetchJSONData];
     //NSLog(@"%@", self.json);
     self.arrayOfBlocks = [self.json objectForKey:@"blocks"];
+    
+    //Initiate and allocate the preview image
+    self.featuredContentView = [[NYSORAFeaturedContentView alloc] initWithFeaturedContent:self.json[@"featuredContent"] frame:CGRectMake(0, 64, 320, 200)];
+    [self.view addSubview:self.featuredContentView];
     
     //Apply the left menu button to self
     [self setupLeftMenuButton];
@@ -109,13 +98,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
                             alpha:1.0];
     [self.navigationController.navigationBar setBarTintColor:barColor];
 
-    
-    /*UIView *backView = [[UIView alloc] init];
-    [backView setBackgroundColor:[UIColor colorWithRed:208.0/255.0
-                                                 green:208.0/255.0
-                                                  blue:208.0/255.0
-                                                 alpha:1.0]];
-    [self.blocksTableView setBackgroundView:backView];*/
+
 
 }
 
