@@ -27,15 +27,64 @@
     [super viewDidLoad];
     
     
-    //Initiate and allocate the table view within the bounds of the window.
-    _tableViewDrawer = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    //Initiate and allocate the header view at the top.
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 87)];
+    
+    //Initiate and allocate the table view about 60 pixels down.
+    _tableViewDrawer = [[UITableView alloc] initWithFrame:CGRectMake(0, 87, 320, self.view.frame.size.height-(87)) style:UITableViewStylePlain];
+    
+    //Set the subview for the table view
+    [self.view addSubview:self.tableViewDrawer];
+
+    //Set the subview for the header view
+    [self.view addSubview:self.headerView];
     
     //Set the delegate and data source to self
     [self.tableViewDrawer setDelegate:self];
     [self.tableViewDrawer setDataSource:self];
     
-    //Set a subview
-    [self.view addSubview:self.tableViewDrawer];
+    //Add in the home icon in the header view
+    UILabel *homeIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 15, 200, 20)];
+    homeIcon.text = @"\uf015";
+    homeIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
+    homeIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
+    [self.headerView addSubview:homeIcon];
+    
+    //Add in the home title in the header view
+    UILabel *homeText = [[UILabel alloc] initWithFrame:CGRectMake(40, 15, 200, 20)];
+    homeText.text = @"Home";
+    homeText.textColor = [UIColor colorWithWhite:1 alpha:1];
+    homeText.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
+    [self.headerView addSubview:homeText];
+    
+    //Add in the block icon in the header view
+    UILabel *blockIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 57, 200, 20)];
+    blockIcon.text = @"\uf16c";
+    blockIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
+    blockIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
+    [self.headerView addSubview:blockIcon];
+    
+    //Add in the block title in the header view
+    UILabel *blockText = [[UILabel alloc] initWithFrame:CGRectMake(40, 57, 200, 20)];
+    blockText.text = @"Blocks";
+    blockText.textColor = [UIColor colorWithWhite:1 alpha:1];
+    blockText.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
+    [self.headerView addSubview:blockText];
+
+
+
+    //Add in a black line under the "home" title
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 46, 320, .5)];
+    lineView.backgroundColor =[UIColor colorWithWhite:0 alpha:1];
+    [self.headerView addSubview:lineView];
+
+    //Add in a blue line under the "blocks" title
+    UIView *blocksLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 85, 260, 1.5)];
+    blocksLineView.backgroundColor =[UIColor colorWithRed:60.0/255.0
+                                                      green:130.0/255.0
+                                                       blue:146.0/255.0
+                                                      alpha:1];
+    [self.headerView addSubview:blocksLineView];
     
     //Load in the JSON source
     NSDictionary *json = [self fetchJSONData];
@@ -43,7 +92,7 @@
     self.arrayOfBlocksDrawer = [json objectForKey:@"blocks"];
     NSLog(@"%@", self.arrayOfBlocksDrawer );
     
-    //Set the background color
+    //Set the background color for the table view
     UIColor * tableViewBackgroundColor;
     
     tableViewBackgroundColor = [UIColor colorWithRed:55.0/255.0
@@ -52,10 +101,31 @@
                                                alpha:1.0];
     [self.tableViewDrawer setBackgroundColor:tableViewBackgroundColor];
     
-    // This will remove extra separators from tableview
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    //Set the background color for the header view
+    UIColor * headerViewBackgroundColor;
+    
+    headerViewBackgroundColor = [UIColor colorWithRed:55.0/255.0
+                                               green:54.0/255.0
+                                                blue:54.0/255.0
+                                               alpha:1.0];
+    [self.headerView setBackgroundColor:tableViewBackgroundColor];
+
     
     
+    // This will remove extra separators at the bottom of the table view
+    self.tableViewDrawer.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    //This gets rid of the separators alltogether
+    [self.tableViewDrawer setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    //This will change the color of the separators in the table view
+    [self.tableViewDrawer setSeparatorColor:[UIColor colorWithRed:60.0/255.0
+                                                            green:130.0/255.0
+                                                             blue:146.0/255.0
+                                                            alpha:1]];
+    
+    //This will get rid of scrolling in the table view
+//    self.tableView.scrollEnabled = NO;
     
     //Set the nysora logo in the title slot
     UIView *backView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];// Here you can set View width and height as per your requirement for displaying titleImageView position in navigationbar
@@ -65,10 +135,7 @@
                                                  alpha:1.0]];
     UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NYSORA_Logo_Simple"]];
     
-    //    titleImageView.frame.size.width, titleImageView.frame.size.height
-    //titleImageView.frame = CGRectMake(7, -2, 180,70);
     [backView addSubview:titleImageView];
-    //titleImageView.contentMode = UIViewContentModeCenter;
     self.navigationItem.titleView = backView;
     
     //Based on the iOS version - set the tint color of the nav bar

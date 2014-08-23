@@ -59,7 +59,6 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
     //Set title of the view controller
     self.title = @"NYSORA";
-
     
     //Initiate and allocate the table view within the bounds of the window.
     self.blocksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 320, self.view.frame.size.height-(200)) style:UITableViewStylePlain];
