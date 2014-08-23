@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewController+MMDrawerController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
-@interface DrawerViewController : UITableViewController
+@interface DrawerViewController : UIViewController
 @property (nonatomic, strong) NSDictionary *json;
 @property (nonatomic, strong) UITableView * tableViewDrawer;
+@property (nonatomic, strong) UIView * headerView;
 @property (nonatomic, strong) NSMutableArray *arrayOfBlocksDrawer;
 @property (strong, nonatomic) UIImageView *drawerHeader;
 

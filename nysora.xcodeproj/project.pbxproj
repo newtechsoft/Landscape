@@ -22,6 +22,8 @@
 		25D2385E19A8B8F70021FF38 /* NYSORAFeaturedContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25D2385D19A8B8F70021FF38 /* NYSORAFeaturedContentView.m */; };
 		25FE774119A32BE400332992 /* NYSORABlocksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FE773F19A32BE400332992 /* NYSORABlocksTableViewCell.m */; };
 		25FE774219A32BE400332992 /* NYSORABlocksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FE774019A32BE400332992 /* NYSORABlocksTableViewCell.xib */; };
+		81CAA2B519A922C9001D69D2 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81CAA2B419A922C9001D69D2 /* FontAwesome.otf */; };
+		81CAA2B719A922EA001D69D2 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81CAA2B619A922EA001D69D2 /* fontawesome-webfont.ttf */; };
 		81D0E9F019A1009A009B9A79 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9EF19A1009A009B9A79 /* MMDrawerController.m */; };
 		81D0E9F519A103B0009B9A79 /* DrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9F419A103B0009B9A79 /* DrawerViewController.m */; };
 		81D0E9F719A10523009B9A79 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0E9F619A10523009B9A79 /* MMDrawerBarButtonItem.m */; };
@@ -74,6 +76,8 @@
 		25FE774019A32BE400332992 /* NYSORABlocksTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSORABlocksTableViewCell.xib; sourceTree = "<group>"; };
 		29A71D2A35F84D4EB46B1F58 /* libPods-nysoraTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nysoraTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		643EB06037384CB98740547C /* Pods-nysora.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nysora.xcconfig"; path = "Pods/Pods-nysora.xcconfig"; sourceTree = "<group>"; };
+		81CAA2B419A922C9001D69D2 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = nysora/content/common/fonts/FontAwesome.otf; sourceTree = "<group>"; };
+		81CAA2B619A922EA001D69D2 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "nysora/content/common/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		81D0E9EF19A1009A009B9A79 /* MMDrawerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MMDrawerController.m; path = Pods/MMDrawerController/MMDrawerController/MMDrawerController.m; sourceTree = "<group>"; };
 		81D0E9F319A103B0009B9A79 /* DrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerViewController.h; sourceTree = "<group>"; };
 		81D0E9F419A103B0009B9A79 /* DrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerViewController.m; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		25AC329519994C2A00C872F7 = {
 			isa = PBXGroup;
 			children = (
+				81CAA2B619A922EA001D69D2 /* fontawesome-webfont.ttf */,
+				81CAA2B419A922C9001D69D2 /* FontAwesome.otf */,
 				25FE773B19A2A07700332992 /* MMDrawerController */,
 				25CB70BA199B885B00266A9B /* content */,
 				25AC32A019994C2A00C872F7 /* nysora */,
@@ -359,6 +365,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CAA2B719A922EA001D69D2 /* fontawesome-webfont.ttf in Resources */,
+				81CAA2B519A922C9001D69D2 /* FontAwesome.otf in Resources */,
 				25CB70BB199B885B00266A9B /* content in Resources */,
 				25AC32AD19994C2A00C872F7 /* Main.storyboard in Resources */,
 				25AC32AF19994C2A00C872F7 /* Images.xcassets in Resources */,
