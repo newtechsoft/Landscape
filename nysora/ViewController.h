@@ -19,5 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfBlocks;
 @property (strong, nonatomic) UIImageView *previewImageView;
 @property (strong, nonatomic) NYSORAFeaturedContentView *featuredContentView;
+@property (nonatomic, strong) UISwipeGestureRecognizer *featuredContentSwipeLeft;
+@property (nonatomic, strong) UISwipeGestureRecognizer *featuredContentSwipeRight;
 
 @end

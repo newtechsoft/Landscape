@@ -94,9 +94,11 @@
     UIView *tableHeaderView = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 244.0)];
     self.headersTableView.tableHeaderView = tableHeaderView;
     
+    
 }
 
 #pragma mark - Helper Functions
+
 
 -(NSDictionary *)fetchJSONData
 {

@@ -73,6 +73,18 @@
     return self;
 }
 
+- (void)setCurrentFeaturedContent:(NSInteger)currFeaturedContent
+{
+    if(currFeaturedContent >= 0 && currFeaturedContent < [self.featuredContent count]) {
+        //Set the text
+        self.contentText.text = self.featuredContent[currFeaturedContent][@"text"];
+        //Set the image
+        self.contentImage.image = self.featuredContent[currFeaturedContent][@"image"];
+        self.pageControl.currentPage = currFeaturedContent;
+    }
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
