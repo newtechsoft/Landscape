@@ -21,8 +21,6 @@
 //Import custom table view cell
 #import "NYSORABlocksTableViewCell.h"
 
-
-
 typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     MMCenterViewControllerSectionLeftViewState,
     MMCenterViewControllerSectionLeftDrawerAnimation,

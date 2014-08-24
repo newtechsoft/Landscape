@@ -17,7 +17,7 @@
     CGFloat _headerImageOffset;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *headersTableView;
+@property (strong, nonatomic) UITableView *headersTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
 @property (strong, nonatomic) UITextView *summaryTextView;
@@ -54,8 +54,12 @@
     //Edit the navigation back item
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     //Set up the table
+    self.headersTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStylePlain];
+    [self.view addSubview:self.headersTableView];
     self.headersTableView.delegate = self;
     self.headersTableView.dataSource = self;
+    //self.headersTableView.opaque = NO;
+    self.headersTableView.backgroundColor = [UIColor clearColor];
     
     //Set up the imageview
     self.previewImageView.backgroundColor = [UIColor grayColor];
@@ -84,7 +88,7 @@
     }
     
     //Set the summary
-    self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 350)];
+    self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 300)];
     [self.summaryTextView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
     [self.summaryTextView setTextColor:[UIColor whiteColor]];
     self.summaryTextView.textContainerInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
