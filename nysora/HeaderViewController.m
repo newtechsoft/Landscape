@@ -9,6 +9,8 @@
 #import "HeaderViewController.h"
 #import "NYSORAHeaderTableViewCell.h"
 #import <GRMustache.h>
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
 
 @interface HeaderViewController ()
 
@@ -41,9 +43,9 @@
 {
     //Add the pagination
     self.paginationView = [[NYSORAHeadersPaginationView alloc] initWithFrame:CGRectMake(0, 64, 320, 40)];
-    [self.paginationView setNumberOfHeaders:self.howManyHeadersAreThere];
+    [self.paginationView setNumberOfHeaders:[self.json count]];
     [self.paginationView setCurrentHeader:self.whichHeaderAmI];
-    [self.paginationView setHeaderName:self.whichHeaderNameAmI];
+    [self.paginationView setHeaderName:self.json[self.whichHeaderAmI][@"headerName"]];
     [self.view addSubview:self.paginationView];
     
     //Set up the swipe recognizers
@@ -56,6 +58,20 @@
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichBlockNameAmIIn;
+    
+    //Set up the nav bar buttons
+    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    //Set the color of the button
+    [rightDrawerButton setTintColor:[UIColor whiteColor]];
+    [self.navigationItem setRightBarButtonItem:rightDrawerButton];
+}
+
+-(void) leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 -(void)renderWebView

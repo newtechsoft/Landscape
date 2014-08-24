@@ -17,4 +17,6 @@
 
 - (id)initWithFeaturedContent:(NSMutableArray *)content frame:(CGRect)frame;
 
+- (void)setCurrentFeaturedContent:(NSInteger)currFeaturedContent;
+
 @end

@@ -11,6 +11,7 @@
 #import "BlockViewController.h"
 #import "DrawerViewController.h"
 #import "NavigationViewController.h"
+#import "HeaderViewController.h"
 
 #import "MMExampleDrawerVisualStateManager.h"
 #import "UIViewController+MMDrawerController.h"
@@ -30,7 +31,9 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 };
 
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate> //This is where we're telling the compiler that this view controller should conform to these two protocols
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate> {
+    NSInteger _currentFeatured;
+}
 
 @property (nonatomic) NSInteger selectedRow;
 
@@ -79,7 +82,6 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     
     self.json = [self fetchJSONData];
-    //NSLog(@"%@", self.json);
     self.arrayOfBlocks = [self.json objectForKey:@"blocks"];
     
     //Initiate and allocate the preview image
@@ -87,7 +89,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     [self.view addSubview:self.featuredContentView];
     
     //Apply the left menu button to self
-    [self setupLeftMenuButton];
+    [self setupRightMenuButton];
     
 
     //Set the bar color for the navigation bar
@@ -97,42 +99,108 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
                             blue:146/255.0f
                             alpha:1.0];
     [self.navigationController.navigationBar setBarTintColor:barColor];
+    
+    //Set up the gesture recognizers
+    self.featuredContentSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(featuredContentSwipeLeft:)];
+    [self.featuredContentSwipeLeft setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.featuredContentView addGestureRecognizer:self.featuredContentSwipeLeft];
+    self.featuredContentSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(featuredContentSwipeRight:)];
+    [self.featuredContentSwipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.featuredContentView addGestureRecognizer:self.featuredContentSwipeRight];
+    
+    //Set up the tap recognizer
+    self.tapThat = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkToFeaturedContent:)];
+    [self.featuredContentView addGestureRecognizer:self.tapThat];
+
+}
+
+-(void)linkToFeaturedContent:(UITapGestureRecognizer *)recognizer
+{
+    //You instantiate an instance of the view controller in question
+    NSString *whichBlockAmIIn = self.json[@"featuredContent"][_currentFeatured][@"link"][@"blockId"];
+    int whichHeaderAmI = [self.json[@"featuredContent"][_currentFeatured][@"link"][@"headerNumber"] intValue];
+    NSDictionary *json = [self fetchHeaderJSONData:whichBlockAmIIn];
+    NSMutableArray *arrayOfHeaders = [json objectForKey:@"headers"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    HeaderViewController *hv = [storyboard instantiateViewControllerWithIdentifier:@"HeaderViewController"];
+    
+    //Pass the block Id
+    hv.whichBlockAmIIn = whichBlockAmIIn;
+    //Pass the header number
+    hv.whichHeaderAmI = whichHeaderAmI;
+    hv.whichBlockNameAmIIn = json[@"blockName"];
+    //Pass the total number of headers
+    hv.howManyHeadersAreThere = [arrayOfHeaders count];
+    //Pass the actual json
+    hv.json = arrayOfHeaders;
+    
+    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
+    [nav pushViewController:hv animated:YES];
+}
+
+-(NSDictionary *)fetchHeaderJSONData:(NSString *)blockId
+{
+    NSString *jsonPath = [NSString stringWithFormat:@"content/%@/%@", blockId, blockId];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonPath ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    return json;
+}
 
 
 
+-(void)featuredContentSwipeRight:(UISwipeGestureRecognizer *)recognizer
+{
+    //We should go back one header
+    if(_currentFeatured > 0) {
+        //Decrease the counter
+        _currentFeatured--;
+        //Set the new name
+        [self.featuredContentView setCurrentFeaturedContent:_currentFeatured];
+    }
+}
+-(void)featuredContentSwipeLeft:(UISwipeGestureRecognizer *)recognizer
+{
+    //We should go back one header
+    if(_currentFeatured < [self.json[@"featuredContent"] count]) {
+        //Decrease the counter
+        _currentFeatured++;
+        //Set the new name
+        [self.featuredContentView setCurrentFeaturedContent:_currentFeatured];
+    }
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 //Set up animations during the different stages of the view controller
 -(void)viewWillAppear:(BOOL)animated{
     self.title = @"NYSORA";
     [super viewWillAppear:animated];
-//    NSLog(@"Center will appear");
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    NSLog(@"Center did appear");
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//    NSLog(@"Center will disappear");
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-//    NSLog(@"Center did disappear");
 }
 
-//Setup the left menu button
--(void)setupLeftMenuButton{
+//Setup the right menu button
+-(void)setupRightMenuButton {
     //Create an instance of the MMDrawerBarButtonItem
     //Create an action based on when the button is pressed
     //Set the navigation item for the navigation bar to the button created
-    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     //Set the color of the button
-    [leftDrawerButton setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    [rightDrawerButton setTintColor:[UIColor whiteColor]];
+    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
 }
 
 #pragma mark - Helper Functions
@@ -174,7 +242,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 60;
 }
 
 //THE FUNCTION THAT GETS CALLED WHEN THE TABLE VIEW ASKS FOR THE CONTENT IN A SPECIFIC ROW (indexPath)
@@ -190,8 +258,8 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     if (cell == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"NYSORABlocksTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+
+        cell = [[NYSORABlocksTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
     //Add in what information will be on each cell row. Iterate through the array of blocks
@@ -203,7 +271,8 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
         if([self.arrayOfBlocks[i][@"sectionId"] integerValue] == sectionId) {
             if(rowCount == indexPath.row) {
                 cell.blockNameLabel.text = [self.arrayOfBlocks[i] objectForKey:@"blockName"];
-                [cell setBlockThumbnailWithImagePath:[self.arrayOfBlocks[i] objectForKey:@"thumbnailPath"]];
+                //[cell setBlockThumbnailWithImagePath:[self.arrayOfBlocks[i] objectForKey:@"thumbnailPath"]];
+                [cell setBlockThumbnailWithImageName:@"blocks_thick"];
                 cell.tag = i;
             } else {
                 rowCount++;
@@ -235,36 +304,11 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     [self.blocksTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-/*
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    //I set the segue identifier in the interface builder
-    if ([segue.identifier isEqualToString:@"blockViewSegue"]){
-        
-        //To pass data between segues, in our case which block the user has selected
-        //You instantiate an instance of the view controller in question
-        BlockViewController *bv = [segue destinationViewController];
-        
-        //Then you set any property of that view controller, from within this function
-        //Like so
-//        NSLog(@"%d", self.selectedRow);
-        
-        bv.whichBlockAmI = self.selectedRow + 1; //Remember array indices start at 0
-        
-        //Here I am trying to get the name of the Block that was selected so that we can show it as the title on the navigation bar for the next screen. This will be passed to the next navigation controller.
-        bv.whichBlockNameAmI = [self.arrayOfBlocks[bv.whichBlockAmI - 1] objectForKey:@"blockName"];
-        
-    }
-}
-*/
 
 #pragma mark - Drawer menu functions
 
-
-
 -(void) leftDrawerButtonPress:(id)sender{
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 -(void) doubleTap:(UITapGestureRecognizer*)gesture{

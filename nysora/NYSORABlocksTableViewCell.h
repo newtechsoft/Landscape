@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface NYSORABlocksTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *blockNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *blockPreviewImageView;
+@property (strong, nonatomic) IBOutlet UILabel *blockNameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *blockPreviewImageView;
 
 -(void)setBlockThumbnailWithImagePath:(NSString *)imagePath;
+-(void)setBlockThumbnailWithImageName:(NSString *)imageName;
 
 @end
