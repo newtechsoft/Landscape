@@ -228,19 +228,38 @@
 - (void)homeButtonAction:(UIButton*)button
 {
     //Checking to see if the button was clicked
-//    NSLog(@"Button  clicked.");
+    NSLog(@"Button  clicked.");
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ViewController * center = [[ViewController alloc] init];
+    
+    UINavigationController * nav = [[NavigationViewController alloc] initWithRootViewController:center];
+    
+    [self.mm_drawerController
+     setCenterViewController:nav
+     withCloseAnimation:YES
+     completion:nil];
+    
+    //    [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //It looks like this only applies to navigation classes
+//    [[self DrawerViewController] popToRootViewControllerAnimated:NO]
+//    [navigationController pushViewController:ViewController animated:YES];
+    
+//
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     
     //popToRootViewControllerAnimated
     
     //Create an instance of ViewController
-    ViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
-    [nav pushViewController:viewController animated:YES];
+//    ViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+//    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
+//    [nav pushViewController:viewController animated:YES];
     
     //Here we tell the Drawer View Controller to push the center view controller to the navigation controller
-    [self.mm_drawerController setCenterViewController:nav withCloseAnimation:YES completion:nil];
+//    [self.mm_drawerController setCenterViewController:nav withCloseAnimation:YES completion:nil];
     
 }
 
