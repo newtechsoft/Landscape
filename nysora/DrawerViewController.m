@@ -44,22 +44,27 @@
     [self.tableViewDrawer setDataSource:self];
     
     //Add in the home icon in the header view
-    UILabel *homeIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 15, 200, 20)];
-    homeIcon.text = @"\uf015";
+    UILabel *homeIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 15, 20, 20)];
+    homeIcon.text = @"\uf02e";
     homeIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
     homeIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
     [self.headerView addSubview:homeIcon];
     
-    //Add in the home title in the header view
-    UILabel *homeText = [[UILabel alloc] initWithFrame:CGRectMake(40, 15, 200, 20)];
-    homeText.text = @"Home";
-    homeText.textColor = [UIColor colorWithWhite:1 alpha:1];
-    homeText.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
-    [self.headerView addSubview:homeText];
+    //Add in the home button in the header view
+  
+    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [homeButton addTarget:self
+               action:@selector(homeButtonAction:)
+    forControlEvents:UIControlEventTouchUpInside];
+    [homeButton setTitle:@"Home" forState:UIControlStateNormal];
+    homeButton.frame = CGRectMake(-33.0, 16.0, 200.0, 20.0);
+    homeButton.tintColor = [UIColor colorWithWhite:1 alpha:1];
+    homeButton.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
+    [self.headerView addSubview:homeButton];
     
     //Add in the block icon in the header view
     UILabel *blockIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 57, 200, 20)];
-    blockIcon.text = @"\uf16c";
+    blockIcon.text = @"\uf02d";
     blockIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
     blockIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
     [self.headerView addSubview:blockIcon];
@@ -210,6 +215,45 @@
     return cell;
 }
 
+    //Home Button leads to ViewController
+- (void)homeButtonAction:(UIButton*)button
+{
+    //Checking to see if the button was clicked
+    NSLog(@"Button  clicked.");
+    
+    ViewController * center = [[ViewController alloc] init];
+    
+    UINavigationController * nav = [[NavigationViewController alloc] initWithRootViewController:center];
+    
+    [self.mm_drawerController
+     setCenterViewController:nav
+     withCloseAnimation:YES
+     completion:nil];
+    
+    //    [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //It looks like this only applies to navigation classes
+//    [[self DrawerViewController] popToRootViewControllerAnimated:NO]
+//    [navigationController pushViewController:ViewController animated:YES];
+    
+//
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    //popToRootViewControllerAnimated
+    
+    //Create an instance of ViewController
+//    ViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+//    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
+//    [nav pushViewController:viewController animated:YES];
+    
+    //Here we tell the Drawer View Controller to push the center view controller to the navigation controller
+//    [self.mm_drawerController setCenterViewController:nav withCloseAnimation:YES completion:nil];
+    
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedRowDrawer = indexPath.row;
@@ -220,7 +264,7 @@
     
     BlockViewController *bv = [storyboard instantiateViewControllerWithIdentifier:@"BlockViewController"];
     
-    //Here we pass the BlockViewController its specific row
+    //    Here we pass the BlockViewController its specific row
     bv.whichBlockAmI = self.selectedRowDrawer + 1;
     bv.whichBlockIdAmI = self.arrayOfBlocksDrawer[indexPath.row][@"blockId"];
     UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
