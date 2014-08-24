@@ -9,6 +9,9 @@
 #import "BlockViewController.h"
 #import "HeaderViewController.h"
 #import "NYSORAHeaderTableViewCell.h"
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
+
 
 @interface BlockViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate> {
     CGFloat _headerImageOffset;
@@ -94,10 +97,19 @@
     UIView *tableHeaderView = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 244.0)];
     self.headersTableView.tableHeaderView = tableHeaderView;
     
+    //Set up the nav bar buttons
+    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    //Set the color of the button
+    [rightDrawerButton setTintColor:[UIColor whiteColor]];
+    [self.navigationItem setRightBarButtonItem:rightDrawerButton];
     
 }
 
 #pragma mark - Helper Functions
+
+-(void) leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
 
 
 -(NSDictionary *)fetchJSONData
