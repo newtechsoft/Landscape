@@ -43,9 +43,9 @@
 {
     //Add the pagination
     self.paginationView = [[NYSORAHeadersPaginationView alloc] initWithFrame:CGRectMake(0, 64, 320, 40)];
-    [self.paginationView setNumberOfHeaders:self.howManyHeadersAreThere];
+    [self.paginationView setNumberOfHeaders:[self.json count]];
     [self.paginationView setCurrentHeader:self.whichHeaderAmI];
-    [self.paginationView setHeaderName:self.whichHeaderNameAmI];
+    [self.paginationView setHeaderName:self.json[self.whichHeaderAmI][@"headerName"]];
     [self.view addSubview:self.paginationView];
     
     //Set up the swipe recognizers
@@ -68,6 +68,10 @@
 
 -(void) leftDrawerButtonPress:(id)sender{
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 -(void)renderWebView

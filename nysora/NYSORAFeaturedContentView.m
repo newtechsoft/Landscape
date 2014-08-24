@@ -69,6 +69,8 @@
                                                           alpha:1.0];
         [self addSubview:self.pageControl];
         
+        
+        
     }
     return self;
 }

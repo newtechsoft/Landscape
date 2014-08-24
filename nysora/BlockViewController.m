@@ -23,7 +23,7 @@
 @property (strong, nonatomic) UITextView *summaryTextView;
 
 @property (strong, nonatomic) NSMutableArray *arrayOfHeaders;
-@property (nonatomic) int selectedRow;
+@property (nonatomic) NSInteger selectedRow;
 
 @end
 
@@ -75,16 +75,16 @@
     self.previewImageView.image = [UIImage imageWithContentsOfFile:imageName];
     self.previewImageView.backgroundColor = [UIColor whiteColor];
     _headerImageOffset = -20.0;
-    CGRect headerImageFrame = CGRectMake(0, _headerImageOffset + 64, 320, 200);
+    CGRect headerImageFrame = CGRectMake(0, _headerImageOffset, 320, 400);
     [self.previewImageView setFrame: headerImageFrame];
-    //sNSLog(@"%@", NSStringFromCGRect(self.previewImageView.frame));
+    NSLog(@"%@", NSStringFromCGRect(self.previewImageView.frame));
     if(self.previewImageView.image == nil) {
         NSLog(@"Couldnt find image at path %@", imageName);
         
     }
     
     //Set the summary
-    self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 300)];
+    self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 350)];
     [self.summaryTextView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
     [self.summaryTextView setTextColor:[UIColor whiteColor]];
     self.summaryTextView.textContainerInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
@@ -111,6 +111,10 @@
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 -(NSDictionary *)fetchJSONData
 {
@@ -131,10 +135,10 @@
     
     if (scrollOffset < 0) {
         // Adjust image proportionally
-        headerImageFrame.origin.y = -((scrollOffset / 3)) + 64;
+        headerImageFrame.origin.y = -((scrollOffset / 3));
     } else {
         // We're scrolling up, return to normal behavior
-        headerImageFrame.origin.y = -scrollOffset/3 + 64;
+        headerImageFrame.origin.y = -scrollOffset/3;
     }
     self.previewImageView.frame = headerImageFrame;
 }
