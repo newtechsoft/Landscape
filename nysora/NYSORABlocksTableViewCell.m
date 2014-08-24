@@ -32,7 +32,6 @@
 
 - (void) layoutSubviews {
     [super layoutSubviews];
-
 }
 
 -(void)setBlockThumbnailWithImagePath:(NSString *)imagePath

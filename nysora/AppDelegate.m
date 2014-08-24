@@ -26,7 +26,7 @@
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
     //Allocate and initiate the drawer, center view and navigation controller
-    UIViewController *leftSideDrawerViewController = [[DrawerViewController alloc] init];
+    UIViewController *rightSideDrawerViewController = [[DrawerViewController alloc] init];
     
     UIViewController *centerViewController = [[ViewController alloc] init];
     
@@ -34,28 +34,16 @@
     //Sets the restoration ID so the user can close the app and still come back to the same area when they reopen it
     [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];
     
-    //If the version of OS is at least iOS7
-//    if(OSVersionIsAtLeastiOS7()){
-        UINavigationController * leftSideNavController = [[NavigationViewController alloc] initWithRootViewController:leftSideDrawerViewController];
-		[leftSideNavController setRestorationIdentifier:@"LeftNavigationControllerRestorationKey"];
+    UINavigationController * rightSideNavController = [[NavigationViewController alloc] initWithRootViewController:rightSideDrawerViewController];
+    [rightSideNavController setRestorationIdentifier:@"LeftNavigationControllerRestorationKey"];
 
-        //Allocate and initiate the drawerController (a property of MMDrawer) with the view controller we allocated and initialized earlier
-        self.drawerController = [[MMDrawerController alloc]
-                                 initWithCenterViewController:navigationController
-                                 leftDrawerViewController:leftSideNavController
-                                 ];
-        [self.drawerController setShowsShadow:NO];
-//    }
-//    else{
-//        self.drawerController = [[MMDrawerController alloc]
-//                                 initWithCenterViewController:navigationController
-//                                 leftDrawerViewController:leftSideDrawerViewController
-//                                 ];
-//    }
-//    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+    //Allocate and initiate the drawerController (a property of MMDrawer) with the view controller we allocated and initialized earlier
+    self.drawerController = [[MMDrawerController alloc]
+                             initWithCenterViewController:navigationController
+                             rightDrawerViewController:rightSideNavController
+                            ];
+    [self.drawerController setShowsShadow:NO];
 
-    //Set the Maximum Drawer Width
-//    [self.drawerController setMaximumRightDrawerWidth:200.0];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeTapCenterView|MMCloseDrawerGestureModeTapNavigationBar];
     

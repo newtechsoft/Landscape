@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     [self.view addSubview:self.featuredContentView];
     
     //Apply the left menu button to self
-    [self setupLeftMenuButton];
+    [self setupRightMenuButton];
     
 
     //Set the bar color for the navigation bar
@@ -148,15 +148,15 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     [super viewDidDisappear:animated];
 }
 
-//Setup the left menu button
--(void)setupLeftMenuButton{
+//Setup the right menu button
+-(void)setupRightMenuButton {
     //Create an instance of the MMDrawerBarButtonItem
     //Create an action based on when the button is pressed
     //Set the navigation item for the navigation bar to the button created
-    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     //Set the color of the button
-    [leftDrawerButton setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    [rightDrawerButton setTintColor:[UIColor whiteColor]];
+    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
 }
 
 #pragma mark - Helper Functions
@@ -263,10 +263,8 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 #pragma mark - Drawer menu functions
 
-
-
 -(void) leftDrawerButtonPress:(id)sender{
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 -(void) doubleTap:(UITapGestureRecognizer*)gesture{

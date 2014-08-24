@@ -9,6 +9,8 @@
 #import "HeaderViewController.h"
 #import "NYSORAHeaderTableViewCell.h"
 #import <GRMustache.h>
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
 
 @interface HeaderViewController ()
 
@@ -56,6 +58,16 @@
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichBlockNameAmIIn;
+    
+    //Set up the nav bar buttons
+    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    //Set the color of the button
+    [rightDrawerButton setTintColor:[UIColor whiteColor]];
+    [self.navigationItem setRightBarButtonItem:rightDrawerButton];
+}
+
+-(void) leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 -(void)renderWebView
