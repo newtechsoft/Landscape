@@ -3,7 +3,7 @@
 		{
 			"blockId" : "28",
 			"blockName" : "Cervical Plexus Block",
-			"sectionId" : 0,
+			"sectionId" : 0
 		},
 		{
 			"blockId" : "29",
@@ -26,19 +26,30 @@
     "featuredContent" : [
         {
             "imagePath" : "content/29/featured",
-            "text" : "This content is featured",
+            "text" : "The Interscalene Brachial Plexus Block",
             "link" : {
                 "blockId" : "29",
-                "headerNumber" : 2
+                "headerNumber" : 1
             }
         },
         {
-            "imagePath" : "content/29/featured",
-            "text" : "So is this content",
+            "imagePath" : "content/28/featured",
+            "text" :"Cervical Plexus Block Flow Chart",
+            "link" : {
+                "blockId" : "28",
+                "headerNumber" : 7
+            }
+        },
+                         
+        {
+            "imagePath" : "content/33/featured",
+            "text" :"The Forearm Blocks",
             "link" : {
                 "blockId" : "33",
-                "headerNumber" : 4
+                "headerNumber" : 3
             }
         }
+
+                         
     ]
 }
