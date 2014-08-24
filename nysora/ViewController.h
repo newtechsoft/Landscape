@@ -21,5 +21,7 @@
 @property (strong, nonatomic) NYSORAFeaturedContentView *featuredContentView;
 @property (nonatomic, strong) UISwipeGestureRecognizer *featuredContentSwipeLeft;
 @property (nonatomic, strong) UISwipeGestureRecognizer *featuredContentSwipeRight;
+@property (nonatomic, strong) UITapGestureRecognizer *tapThat;
+
 
 @end

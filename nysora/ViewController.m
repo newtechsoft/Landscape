@@ -11,6 +11,7 @@
 #import "BlockViewController.h"
 #import "DrawerViewController.h"
 #import "NavigationViewController.h"
+#import "HeaderViewController.h"
 
 #import "MMExampleDrawerVisualStateManager.h"
 #import "UIViewController+MMDrawerController.h"
@@ -106,8 +107,47 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     self.featuredContentSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(featuredContentSwipeRight:)];
     [self.featuredContentSwipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.featuredContentView addGestureRecognizer:self.featuredContentSwipeRight];
+    
+    //Set up the tap recognizer
+    self.tapThat = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkToFeaturedContent:)];
+    [self.featuredContentView addGestureRecognizer:self.tapThat];
 
 }
+
+-(void)linkToFeaturedContent:(UITapGestureRecognizer *)recognizer
+{
+    //You instantiate an instance of the view controller in question
+    NSString *whichBlockAmIIn = self.json[@"featuredContent"][_currentFeatured][@"link"][@"blockId"];
+    int whichHeaderAmI = [self.json[@"featuredContent"][_currentFeatured][@"link"][@"headerNumber"] intValue];
+    NSDictionary *json = [self fetchHeaderJSONData:whichBlockAmIIn];
+    NSMutableArray *arrayOfHeaders = [json objectForKey:@"headers"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    HeaderViewController *hv = [storyboard instantiateViewControllerWithIdentifier:@"HeaderViewController"];
+    
+    //Pass the block Id
+    hv.whichBlockAmIIn = whichBlockAmIIn;
+    //Pass the header number
+    hv.whichHeaderAmI = whichHeaderAmI;
+    hv.whichBlockNameAmIIn = json[@"blockName"];
+    //Pass the total number of headers
+    hv.howManyHeadersAreThere = [arrayOfHeaders count];
+    //Pass the actual json
+    hv.json = arrayOfHeaders;
+    
+    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
+    [nav pushViewController:hv animated:YES];
+}
+
+-(NSDictionary *)fetchHeaderJSONData:(NSString *)blockId
+{
+    NSString *jsonPath = [NSString stringWithFormat:@"content/%@/%@", blockId, blockId];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonPath ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    return json;
+}
+
+
 
 -(void)featuredContentSwipeRight:(UISwipeGestureRecognizer *)recognizer
 {
@@ -128,6 +168,10 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
         //Set the new name
         [self.featuredContentView setCurrentFeaturedContent:_currentFeatured];
     }
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 //Set up animations during the different stages of the view controller
