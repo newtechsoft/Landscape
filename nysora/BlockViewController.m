@@ -10,7 +10,9 @@
 #import "HeaderViewController.h"
 #import "NYSORAHeaderTableViewCell.h"
 
-@interface BlockViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface BlockViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate> {
+    CGFloat _headerImageOffset;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *headersTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
@@ -69,20 +71,28 @@
     NSString* imageName = [[NSBundle mainBundle] pathForResource:[json objectForKey:@"summaryPath"] ofType:@"png"];
     self.previewImageView.image = [UIImage imageWithContentsOfFile:imageName];
     self.previewImageView.backgroundColor = [UIColor whiteColor];
+    _headerImageOffset = -20.0;
+    CGRect headerImageFrame = CGRectMake(0, _headerImageOffset + 64, 320, 200);
+    [self.previewImageView setFrame: headerImageFrame];
+    //sNSLog(@"%@", NSStringFromCGRect(self.previewImageView.frame));
     if(self.previewImageView.image == nil) {
         NSLog(@"Couldnt find image at path %@", imageName);
         
     }
     
     //Set the summary
-    self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 200)];
+    self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 300)];
     [self.summaryTextView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
     [self.summaryTextView setTextColor:[UIColor whiteColor]];
     self.summaryTextView.textContainerInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
     self.summaryTextView.textAlignment = NSTextAlignmentCenter;
     self.summaryTextView.editable = NO;
     [self.summaryTextView setText:[json objectForKey:@"summaryText"]];
-    [self.view addSubview:self.summaryTextView];
+    [self.view insertSubview: self.summaryTextView belowSubview:self.headersTableView];
+    
+    //Set up the transparent title
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 244.0)];
+    self.headersTableView.tableHeaderView = tableHeaderView;
     
 }
 
@@ -100,6 +110,20 @@
 #pragma mark - Table View Delegate and Datasource
 
 #pragma mark delegate and datasource functions
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat scrollOffset = scrollView.contentOffset.y;
+    CGRect headerImageFrame = self.previewImageView.frame;
+    
+    if (scrollOffset < 0) {
+        // Adjust image proportionally
+        headerImageFrame.origin.y = -((scrollOffset / 3)) + 64;
+    } else {
+        // We're scrolling up, return to normal behavior
+        headerImageFrame.origin.y = -scrollOffset/3 + 64;
+    }
+    self.previewImageView.frame = headerImageFrame;
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
