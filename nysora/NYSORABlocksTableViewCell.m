@@ -10,9 +10,17 @@
 
 @implementation NYSORABlocksTableViewCell
 
-- (void)awakeFromNib
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    // Initialization code
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+        self.blockPreviewImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 50, 40)];
+        [self addSubview:self.blockPreviewImageView];
+        self.blockNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 20, 220, 20)];
+        [self addSubview:self.blockNameLabel];
+    }
+    return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -20,6 +28,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void) layoutSubviews {
+    [super layoutSubviews];
+
 }
 
 -(void)setBlockThumbnailWithImagePath:(NSString *)imagePath
@@ -30,6 +43,16 @@
     
     if(self.blockPreviewImageView.image == nil) {
         NSLog(@"Couldnt find image at path %@", imagePath);
+    }
+}
+
+-(void)setBlockThumbnailWithImageName:(NSString *)imageName
+{
+    self.blockPreviewImageView.image = [UIImage imageNamed:imageName];
+    self.blockPreviewImageView.backgroundColor = [UIColor whiteColor];
+    self.blockPreviewImageView.contentMode = UIViewContentModeScaleAspectFit;
+    if(self.blockPreviewImageView.image == nil) {
+        NSLog(@"Couldnt find image at path %@", imageName);
     }
 }
 

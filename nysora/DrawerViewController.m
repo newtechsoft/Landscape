@@ -88,9 +88,7 @@
     
     //Load in the JSON source
     NSDictionary *json = [self fetchJSONData];
-    //    NSLog(@"%@", self.json);
     self.arrayOfBlocksDrawer = [json objectForKey:@"blocks"];
-    NSLog(@"%@", self.arrayOfBlocksDrawer );
     
     //Set the background color for the table view
     UIColor * tableViewBackgroundColor;
@@ -174,7 +172,6 @@
 {
     // Return the number of rows in the section.
     return [self.arrayOfBlocksDrawer count];
-    //    NSLog(@"This is to check the number of blocks being counted: %@", self.arrayOfBlocksDrawer);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -198,7 +195,7 @@
                                            alpha:1];
     
     //Set the color of the text in the drawer table view cell
-    cell.textColor = [UIColor colorWithRed:60.0/255.0
+    cell.textLabel.textColor = [UIColor colorWithRed:60.0/255.0
                                      green:130.0/255.0
                                       blue:146.0/255.0
                                      alpha:1];
@@ -207,14 +204,8 @@
     UIFont *textLabelFont = [UIFont fontWithName: @"Avenir-Heavy" size: 15.00 ];
     cell.textLabel.font  = textLabelFont;
     
-    //NSArray* fontNames = [UIFont fontNamesForFamilyName:@"Avenir"];
-    /*for( NSString* aFontName in fontNames ) {
-     NSLog( @"Font name: %@", aFontName );
-     }*/
-    
     //Add in what information will be on each cell row. Iterate through the array of blocks
     cell.textLabel.text = [self.arrayOfBlocksDrawer[indexPath.row] objectForKey:@"blockName"];
-    
     
     return cell;
 }
@@ -231,11 +222,12 @@
     
     //Here we pass the BlockViewController its specific row
     bv.whichBlockAmI = self.selectedRowDrawer + 1;
-    //    NSLog(@"%d", self.selectedRow);
+    bv.whichBlockIdAmI = self.arrayOfBlocksDrawer[indexPath.row][@"blockId"];
     UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
     [nav pushViewController:bv animated:YES];
     
     [self.mm_drawerController setCenterViewController:nav withCloseAnimation:YES completion:nil];
+    [self.tableViewDrawer deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 
