@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67E2F0F8EA3E492D821E329E"
+               BlueprintIdentifier = "32D48F3F11284F0F98ADEA0B"
                BuildableName = "libPods-nysora-GRMustache.a"
                BlueprintName = "Pods-nysora-GRMustache"
                ReferencedContainer = "container:Pods.xcodeproj">

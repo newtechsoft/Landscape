@@ -4,6 +4,7 @@
 target "nysora" do
 
 pod 'GRMustache', '~> 7.0.2'
+pod 'Mixpanel'
 
 end
 

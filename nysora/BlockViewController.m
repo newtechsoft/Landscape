@@ -175,7 +175,7 @@
     }
     
     cell.headerNameLabel.text = [NSString stringWithFormat:@"%@", [self.arrayOfHeaders[indexPath.row] objectForKey:@"headerName"] ];
-    cell.headerNumberLabel.text = [NSString stringWithFormat: @"%d", (indexPath.row + 1)];
+    cell.headerNumberLabel.text = [NSString stringWithFormat: @"%ld", (indexPath.row + 1)];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

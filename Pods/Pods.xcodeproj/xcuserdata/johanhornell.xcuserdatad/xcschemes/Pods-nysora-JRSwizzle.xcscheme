@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6FF0E43AD8E4C14BC4233C7"
+               BlueprintIdentifier = "2B3F3A3205B54B63A65BD963"
                BuildableName = "libPods-nysora-JRSwizzle.a"
                BlueprintName = "Pods-nysora-JRSwizzle"
                ReferencedContainer = "container:Pods.xcodeproj">
