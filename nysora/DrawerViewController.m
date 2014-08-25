@@ -12,6 +12,7 @@
 #import "MMSideDrawerTableViewCell.h"
 #import "NavigationViewController.h"
 #import "BlockViewController.h"
+#import "Mixpanel.h"
 
 @interface DrawerViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) int selectedRowDrawer;
@@ -229,28 +230,11 @@
      setCenterViewController:nav
      withCloseAnimation:YES
      completion:nil];
+
+    //Track the action in Mixpanel
+    NSDictionary *properties = @{@"date" : [NSDate date], @"language" : @"en"};
+    [[Mixpanel sharedInstance] track:@"Drawer Home Button Activated" properties:properties];
     
-    //    [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];
-//    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    //It looks like this only applies to navigation classes
-//    [[self DrawerViewController] popToRootViewControllerAnimated:NO]
-//    [navigationController pushViewController:ViewController animated:YES];
-    
-//
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    
-    //popToRootViewControllerAnimated
-    
-    //Create an instance of ViewController
-//    ViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-//    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
-//    [nav pushViewController:viewController animated:YES];
-    
-    //Here we tell the Drawer View Controller to push the center view controller to the navigation controller
-//    [self.mm_drawerController setCenterViewController:nav withCloseAnimation:YES completion:nil];
     
 }
 
@@ -273,9 +257,11 @@
     [self.mm_drawerController setCenterViewController:nav withCloseAnimation:YES completion:nil];
     [self.tableViewDrawer deselectRowAtIndexPath:indexPath animated:YES];
     
+    //Track the action in Mixpanel
+    NSDictionary *properties = @{@"date" : [NSDate date], @"language" : @"en"};
+    [[Mixpanel sharedInstance] track:@"Drawer Home Button Activated" properties:properties];
+    
 }
-
-
 
 
 @end

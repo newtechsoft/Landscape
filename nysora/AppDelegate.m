@@ -13,6 +13,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import "NavigationViewController.h"
+#import "Mixpanel.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -76,7 +77,27 @@
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    [self.window makeKeyAndVisible];
     
+    // Initialize Mixpanel
+//    [Mixpanel sharedInstanceWithToken:@"fb1a02ccd29f64e9337451e56b3ca76c"];
+    
     return YES;
+}
+
+//Setup Mixpanel
+
+- (void)setupMixpanel {
+    // Initialize Mixpanel
+    Mixpanel *mixpanel = [Mixpanel sharedInstanceWithToken:@"fb1a02ccd29f64e9337451e56b3ca76c"];
+    
+    // Identify
+    NSString *mixpanelUUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"MixpanelUUID"];
+    
+    if (!mixpanelUUID) {
+        mixpanelUUID = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:mixpanelUUID forKey:@"MixpanelUUID"];
+    }
+    
+    [mixpanel identify:mixpanelUUID];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
