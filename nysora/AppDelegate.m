@@ -13,7 +13,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import "NavigationViewController.h"
-
+#import "Mixpanel.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface AppDelegate ()
@@ -69,15 +69,32 @@
     return YES;
 }
 
-
+//Setting up Mixpanel
+- (void)setupMixpanel {
+    // Initialize Mixpanel
+    Mixpanel *mixpanel = [Mixpanel sharedInstanceWithToken:@"fb1a02ccd29f64e9337451e56b3ca76c"];
+    
+    // Identify the unique identifier for the user
+    NSString *mixpanelUUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"MixpanelUUID"];
+    
+    if (!mixpanelUUID) {
+        mixpanelUUID = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:mixpanelUUID forKey:@"MixpanelUUID"];
+    }
+    
+    [mixpanel identify:mixpanelUUID];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    [self.window makeKeyAndVisible];
+    
+    // Setup Mixpanel
+    [self setupMixpanel];
+    
     
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

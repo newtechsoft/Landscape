@@ -1,5 +1,8 @@
 {
     "blockId" : "33",
+    "blockName" : "Forearm Blocks",
+    "summaryPath" : "content/33/summary",
+    "summaryText" : "Goal: injection of local anesthetic in the vicinity of individual nerves (radial, median, ulnar)",
 	"headers" : [
 		{
 			"headerName" : "Overview",

@@ -3,18 +3,19 @@
 		{
 			"blockId" : "28",
 			"blockName" : "Cervical Plexus Block",
+            "thumbnailPath" : "content/28/thumbnail",
 			"sectionId" : 0
 		},
 		{
 			"blockId" : "29",
 			"blockName" : "Interscalene Brachial Plexus Block",
             "thumbnailPath" : "content/29/thumbnail",
-            "summaryPath" : "content/29/summaryPath",
 			"sectionId" : 1
 		},
         {
             "blockId" : "33",
             "blockName" : "Forearm Block",
+            "thumbnailPath" : "content/33/thumbnail",
             "sectionId" : 2
         }
                 

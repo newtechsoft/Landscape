@@ -12,6 +12,7 @@
 #import "MMSideDrawerTableViewCell.h"
 #import "NavigationViewController.h"
 #import "BlockViewController.h"
+#import "Mixpanel.h"
 
 @interface DrawerViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) int selectedRowDrawer;
@@ -219,7 +220,7 @@
 - (void)homeButtonAction:(UIButton*)button
 {
     //Checking to see if the button was clicked
-    NSLog(@"Button  clicked.");
+//    NSLog(@"Button  clicked.");
     
     ViewController * center = [[ViewController alloc] init];
     
@@ -229,6 +230,10 @@
      setCenterViewController:nav
      withCloseAnimation:YES
      completion:nil];
+    
+    //Track the action in Mixpanel along with the date
+    NSDictionary *properties = @{@"date" : [NSDate date], @"language" : @"en"};
+    [[Mixpanel sharedInstance] track:@"Drawer Home Button" properties:properties];
     
     //    [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];
 //    [self dismissViewControllerAnimated:YES completion:nil];

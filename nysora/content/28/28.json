@@ -1,5 +1,8 @@
 {
     "blockId" : "28",
+    "blockName" : "Cervical Plexus Block",
+    "summaryPath" : "content/28/summary",
+    "summaryText" : "Goal: local anesthetic spread around the superficial cervical plexus or deep to the sternocleidomastoid muscle",
 	"headers" : [
 		{
 			"headerName" : "Overview",

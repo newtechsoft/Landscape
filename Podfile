@@ -13,3 +13,11 @@ pod 'MMDrawerController', '~> 0.5.6'
 
 end
 
+target "nysora" do
+    
+    pod 'Mixpanel', '< 2.1.1'
+    
+end
+
+
+

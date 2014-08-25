@@ -4,55 +4,87 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-nysora 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Pods-nysora-GRMustache.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-nysora-JRSwizzle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-nysora-Mixpanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-nysora.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Pods-nysoraTests-MMDrawerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-nysoraTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>21F413B3A8374C5DA37F29F9</key>
+		<key>07654AE9C15748498B6F629B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E6711F7CA024D84ACDFFD73</key>
+		<key>3793B9FEB8824D70AD0C3B0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67E2F0F8EA3E492D821E329E</key>
+		<key>5964D44A630743EABDBBBB94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6FF0E43AD8E4C14BC4233C7</key>
+		<key>781DF793E041413ABFD2ACAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1C45375B82D4F7194C891BF</key>
+		<key>8148430461AC4DCF992CD341</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92E1514C3C074E68B19BF76C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E45521F66AE24470B14D3474</key>
 		<dict>
 			<key>primary</key>
 			<true/>
