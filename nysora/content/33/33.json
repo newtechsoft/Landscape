@@ -1,11 +1,8 @@
 {
     "blockId" : "33",
-    "blockName" : "Forearm Block",
-    "summaryPath" : "content/33/summary",
-    "summaryText" : "This is where the summary goes for the Forearm Block",
 	"headers" : [
 		{
-			"headerName" : "General Considerations",
+			"headerName" : "Overview",
             "htmlFile" : "33-1"
 		},
 		{
@@ -43,7 +40,7 @@
             }
 		},
 		{
-			"headerName" : "Distribution of Blockade",
+			"headerName" : "Sensory & Motor Blockade",
             "htmlFile" : "33-3"
 		},
 		{
@@ -52,7 +49,7 @@
             
 		},
 		{
-			"headerName" : "Landmarks and Patient Positioning",
+			"headerName" : "Landmarks & Positioning",
             "htmlFile" : "33-5"
             
 		},

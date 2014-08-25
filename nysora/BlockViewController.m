@@ -69,7 +69,7 @@
     self.arrayOfHeaders = [json objectForKey:@"headers"];
     self.whichBlockIdAmI = [json objectForKey:@"blockId"];
     self.whichBlockNameAmI = [json objectForKey:@"blockName"];
-    //self.arrayOfHeaders = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", nil];
+
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichBlockNameAmI;

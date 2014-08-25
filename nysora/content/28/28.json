@@ -1,11 +1,8 @@
 {
     "blockId" : "28",
-    "blockName" : "Cervical Plexus Block",
-    "summaryPath" : "content/28/summary",
-    "summaryText" : "This is where the summary goes for the Cervical Plexus Block",
 	"headers" : [
 		{
-			"headerName" : "General Considerations",
+			"headerName" : "Overview",
             "htmlFile" : "28-1"
 		},
 		{
@@ -23,7 +20,7 @@
             }
 		},
 		{
-			"headerName" : "Distribution of Blockade",
+			"headerName" : "Sensory & Motor Blockade",
             "htmlFile" : "28-3",
             "imgs" : {
                  "28-4" : {
@@ -44,7 +41,7 @@
             
 		},
 		{
-			"headerName" : "Landmarks and Patient Positioning",
+			"headerName" : "Landmarks & Positioning",
             "htmlFile" : "28-5",
             "imgs" : {
                  "28-6A" : {
