@@ -1,11 +1,11 @@
 {
     "blockId": "29",
-    "blockName" : "Interscalene Brachial Plexus",
+    "blockName" : "Interscalene Brachial Plexus Block",
     "summaryPath" : "content/29/summary",
-    "summaryText" : "This is where the summary goes for the Interscalene Brachial Plexus Block",
+    "summaryText" : "Goal: local anesthetic spread around superior and middle trunks of brachial plexus, between anterior and middle scalene muscles",
     "headers": [
         {
-            "headerName": "General Considerations",
+            "headerName": "Overview",
             "htmlFile": "29-1"
         },
         {
@@ -23,7 +23,7 @@
             }
         },
         {
-            "headerName": "Distribution of Blockade",
+            "headerName": "Sensory & Motor Blockade",
             "htmlFile": "29-3",
             "imgs": {
                 "29-2": {
@@ -37,7 +37,7 @@
             "htmlFile": "29-4"
         },
         {
-            "headerName": "Landmarks and Patient Positioning",
+            "headerName": "Landmarks & Positioning",
             "htmlFile": "29-5"
         },
         {
@@ -71,7 +71,7 @@
             }
         },
         {
-            "headerName": "Continuous Ultrasound Guided Interscalene Block",
+            "headerName": "Local Anaesthetic Solution",
             "htmlFile": "29-7",
             "imgs": {
                 "29-9": {
