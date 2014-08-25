@@ -2,6 +2,7 @@ PODS:
   - GRMustache (7.0.2):
     - JRSwizzle (~> 1.0)
   - JRSwizzle (1.0)
+  - Mixpanel (2.4.1)
   - MMDrawerController (0.5.6):
     - MMDrawerController/Core
     - MMDrawerController/MMDrawerBarButtonItem
@@ -17,11 +18,13 @@ PODS:
 
 DEPENDENCIES:
   - GRMustache (~> 7.0.2)
+  - Mixpanel
   - MMDrawerController (~> 0.5.6)
 
 SPEC CHECKSUMS:
   GRMustache: 7cce2570d81711b90d91d2e539f6f575a703db22
   JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
+  Mixpanel: a29ff32db93936dea24162f0dc4fecc4a8f17071
   MMDrawerController: 4bae84535ca7a5f4cb55a66a001e6035c3571677
 
 COCOAPODS: 0.33.1
