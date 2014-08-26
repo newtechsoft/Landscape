@@ -14,6 +14,8 @@
 #import "BlockViewController.h"
 #import "Mixpanel.h"
 
+
+
 @interface DrawerViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) int selectedRowDrawer;
 @property(nonatomic, retain) UIColor *barTintColor;
@@ -232,9 +234,10 @@
      completion:nil];
 
     //Track the action in Mixpanel
-    NSDictionary *properties = @{@"date" : [NSDate date], @"language" : @"en"};
-    [[Mixpanel sharedInstance] track:@"Drawer Home Button Activated" properties:properties];
+//    NSDictionary *properties = @{@"date" : [NSDate date], @"language" : @"en",@"Drawer Home Button Click" : @"yes" };
+    [[Mixpanel sharedInstance] track:@"Drawer Home Button Clicked"];
     
+//    NSLog(@"%", properties);
     
 }
 
