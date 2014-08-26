@@ -8,96 +8,61 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-nysora-JRSwizzle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-nysora-Mixpanel.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-nysora.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>Pods-nysoraTests-MMDrawerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-nysoraTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13BD834251DB4F808F55C298</key>
+		<key>0DFFE1C596AA45A1A066B2AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>21F413B3A8374C5DA37F29F9</key>
+		<key>3F081B31F1074EEE83659672</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B3F3A3205B54B63A65BD963</key>
+		<key>4D949E58A2854F859F76022F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>32D48F3F11284F0F98ADEA0B</key>
+		<key>5BA0D8B6F98440F08BB60095</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E6711F7CA024D84ACDFFD73</key>
+		<key>5C78C4DECF20414E969B592B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62C0C1B2737143E59BA617DB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>67E2F0F8EA3E492D821E329E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8072D141E7684B96A179DAFB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A6FF0E43AD8E4C14BC4233C7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE7FF8ED01234AEDB89F885A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D1C45375B82D4F7194C891BF</key>
+		<key>9FE4A19125B0458F86EAA8AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
