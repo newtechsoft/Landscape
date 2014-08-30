@@ -34,7 +34,6 @@
             }
             NSDictionary *currDict = [[NSDictionary alloc] initWithObjectsAndKeys:currImg, @"image",content[i][@"text"], @"text",  nil];
             [self.featuredContent addObject:currDict];
-            
         }
         
         //Set up the imageview

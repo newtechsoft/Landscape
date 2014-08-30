@@ -11,11 +11,16 @@
 #import <GRMustache.h>
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
+#import "NYSORAEmbeddedGallery.h"
+#import "NYSORAEmbeddedGalleryProtocol.h"
 
-@interface HeaderViewController ()
+#define GALLERY_HEIGHT 200
 
-@property (weak, nonatomic) IBOutlet UIWebView *headerWebView;
+@interface HeaderViewController () <UIScrollViewDelegate, UIWebViewDelegate, NYSORAEmbeddedGalleryProtocol>
 
+@property (strong, nonatomic) UIWebView *headerWebView;
+@property (strong, nonatomic) UIScrollView *containerScrollView;
+@property (strong, nonatomic) NYSORAEmbeddedGallery *gallery;
 @end
 
 @implementation HeaderViewController
@@ -32,11 +37,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Set up the scroll view, web view and gallery view
+    //Scrollview
+    self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 104, self.view.frame.size.width, self.view.frame.size.height-104)];
+    self.containerScrollView.delegate = self;
+    //WebView
+    self.headerWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, GALLERY_HEIGHT, 320, 568)];
+    self.headerWebView.scrollView.scrollEnabled = NO;
+    self.headerWebView.delegate = self;
+    [self.containerScrollView addSubview:self.headerWebView];
+    //Gallery view
+    NSMutableArray *imagePathsArray = [self generateImageArray];
+    self.gallery = [[NYSORAEmbeddedGallery alloc] initWithArrayOfImagePaths:imagePathsArray andFrame:CGRectMake(0, 0, 320, GALLERY_HEIGHT)];
+    self.gallery.backgroundColor = [UIColor blackColor];
+    self.gallery.delegate = self;
+    [self.containerScrollView addSubview:self.gallery];
+    [self.view addSubview:self.containerScrollView];
+    self.containerScrollView.contentSize = CGSizeMake(320, GALLERY_HEIGHT);
     [self renderWebView];
     
     [self setUpHelperViews];
-    
 }
 
 -(void)setUpHelperViews
@@ -51,10 +71,10 @@
     //Set up the swipe recognizers
     self.rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerRight:)];
     [self.rightSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.view addGestureRecognizer:self.rightSwipeRecognizer];
+    [self.headerWebView addGestureRecognizer:self.rightSwipeRecognizer];
     self.leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerLeft:)];
     [self.leftSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-    [self.view addGestureRecognizer:self.leftSwipeRecognizer];
+    [self.headerWebView addGestureRecognizer:self.leftSwipeRecognizer];
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichBlockNameAmIIn;
@@ -64,6 +84,34 @@
     //Set the color of the button
     [rightDrawerButton setTintColor:[UIColor whiteColor]];
     [self.navigationItem setRightBarButtonItem:rightDrawerButton];
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webview
+{
+    //Evaluate the height
+    int h = [[self.headerWebView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
+    //Print it to the console
+    NSLog(@"%d", h);
+    //Set the height of the webview
+    CGRect newFrame = self.headerWebView.frame;
+    newFrame.size.height = h;
+    [self.headerWebView setFrame:newFrame];
+    //Set the height of the scrollview
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (GALLERY_HEIGHT + h));
+}
+
+-(void)userDidTapImage:(NSInteger)imageNumber
+{
+    NSLog(@"%ld", (long)imageNumber);
+}
+
+- (NSMutableArray*)generateImageArray
+{
+    NSMutableArray *imagePathsArray = [[NSMutableArray alloc] init];
+    for(id key in self.json[self.whichHeaderAmI][@"imgs"]) {
+        [imagePathsArray addObject:[self.json[self.whichHeaderAmI][@"imgs"] objectForKey: key][@"src"]];
+    }
+    return imagePathsArray;
 }
 
 -(void) leftDrawerButtonPress:(id)sender{

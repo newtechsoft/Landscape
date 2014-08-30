@@ -12,7 +12,7 @@
 #import "MMSideDrawerTableViewCell.h"
 #import "NavigationViewController.h"
 #import "BlockViewController.h"
-#import "Mixpanel.h"
+#import <Mixpanel/Mixpanel.h>
 
 
 
