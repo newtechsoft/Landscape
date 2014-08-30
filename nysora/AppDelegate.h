@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Mixpanel.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, MixpanelDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) Mixpanel *mixpanel;
 
 @property (strong, nonatomic, retain) NSDate *startTime;
 
