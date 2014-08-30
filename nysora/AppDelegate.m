@@ -13,7 +13,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import "NavigationViewController.h"
-#import "Mixpanel.h"
+#import <Mixpanel.h>
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -78,7 +78,7 @@
     // Override point for customization after application launch.
 
     // Initialize the MixpanelAPI object
-    self.mixpanel = [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN launchOptions:launchOptions];
+    Mixpanel *mixpanel = [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN launchOptions:launchOptions];
     
     return YES;
 }
