@@ -10,6 +10,7 @@
 		25169E6A199A091C0000304B /* HeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25169E69199A091C0000304B /* HeaderViewController.m */; };
 		252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 252C263F19A3F962005BF985 /* NYSORAHeaderTableViewCell.m */; };
 		2545192419A51D44000E9AE1 /* NYSORAHeadersPaginationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545192319A51D44000E9AE1 /* NYSORAHeadersPaginationView.m */; };
+		2574E9B819B1CC2D000C29DB /* NYSORAEmbeddedGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 2574E9B719B1CC2D000C29DB /* NYSORAEmbeddedGallery.m */; };
 		25A59F2D19A7DB0F00D7936F /* content in Resources */ = {isa = PBXBuildFile; fileRef = 25CB70BA199B885B00266A9B /* content */; };
 		25AC32A419994C2A00C872F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A319994C2A00C872F7 /* main.m */; };
 		25AC32A719994C2A00C872F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A619994C2A00C872F7 /* AppDelegate.m */; };
@@ -53,6 +54,9 @@
 		252C263F19A3F962005BF985 /* NYSORAHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORAHeaderTableViewCell.m; sourceTree = "<group>"; };
 		2545192219A51D44000E9AE1 /* NYSORAHeadersPaginationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSORAHeadersPaginationView.h; sourceTree = "<group>"; };
 		2545192319A51D44000E9AE1 /* NYSORAHeadersPaginationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORAHeadersPaginationView.m; sourceTree = "<group>"; };
+		2574E9B619B1CC2D000C29DB /* NYSORAEmbeddedGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSORAEmbeddedGallery.h; sourceTree = "<group>"; };
+		2574E9B719B1CC2D000C29DB /* NYSORAEmbeddedGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORAEmbeddedGallery.m; sourceTree = "<group>"; };
+		2574E9BA19B26EC8000C29DB /* NYSORAEmbeddedGalleryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSORAEmbeddedGalleryProtocol.h; sourceTree = "<group>"; };
 		25AC329E19994C2A00C872F7 /* nysora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nysora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AC32A219994C2A00C872F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AC32A319994C2A00C872F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -149,6 +153,16 @@
 			name = headersPaginationView;
 			sourceTree = "<group>";
 		};
+		2574E9B919B26E97000C29DB /* EmbeddedGallery */ = {
+			isa = PBXGroup;
+			children = (
+				2574E9B619B1CC2D000C29DB /* NYSORAEmbeddedGallery.h */,
+				2574E9B719B1CC2D000C29DB /* NYSORAEmbeddedGallery.m */,
+				2574E9BA19B26EC8000C29DB /* NYSORAEmbeddedGalleryProtocol.h */,
+			);
+			name = EmbeddedGallery;
+			sourceTree = "<group>";
+		};
 		25AC329519994C2A00C872F7 = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +256,7 @@
 		25FE773C19A32B7900332992 /* custom views */ = {
 			isa = PBXGroup;
 			children = (
+				2574E9B919B26E97000C29DB /* EmbeddedGallery */,
 				25D2385B19A8B8DC0021FF38 /* featuredContentView */,
 				2545192119A51D04000E9AE1 /* headersPaginationView */,
 				252C263D19A3F943005BF985 /* headersTableViewCell */,
@@ -453,6 +468,7 @@
 				25D2385E19A8B8F70021FF38 /* NYSORAFeaturedContentView.m in Sources */,
 				252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */,
 				81D0E9F919A14985009B9A79 /* MMDrawerVisualState.m in Sources */,
+				2574E9B819B1CC2D000C29DB /* NYSORAEmbeddedGallery.m in Sources */,
 				81D0E9F719A10523009B9A79 /* MMDrawerBarButtonItem.m in Sources */,
 				81D0EA0B19A3BEE1009B9A79 /* MMSideDrawerTableViewCell.m in Sources */,
 				2545192419A51D44000E9AE1 /* NYSORAHeadersPaginationView.m in Sources */,
