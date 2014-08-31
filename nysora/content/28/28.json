@@ -13,10 +13,12 @@
             "htmlFile" : "28-2",
             "imgs" : {
                  "28-2" : {
+                    "name" : "28-2",
                     "src" : "content/28/28-2.png",
-                    "alt" : "Figure 28-2"
+                    "alt" : "Anatomy of the superficial cervical plexus.\n1) sternocleidomastoid muscle.\n2) mastoid process.\n3) clavicle.\n4) external jugular vein. Superficial cervical plexus is seen emerging behind the posterior border of the sternocleidomastoid muscle at the intersection of the muscle with the external jugular vein.\n5) Greater auricular nerve."
                  	},
                  "28-3" : {
+                    "name" : "28-3",
                     "src" : "content/28/28-3.png",
                     "alt" : "Figure 28-3"
                  }
@@ -31,9 +33,9 @@
                     "alt" : "Figure 28-4"
                  	},
                 "28-5" : {
-                "src" : "content/28/28-5.png",
-                "alt" : "Figure 28-5"
-                    }
+                    "src" : "content/28/28-5.png",
+                    "alt" : "Figure 28-5"
+                }
                  
             }
 		},

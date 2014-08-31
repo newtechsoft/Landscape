@@ -11,6 +11,8 @@
 		252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 252C263F19A3F962005BF985 /* NYSORAHeaderTableViewCell.m */; };
 		2545192419A51D44000E9AE1 /* NYSORAHeadersPaginationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545192319A51D44000E9AE1 /* NYSORAHeadersPaginationView.m */; };
 		2574E9B819B1CC2D000C29DB /* NYSORAEmbeddedGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 2574E9B719B1CC2D000C29DB /* NYSORAEmbeddedGallery.m */; };
+		2574E9BD19B2FF7D000C29DB /* NYSORAGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2574E9BC19B2FF7D000C29DB /* NYSORAGalleryViewController.m */; };
+		2574E9C019B30F98000C29DB /* NYSORAThumbnailRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2574E9BF19B30F98000C29DB /* NYSORAThumbnailRow.m */; };
 		25A59F2D19A7DB0F00D7936F /* content in Resources */ = {isa = PBXBuildFile; fileRef = 25CB70BA199B885B00266A9B /* content */; };
 		25AC32A419994C2A00C872F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A319994C2A00C872F7 /* main.m */; };
 		25AC32A719994C2A00C872F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AC32A619994C2A00C872F7 /* AppDelegate.m */; };
@@ -57,6 +59,11 @@
 		2574E9B619B1CC2D000C29DB /* NYSORAEmbeddedGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSORAEmbeddedGallery.h; sourceTree = "<group>"; };
 		2574E9B719B1CC2D000C29DB /* NYSORAEmbeddedGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORAEmbeddedGallery.m; sourceTree = "<group>"; };
 		2574E9BA19B26EC8000C29DB /* NYSORAEmbeddedGalleryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSORAEmbeddedGalleryProtocol.h; sourceTree = "<group>"; };
+		2574E9BB19B2FF7D000C29DB /* NYSORAGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSORAGalleryViewController.h; sourceTree = "<group>"; };
+		2574E9BC19B2FF7D000C29DB /* NYSORAGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORAGalleryViewController.m; sourceTree = "<group>"; };
+		2574E9BE19B30F98000C29DB /* NYSORAThumbnailRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSORAThumbnailRow.h; sourceTree = "<group>"; };
+		2574E9BF19B30F98000C29DB /* NYSORAThumbnailRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSORAThumbnailRow.m; sourceTree = "<group>"; };
+		2574E9C219B3279C000C29DB /* NYSORAThumbnailRowProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSORAThumbnailRowProtocol.h; sourceTree = "<group>"; };
 		25AC329E19994C2A00C872F7 /* nysora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nysora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AC32A219994C2A00C872F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AC32A319994C2A00C872F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -131,6 +138,8 @@
 				25AC32C519994DF100C872F7 /* BlockViewController.m */,
 				25169E68199A091C0000304B /* HeaderViewController.h */,
 				25169E69199A091C0000304B /* HeaderViewController.m */,
+				2574E9BB19B2FF7D000C29DB /* NYSORAGalleryViewController.h */,
+				2574E9BC19B2FF7D000C29DB /* NYSORAGalleryViewController.m */,
 			);
 			name = vcs;
 			sourceTree = "<group>";
@@ -161,6 +170,16 @@
 				2574E9BA19B26EC8000C29DB /* NYSORAEmbeddedGalleryProtocol.h */,
 			);
 			name = EmbeddedGallery;
+			sourceTree = "<group>";
+		};
+		2574E9C119B31139000C29DB /* ThumbnailRow */ = {
+			isa = PBXGroup;
+			children = (
+				2574E9BE19B30F98000C29DB /* NYSORAThumbnailRow.h */,
+				2574E9BF19B30F98000C29DB /* NYSORAThumbnailRow.m */,
+				2574E9C219B3279C000C29DB /* NYSORAThumbnailRowProtocol.h */,
+			);
+			name = ThumbnailRow;
 			sourceTree = "<group>";
 		};
 		25AC329519994C2A00C872F7 = {
@@ -256,6 +275,7 @@
 		25FE773C19A32B7900332992 /* custom views */ = {
 			isa = PBXGroup;
 			children = (
+				2574E9C119B31139000C29DB /* ThumbnailRow */,
 				2574E9B919B26E97000C29DB /* EmbeddedGallery */,
 				25D2385B19A8B8DC0021FF38 /* featuredContentView */,
 				2545192119A51D04000E9AE1 /* headersPaginationView */,
@@ -464,12 +484,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D0E9FF19A14CB2009B9A79 /* UIViewController+MMDrawerController.m in Sources */,
+				2574E9C019B30F98000C29DB /* NYSORAThumbnailRow.m in Sources */,
 				25FE774119A32BE400332992 /* NYSORABlocksTableViewCell.m in Sources */,
 				25D2385E19A8B8F70021FF38 /* NYSORAFeaturedContentView.m in Sources */,
 				252C264019A3F962005BF985 /* NYSORAHeaderTableViewCell.m in Sources */,
 				81D0E9F919A14985009B9A79 /* MMDrawerVisualState.m in Sources */,
 				2574E9B819B1CC2D000C29DB /* NYSORAEmbeddedGallery.m in Sources */,
 				81D0E9F719A10523009B9A79 /* MMDrawerBarButtonItem.m in Sources */,
+				2574E9BD19B2FF7D000C29DB /* NYSORAGalleryViewController.m in Sources */,
 				81D0EA0B19A3BEE1009B9A79 /* MMSideDrawerTableViewCell.m in Sources */,
 				2545192419A51D44000E9AE1 /* NYSORAHeadersPaginationView.m in Sources */,
 				81D0E9F019A1009A009B9A79 /* MMDrawerController.m in Sources */,
