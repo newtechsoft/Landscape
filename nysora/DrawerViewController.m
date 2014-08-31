@@ -31,10 +31,10 @@
     
     
     //Initiate and allocate the header view at the top.
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 87)];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 47)];
     
     //Initiate and allocate the table view about 60 pixels down.
-    _tableViewDrawer = [[UITableView alloc] initWithFrame:CGRectMake(0, 87, 320, self.view.frame.size.height-(87)) style:UITableViewStylePlain];
+    _tableViewDrawer = [[UITableView alloc] initWithFrame:CGRectMake(0, 47, 320, self.view.frame.size.height-(47)) style:UITableViewStylePlain];
     
     //Set the subview for the table view
     [self.view addSubview:self.tableViewDrawer];
@@ -47,33 +47,33 @@
     [self.tableViewDrawer setDataSource:self];
     
     //Add in the home icon in the header view
-    UILabel *homeIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 15, 20, 20)];
-    homeIcon.text = @"\uf02e";
-    homeIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
-    homeIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
-    [self.headerView addSubview:homeIcon];
+//    UILabel *homeIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 15, 20, 20)];
+//    homeIcon.text = @"\uf02e";
+//    homeIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
+//    homeIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
+//    [self.headerView addSubview:homeIcon];
     
     //Add in the home button in the header view
   
-    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [homeButton addTarget:self
-               action:@selector(homeButtonAction:)
-    forControlEvents:UIControlEventTouchUpInside];
-    [homeButton setTitle:@"Home" forState:UIControlStateNormal];
-    homeButton.frame = CGRectMake(-33.0, 16.0, 200.0, 20.0);
-    homeButton.tintColor = [UIColor colorWithWhite:1 alpha:1];
-    homeButton.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
-    [self.headerView addSubview:homeButton];
+//    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [homeButton addTarget:self
+//               action:@selector(homeButtonAction:)
+//    forControlEvents:UIControlEventTouchUpInside];
+//    [homeButton setTitle:@"Home" forState:UIControlStateNormal];
+//    homeButton.frame = CGRectMake(-33.0, 16.0, 200.0, 20.0);
+//    homeButton.tintColor = [UIColor colorWithWhite:1 alpha:1];
+//    homeButton.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
+//    [self.headerView addSubview:homeButton];
     
     //Add in the block icon in the header view
-    UILabel *blockIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 57, 200, 20)];
+    UILabel *blockIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 17, 200, 20)];
     blockIcon.text = @"\uf02d";
     blockIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
     blockIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
     [self.headerView addSubview:blockIcon];
     
     //Add in the block title in the header view
-    UILabel *blockText = [[UILabel alloc] initWithFrame:CGRectMake(40, 57, 200, 20)];
+    UILabel *blockText = [[UILabel alloc] initWithFrame:CGRectMake(40, 17, 200, 20)];
     blockText.text = @"Blocks";
     blockText.textColor = [UIColor colorWithWhite:1 alpha:1];
     blockText.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
@@ -82,12 +82,12 @@
     
     
     //Add in a black line under the "home" title
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 46, 320, .5)];
-    lineView.backgroundColor =[UIColor colorWithWhite:0 alpha:1];
-    [self.headerView addSubview:lineView];
+//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 46, 320, .5)];
+//    lineView.backgroundColor =[UIColor colorWithWhite:0 alpha:1];
+//    [self.headerView addSubview:lineView];
     
     //Add in a blue line under the "blocks" title
-    UIView *blocksLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 85, 260, 1.5)];
+    UIView *blocksLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 45, 260, 1.5)];
     blocksLineView.backgroundColor =[UIColor colorWithRed:60.0/255.0
                                                     green:130.0/255.0
                                                      blue:146.0/255.0
