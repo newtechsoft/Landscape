@@ -11,6 +11,7 @@
 #import "NYSORAHeaderTableViewCell.h"
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
+#import <Mixpanel/Mixpanel.h>
 
 
 @interface BlockViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate> {
@@ -185,6 +186,16 @@
     self.selectedRow = indexPath.row;
     [self performSegueWithIdentifier:@"headerViewSegue" sender:self];
     [self.headersTableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //Track the action in Mixpanel
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    //Here we create an instance of NSString and assign it the header name selected
+    NSString *whichHeaderNameAmI = [self.arrayOfHeaders[indexPath.row] objectForKey:@"headerName"];
+    //Here we create an instance of NSString and assign it the block name of the header selected
+    NSString *whichBlockNameAmI = self.whichBlockNameAmI;
+    //Here we track the header that was chosen and which block it resides in
+    [mixpanel track:@"header selected" properties:@{@"block": whichBlockNameAmI, @"header": whichHeaderNameAmI}];
 }
 
 #pragma mark - Navigation

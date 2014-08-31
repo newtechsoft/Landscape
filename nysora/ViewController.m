@@ -16,6 +16,7 @@
 #import "MMExampleDrawerVisualStateManager.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
+#import <Mixpanel/Mixpanel.h>
 
 
 //Import custom table view cell
@@ -300,6 +301,14 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     //Deselect the row
     [self.blocksTableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //Track the action in Mixpanel
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    //Here we create an instance of NSString and assign it the block name
+    NSString *whichBlockNameAmI = self.arrayOfBlocks[[tableView cellForRowAtIndexPath:indexPath].tag][@"blockName"];
+    //Here we track the block name that was chosen
+    [mixpanel track:@"home block selected" properties:@{@"block": whichBlockNameAmI}];
 }
 
 

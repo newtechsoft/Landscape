@@ -221,9 +221,6 @@
     //Home Button leads to ViewController
 - (void)homeButtonAction:(UIButton*)button
 {
-    //Checking to see if the button was clicked
-    NSLog(@"Button  clicked.");
-    
     ViewController * center = [[ViewController alloc] init];
     
     UINavigationController * nav = [[NavigationViewController alloc] initWithRootViewController:center];
@@ -234,10 +231,8 @@
      completion:nil];
 
     //Track the action in Mixpanel
-//    NSDictionary *properties = @{@"date" : [NSDate date], @"language" : @"en",@"Drawer Home Button Click" : @"yes" };
     [[Mixpanel sharedInstance] track:@"Drawer Home Button Clicked"];
-    
-//    NSLog(@"%", properties);
+
     
 }
 
@@ -261,8 +256,12 @@
     [self.tableViewDrawer deselectRowAtIndexPath:indexPath animated:YES];
     
     //Track the action in Mixpanel
-    NSDictionary *properties = @{@"date" : [NSDate date], @"language" : @"en"};
-    [[Mixpanel sharedInstance] track:@"Drawer Home Button Activated" properties:properties];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    //Here we create an instance of NSString and assign it the block name selected
+    NSString *whichBlockNameAmI = self.arrayOfBlocksDrawer[indexPath.row][@"blockName"];;
+    //Here we track the block name that was chosen
+    [mixpanel track:@"drawer block selected" properties:@{@"block": whichBlockNameAmI}];
     
 }
 

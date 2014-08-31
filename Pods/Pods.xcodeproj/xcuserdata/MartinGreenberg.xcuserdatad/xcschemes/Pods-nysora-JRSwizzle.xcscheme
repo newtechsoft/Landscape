@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4D949E58A2854F859F76022F"
+               BlueprintIdentifier = "EA47241E37CF4C8EB1F69467"
                BuildableName = "libPods-nysora-JRSwizzle.a"
                BlueprintName = "Pods-nysora-JRSwizzle"
                ReferencedContainer = "container:Pods.xcodeproj">
