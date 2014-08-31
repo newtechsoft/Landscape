@@ -13,7 +13,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import "NavigationViewController.h"
-#import <Mixpanel.h>
+#import <Mixpanel/Mixpanel.h>
 
 #import <QuartzCore/QuartzCore.h>
 

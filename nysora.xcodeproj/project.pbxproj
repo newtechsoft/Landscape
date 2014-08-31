@@ -668,6 +668,13 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/GRMustache\"",
+					"\"${PODS_ROOT}/Headers/JRSwizzle\"",
+					"\"${PODS_ROOT}/Headers/MMDrawerController\"",
+					"\"${PODS_ROOT}/Headers/Mixpanel\"",
+				);
 				INFOPLIST_FILE = nysoraTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
