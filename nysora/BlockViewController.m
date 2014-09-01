@@ -140,10 +140,10 @@
     
     if (scrollOffset < 0) {
         // Adjust image proportionally
-        headerImageFrame.origin.y = -((scrollOffset / 3));
+        headerImageFrame.origin.y = -((scrollOffset / 1));
     } else {
         // We're scrolling up, return to normal behavior
-        headerImageFrame.origin.y = -scrollOffset/3;
+        headerImageFrame.origin.y = -scrollOffset/1;
     }
     self.previewImageView.frame = headerImageFrame;
 }
