@@ -87,6 +87,14 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     self.featuredContentView = [[NYSORAFeaturedContentView alloc] initWithFeaturedContent:self.json[@"featuredContent"] frame:CGRectMake(0, 64, 320, 200)];
     [self.view addSubview:self.featuredContentView];
     
+    //timer for rotating through preview images
+    [NSTimer scheduledTimerWithTimeInterval:6.0
+                                    target:self
+                                   selector:@selector(featuredContentSwipeLeft:)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    
     //Apply the left menu button to self
     [self setupRightMenuButton];
     

@@ -13,6 +13,7 @@
 #import "UIViewController+MMDrawerController.h"
 #import "NYSORAEmbeddedGallery.h"
 #import "NYSORAEmbeddedGalleryProtocol.h"
+#import "NYSORAGalleryViewController.h"
 
 #define GALLERY_HEIGHT 200
 
@@ -86,12 +87,41 @@
     [self.navigationItem setRightBarButtonItem:rightDrawerButton];
 }
 
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSURL *URL = [request URL];
+    if ([[URL scheme] isEqualToString:@"nysora"]) {
+        // parse the rest of the URL object and execute functions
+        if([[URL host] isEqualToString:@"gallery"]) {
+            //Get the image src
+            NSArray *params = [[URL absoluteString] componentsSeparatedByString:@"?"];
+            NSString *imageName = [params lastObject];
+            NSInteger imageNumber = [self identifyImageNumberFromName:imageName];
+            
+            [self userDidTapImage:imageNumber];
+        }
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (NSInteger)identifyImageNumberFromName:(NSString*)imageName
+{
+    NSArray *comparisonArray = [self generateImageArray];
+    for(NSInteger i=0;i<[comparisonArray count];i++) {
+        if([(NSString*)comparisonArray[i] rangeOfString:imageName].location != NSNotFound) {
+            return i;
+        }
+    }
+    return 0;
+}
+
 - (void) webViewDidFinishLoad:(UIWebView *)webview
 {
     //Evaluate the height
     int h = [[self.headerWebView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
     //Print it to the console
-    NSLog(@"%d", h);
+    //NSLog(@"%d", h);
     //Set the height of the webview
     CGRect newFrame = self.headerWebView.frame;
     newFrame.size.height = h;
@@ -102,7 +132,14 @@
 
 -(void)userDidTapImage:(NSInteger)imageNumber
 {
-    NSLog(@"%ld", (long)imageNumber);
+    //Load an instance of the gallery
+    NYSORAGalleryViewController *gallery = [[NYSORAGalleryViewController alloc] init];
+    //Set the image paths array
+    gallery.imagePathsArray = [self generateImageArray];
+    //Set the captions
+    gallery.rawCaptionsArray = [self generateCaptionArray];
+    gallery.initialImage = imageNumber;
+    [self presentViewController:gallery animated:YES completion:nil];
 }
 
 - (NSMutableArray*)generateImageArray
@@ -112,6 +149,15 @@
         [imagePathsArray addObject:[self.json[self.whichHeaderAmI][@"imgs"] objectForKey: key][@"src"]];
     }
     return imagePathsArray;
+}
+
+- (NSMutableArray*)generateCaptionArray
+{
+    NSMutableArray *captionArray = [[NSMutableArray alloc] init];
+    for(id key in self.json[self.whichHeaderAmI][@"imgs"]) {
+        [captionArray addObject:[self.json[self.whichHeaderAmI][@"imgs"] objectForKey: key][@"alt"]];
+    }
+    return captionArray;
 }
 
 -(void) leftDrawerButtonPress:(id)sender{
