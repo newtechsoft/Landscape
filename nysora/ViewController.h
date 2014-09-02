@@ -14,7 +14,6 @@
 @property (nonatomic, strong) NSDictionary *json;
 
 @property (nonatomic, strong) UIColor *backgroundColor;
-@property (nonatomic, weak) UILabel *textLabel;
 @property (nonatomic,strong) UITableView * blocksTableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfBlocks;
 @property (strong, nonatomic) UIImageView *previewImageView;

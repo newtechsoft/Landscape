@@ -43,14 +43,17 @@
         [self addSubview:self.contentImage];
         
         //Set up the text view
-        self.contentText = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-        self.contentText.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        self.contentText = [[UITextView alloc] initWithFrame:CGRectMake(5, 5, self.frame.size.width - 10, 30)];
+        self.contentText.backgroundColor = [UIColor clearColor];
         self.contentText.editable = NO;
-        self.contentText.text = self.featuredContent[0][@"text"];
         self.contentText.textColor = [UIColor whiteColor];
         self.contentText.textAlignment = NSTextAlignmentCenter;
-        self.contentText.textContainerInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
-        [self addSubview:self.contentText];
+        self.contentTextBackground = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
+        self.contentTextBackground.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        [self.contentTextBackground addSubview:self.contentText];
+        [self addSubview:self.contentTextBackground];
+        [self setContentCaption:self.featuredContent[0][@"text"]];
+        
         
         //Set up the page control
         self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 180, 320, 20)];
@@ -78,11 +81,29 @@
 {
     if(currFeaturedContent >= 0 && currFeaturedContent < [self.featuredContent count]) {
         //Set the text
-        self.contentText.text = self.featuredContent[currFeaturedContent][@"text"];
+        //self.contentText.text = self.featuredContent[currFeaturedContent][@"text"];
+        [self setContentCaption:self.featuredContent[currFeaturedContent][@"text"]];
         //Set the image
         self.contentImage.image = self.featuredContent[currFeaturedContent][@"image"];
         self.pageControl.currentPage = currFeaturedContent;
     }
+}
+
+- (void)setContentCaption:(NSString*)text
+{
+    self.contentText.text = text;
+    CGFloat fixedWidth = self.contentText.frame.size.width;
+    CGSize newSize = [self.contentText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = self.contentText.frame;
+    newFrame.size = CGSizeMake(fixedWidth, newSize.height);
+    newFrame.origin.y = 0;
+    newFrame.origin.x = 5;
+    self.contentText.frame = newFrame;
+    CGRect backgroundFrame = newFrame;
+    backgroundFrame.origin.x = 0;
+    backgroundFrame.origin.y = self.frame.size.height - newFrame.size.height - 20;
+    backgroundFrame.size = CGSizeMake(self.frame.size.width, newFrame.size.height + 20);
+    self.contentTextBackground.frame = backgroundFrame;
 }
 
 

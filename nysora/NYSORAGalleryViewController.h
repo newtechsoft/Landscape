@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UITapGestureRecognizer *toggleCaption;
 @property (nonatomic, strong) UITextView *captionTextView;
 @property (nonatomic, strong) UIView *captionBackgroundView;
+@property (nonatomic, strong) UIScrollView *panAndZoomView;
 @property (nonatomic) NSInteger initialImage;
 
 
