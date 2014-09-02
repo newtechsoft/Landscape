@@ -8,7 +8,7 @@
 
 #import "NYSORAGalleryViewController.h"
 
-@interface NYSORAGalleryViewController () {
+@interface NYSORAGalleryViewController () <UIScrollViewDelegate> {
     NSInteger _currImg;
     BOOL _captionIsOut;
 }
@@ -16,6 +16,10 @@
 @end
 
 @implementation NYSORAGalleryViewController
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageViewsArray[_currImg];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +37,12 @@
     //Set the background color
     self.view.backgroundColor = [UIColor blackColor];
     
+    //Set up the scroll view
+    self.panAndZoomView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-60)];
+    self.panAndZoomView.delegate = self;
+    [self.view addSubview: self.panAndZoomView];
+    self.panAndZoomView.minimumZoomScale = 0.5f;
+    self.panAndZoomView.maximumZoomScale = 6.0f;
     //Set the currImg to zero
     _currImg = self.initialImage || 0;
     
@@ -80,7 +90,22 @@
     self.toggleCaption = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCaption:)];
     [self.captionBackgroundView addGestureRecognizer:self.toggleCaption];
     [self.view addSubview:self.captionBackgroundView];
+    
+}
 
+-(void)setStackingOrder:(NSInteger)topmostImage isFirstCall:(BOOL)firstCall
+{
+    if(firstCall) {
+        [self.imageViewsArray[_currImg] setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [self.panAndZoomView addSubview:self.imageViewsArray[_currImg]];
+    } else {
+        [self.imageViewsArray[_currImg] removeFromSuperview];
+        [self.imageViewsArray[topmostImage] setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [self.panAndZoomView addSubview:self.imageViewsArray[topmostImage]];
+        _currImg = topmostImage;
+    }
+    [self.thumbnailRow setSelectedImage:_currImg isFirstCall:NO withCallback:NO];
+    [self setCaption:_currImg];
 }
 
 -(void)toggleCaption:(UITapGestureRecognizer*)toggle
@@ -143,21 +168,6 @@
     }
 }
 
--(void)setStackingOrder:(NSInteger)topmostImage isFirstCall:(BOOL)firstCall
-{
-    if(firstCall) {
-        [self.imageViewsArray[_currImg] setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [self.view addSubview:self.imageViewsArray[_currImg]];
-    } else {
-        [self.imageViewsArray[_currImg] removeFromSuperview];
-        [self.imageViewsArray[topmostImage] setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [self.view insertSubview:self.imageViewsArray[topmostImage] belowSubview:self.captionBackgroundView];
-        _currImg = topmostImage;
-    }
-    [self.thumbnailRow setSelectedImage:_currImg isFirstCall:NO withCallback:NO];
-    [self setCaption:_currImg];
-}
-
 -(NSMutableArray*)initializeImageViews:(NSMutableArray*)imagePathsArray
 {
     NSMutableArray *imageViewsArray = [[NSMutableArray alloc] init];
@@ -192,14 +202,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
