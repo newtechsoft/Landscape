@@ -1,102 +1,102 @@
 {
-    "blockId" : "28",
-    "blockName" : "Cervical Plexus Block",
-    "summaryPath" : "content/28/summary",
-    "summaryText" : "Goal: local anesthetic spread around the superficial cervical plexus or deep to the sternocleidomastoid muscle",
-	"headers" : [
-		{
-			"headerName" : "Overview",
-            "htmlFile" : "28-1"
-		},
-		{
-			"headerName" : "Ultrasound Anatomy",
-            "htmlFile" : "28-2",
-            "imgs" : {
-                 "28-2" : {
-                    "name" : "28-2",
-                    "src" : "content/28/28-2.png",
-                    "alt" : "Anatomy of the superficial cervical plexus.\n1) sternocleidomastoid muscle.\n2) mastoid process.\n3) clavicle.\n4) external jugular vein. Superficial cervical plexus is seen emerging behind the posterior border of the sternocleidomastoid muscle at the intersection of the muscle with the external jugular vein.\n5) Greater auricular nerve."
-                 	},
-                 "28-3" : {
-                    "name" : "28-3",
-                    "src" : "content/28/28-3.png",
-                    "alt" : "Figure 28-3"
-                 }
-            }
-		},
-		{
-			"headerName" : "Sensory & Motor Blockade",
-            "htmlFile" : "28-3",
-            "imgs" : {
-                 "28-4" : {
-                    "src" : "content/28/28-4.png",
-                    "alt" : "Figure 28-4"
-                 	},
-                "28-5" : {
-                    "src" : "content/28/28-5.png",
-                    "alt" : "Figure 28-5"
+    "blockId": "28",
+    "blockName": "Cervical Plexus Block",
+    "summaryPath": "content/28/summary",
+    "summaryText": "Goal: local anesthetic spread around the superficial cervical plexus or deep to the sternocleidomastoid muscle",
+    "headers": [
+                {
+                "headerName": "Overview",
+                "htmlFile": "28-1",
+                "imgs": {
+                "28-1": {
+                "src": "content/28/28-1.png",
+                "alt": "Block in a glance"
                 }
-                 
-            }
-		},
-		{
-			"headerName" : "Equipment",
-            "htmlFile" : "28-4"
-
-            
-		},
-		{
-			"headerName" : "Landmarks & Positioning",
-            "htmlFile" : "28-5",
-            "imgs" : {
-                 "28-6A" : {
-                    "src" : "content/28/28-6A.png",
-                    "alt" : "Figure 28-6A"
-                    },
-                "28-6B" : {
-                "src" : "content/28/28-6B.png",
-                "alt" : "Figure 28-6B"
-                    }
-                 
-            }
-            
-		},
-		{
-			"headerName" : "Technique",
-            "htmlFile" : "28-6",
-            "imgs" : {
-                 "28-7" : {
-                    "src" : "content/28/28-7.png",
-                    "alt" : "Figure 28-7"
-                 	},
-                 "28-8" : {
-                    "src" : "content/28/28-8.png",
-                    "alt" : "Figure 28-8"
-                 },
-                 "28-9" : {
-                    "src" : "content/28/28-9.png",
-                    "alt" : "Figure 28-9"
-                 },
-                 "28-10" : {
-                    "src" : "content/28/28-10.png",
-                    "alt" : "Figure 28-10"
-                 },
-                 "28-11" : {
-                    "src" : "content/28/28-11.png",
-                    "alt" : "Figure 28-11"
-                 }
-                 
-            }
-		},
-		{
-			"headerName" : "Flow Chart",
-            "htmlFile" : "28-7",
-            "imgs" : {
-                 "28-12" : {
-                    "src" : "content/28/28-12.png",
-                    "alt" : "Figure 28-12"
-                 	}
-            }
-		}
-	]
+                }
+                },
+                {
+                "headerName": "Ultrasound Anatomy",
+                "htmlFile": "28-2",
+                "imgs": {
+                "28-2": {
+                "name": "28-2",
+                "src": "content/28/28-2.png",
+                "alt": "Anatomy of the superficial cervical plexus.\n1) sternocleidomastoid muscle.\n2) mastoid process.\n3) clavicle.\n4) external jugular vein. Superficial cervical plexus is seen emerging behind the posterior border of the sternocleidomastoid muscle at the intersection of the muscle with the external jugular vein.\n5) Greater auricular nerve."
+                },
+                "28-3": {
+                "name": "28-3",
+                "src": "content/28/28-3.png",
+                "alt": "Figure 28-3"
+                }
+                }
+                },
+                {
+                "headerName": "Sensory & Motor Blockade",
+                "htmlFile": "28-3",
+                "imgs": {
+                "28-4": {
+                "src": "content/28/28-4.png",
+                "alt": "Figure 28-4"
+                },
+                "28-5": {
+                "src": "content/28/28-5.png",
+                "alt": "Figure 28-5"
+                }
+                }
+                },
+                {
+                "headerName": "Equipment",
+                "htmlFile": "28-4"
+                },
+                {
+                "headerName": "Landmarks & Positioning",
+                "htmlFile": "28-5",
+                "imgs": {
+                "28-6A": {
+                "src": "content/28/28-6A.png",
+                "alt": "Figure 28-6A"
+                },
+                "28-6B": {
+                "src": "content/28/28-6B.png",
+                "alt": "Figure 28-6B"
+                }
+                }
+                },
+                {
+                "headerName": "Technique",
+                "htmlFile": "28-6",
+                "imgs": {
+                "28-7": {
+                "src": "content/28/28-7.png",
+                "alt": "Figure 28-7"
+                },
+                "28-8": {
+                "src": "content/28/28-8.png",
+                "alt": "Figure 28-8"
+                },
+                "28-9": {
+                "src": "content/28/28-9.png",
+                "alt": "Figure 28-9"
+                },
+                "28-10": {
+                "src": "content/28/28-10.png",
+                "alt": "Figure 28-10"
+                },
+                "28-11": {
+                "src": "content/28/28-11.png",
+                "alt": "Figure 28-11"
+                }
+                }
+                },
+                {
+                "headerName": "Flow Chart",
+                "htmlFile": "28-7",
+                "imgs": {
+                "28-12": {
+                "src": "content/28/28-12.png",
+                "alt": "Figure 28-12"
+                }
+                }
+                }
+                ]
 }
