@@ -1,91 +1,112 @@
 {
-    "blockId" : "33",
-    "blockName" : "Forearm Blocks",
-    "summaryPath" : "content/33/summary",
-    "summaryText" : "Goal: injection of local anesthetic in the vicinity of individual nerves (radial, median, ulnar)",
-	"headers" : [
-		{
-			"headerName" : "Overview",
-            "htmlFile" : "33-1"
-		},
-		{
-			"headerName" : "Ultrasound Anatomy",
-            "htmlFile" : "33-2",
-            "imgs" : {
-                 "33-2A" : {
-                    "src" : "content/33/33-2A.png",
-                    "alt" : "Figure 33-2A"
-                 	},
-                 "33-2B" : {
-                    "src" : "content/33/33-2B.png",
-                    "alt" : "Figure 33-2B"
-                 },
-                 "33-3" : {
-                    "src" : "content/33/33-3.png",
-                    "alt" : "Figure 33-3"
-                 },
-                 "33-4A" : {
-                    "src" : "content/33/33-4A.png",
-                    "alt" : "Figure 33-4A"
-                 },
-                 "33-4B" : {
-                    "src" : "content/33/33-4B.png",
-                    "alt" : "Figure 33-4B"
-                 },
-                "33-5A" : {
-                    "src" : "content/33/33-5A.png",
-                    "alt" : "Figure 33-5A"
-                 },
-                 "33-5B" : {
-                    "src" : "content/33/33-5B.png",
-                    "alt" : "Figure 33-5B"
-                 }
-            }
-		},
-		{
-			"headerName" : "Sensory & Motor Blockade",
-            "htmlFile" : "33-3"
-		},
-		{
-			"headerName" : "Equipment",
-            "htmlFile" : "33-4"
-            
-		},
-		{
-			"headerName" : "Landmarks & Positioning",
-            "htmlFile" : "33-5"
-            
-		},
-		{
-			"headerName" : "Technique",
-            "htmlFile" : "33-6",
-            "imgs" : {
-                 "33-6A" : {
-                    "src" : "content/33/33-6A.png",
-                    "alt" : "Figure 33-6A"
-                 	},
-                 "33-6B" : {
-                    "src" : "content/33/33-6B.png",
-                    "alt" : "Figure 33-6B"
-                 },
-                 "33-7A" : {
-                    "src" : "content/33/33-7A.png",
-                    "alt" : "Figure 33-7A"
-                 },
-                 "33-7B" : {
-                    "src" : "content/33/33-7B.png",
-                    "alt" : "Figure 33-7B"
-                 },
-                 "33-8A" : {
-                    "src" : "content/33/33-8A.png",
-                    "alt" : "Figure 33-8A"
-                 },
-                 "33-8B" : {
-                    "src" : "content/33/33-8B.png",
-                    "alt" : "Figure 33-8B"
-                 }
-                 
-            }
-		}
-	]
+    "blockId": "33",
+    "blockName": "Forearm Blocks",
+    "summaryPath": "content/33/summary",
+    "summaryText": "Goal: injection of local anesthetic in the vicinity of individual nerves (radial, median, ulnar)",
+    "headers": [
+                {
+                "headerName": "Overview",
+                "htmlFile": "33-1",
+                "imgs": {
+                "33-1A": {
+                "src": "content/33/33-1A.png",
+                "alt": "Figure 33-1A"
+                }
+                }
+                },
+                {
+                "headerName": "Ultrasound Anatomy",
+                "htmlFile": "33-2",
+                "imgs": {
+                "33-2A": {
+                "src": "content/33/33-2A.png",
+                "alt": "Figure 33-2A"
+                },
+                "33-2B": {
+                "src": "content/33/33-2B.png",
+                "alt": "Figure 33-2B"
+                },
+                "33-3": {
+                "src": "content/33/33-3.png",
+                "alt": "Figure 33-3"
+                },
+                "33-4A": {
+                "src": "content/33/33-4A.png",
+                "alt": "Figure 33-4A"
+                },
+                "33-4B": {
+                "src": "content/33/33-4B.png",
+                "alt": "Figure 33-4B"
+                },
+                "33-5A": {
+                "src": "content/33/33-5A.png",
+                "alt": "Figure 33-5A"
+                },
+                "33-5B": {
+                "src": "content/33/33-5B.png",
+                "alt": "Figure 33-5B"
+                }
+                }
+                },
+                {
+                "headerName": "Sensory & Motor Blockade",
+                "htmlFile": "33-3",
+                "imgs": {
+                "33-2A": {
+                "src": "content/33/33-2A.png",
+                "alt": "Figure 33-32A"
+                }
+                }
+                },
+                {
+                "headerName": "Equipment",
+                "htmlFile": "33-4",
+                "imgs": {
+                "33-4A": {
+                "src": "content/33/33-4A.png",
+                "alt": "Figure 33-4A"
+                }
+                }
+                },
+                {
+                "headerName": "Landmarks & Positioning",
+                "htmlFile": "33-5",
+                "imgs": {
+                "33-5A": {
+                "src": "content/33/33-5A.png",
+                "alt": "Figure 33-5A"
+                }
+                }
+                },
+                {
+                "headerName": "Technique",
+                "htmlFile": "33-6",
+                "imgs": {
+                "33-6A": {
+                "src": "content/33/33-6A.png",
+                "alt": "Figure 33-6A"
+                },
+                "33-6B": {
+                "src": "content/33/33-6B.png",
+                "alt": "Figure 33-6B"
+                },
+                "33-7A": {
+                "src": "content/33/33-7A.png",
+                "alt": "Figure 33-7A"
+                },
+                "33-7B": {
+                "src": "content/33/33-7B.png",
+                "alt": "Figure 33-7B"
+                },
+                "33-8A": {
+                "src": "content/33/33-8A.png",
+                "alt": "Figure 33-8A"
+                },
+                "33-8B": {
+                "src": "content/33/33-8B.png",
+                "alt": "Figure 33-8B"
+                }
+                }
+                }
+                ]
 }

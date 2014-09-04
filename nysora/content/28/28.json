@@ -46,7 +46,13 @@
                 },
                 {
                 "headerName": "Equipment",
-                "htmlFile": "28-4"
+                "htmlFile": "28-4",
+                "imgs": {
+                "28-4": {
+                "src": "content/28/28-4.png",
+                "alt": "Figure 28-4"
+                }
+                }
                 },
                 {
                 "headerName": "Landmarks & Positioning",
