@@ -22,6 +22,8 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeRecognizer;
 
 @property (nonatomic, strong) NYSORAHeadersPaginationView *paginationView;
+@property (nonatomic, strong) UIButton *nextHeaderButton;
+@property (nonatomic, strong) UIButton *prevHeaderButton;
 
 -(void)swipeHandlerRight:(UISwipeGestureRecognizer *)recognizer;
 -(void)swipeHandlerLeft:(UISwipeGestureRecognizer *)recognizer;
