@@ -15,8 +15,11 @@
 @property (nonatomic, strong) NSDictionary *json;
 @property (nonatomic, strong) UITableView * tableViewDrawer;
 @property (nonatomic, strong) UIView * headerView;
+@property (nonatomic, strong) UIView * textSizingView;
+@property (nonatomic, strong) UIView * contactUsView;
 @property (nonatomic, strong) NSMutableArray *arrayOfBlocksDrawer;
 @property (strong, nonatomic) UIImageView *drawerHeader;
+-(IBAction)contactUsButton:(id)sender;
 
 
 @end
