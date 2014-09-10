@@ -10,6 +10,7 @@ $(function() {
     var nysora = initNysora();
     nysora.initImageOverlay();
     nysora.interceptLinkTaps();
+    //nysora.initGestureRecognizers();
 
 });
 
@@ -28,6 +29,16 @@ function initNysora() {
                 }*/
             });
         },
+        initGestureRecognizers : function () {
+            window.location = "nysora://inited/";
+            var hammertime = new Hammer(document.body);
+            hammertime.on('swipeleft', function(ev) {
+                window.location = "nysora://swipeleft/";
+            });
+            hammertime.on('swiperight', function(ev) {
+                window.location = "nysora://swiperight";
+            })
+        },
         interceptLinkTaps : function() {
             $('.img-link').on('click', function(e) {
                 //Get a handle to the img
@@ -44,7 +55,8 @@ function initNysora() {
     
     var public = {
         initImageOverlay : _private.initImageOverlay,
-        interceptLinkTaps : _private.interceptLinkTaps
+        interceptLinkTaps : _private.interceptLinkTaps,
+        initGestureRecognizers : _private.initGestureRecognizers
     };
     
     return public;

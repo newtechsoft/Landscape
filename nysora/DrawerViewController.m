@@ -12,7 +12,9 @@
 #import "MMSideDrawerTableViewCell.h"
 #import "NavigationViewController.h"
 #import "BlockViewController.h"
+#import "TextSizingViewController.h"
 #import <Mixpanel/Mixpanel.h>
+#import <MessageUI/MessageUI.h>
 
 
 
@@ -36,34 +38,24 @@
     //Initiate and allocate the table view about 60 pixels down.
     _tableViewDrawer = [[UITableView alloc] initWithFrame:CGRectMake(0, 47, 320, self.view.frame.size.height-(47)) style:UITableViewStylePlain];
     
-    //Set the subview for the table view
-    [self.view addSubview:self.tableViewDrawer];
+    //Initiate and allocate the text sizing view at the top.
+    _textSizingView = [[UIView alloc] initWithFrame:CGRectMake(0, 200, 320, 100)];
+
+    //Initiate and allocate the text sizing view at the top.
+    _contactUsView = [[UIView alloc] initWithFrame:CGRectMake(0, 230, 320, 100)];
+
     
-    //Set the subview for the header view
+    //Set the subviews
     [self.view addSubview:self.headerView];
+    [self.view addSubview:self.tableViewDrawer];
+    [self.view addSubview:self.textSizingView];
+    [self.view addSubview:self.contactUsView];
+    
     
     //Set the delegate and data source to self
     [self.tableViewDrawer setDelegate:self];
     [self.tableViewDrawer setDataSource:self];
     
-    //Add in the home icon in the header view
-//    UILabel *homeIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 15, 20, 20)];
-//    homeIcon.text = @"\uf02e";
-//    homeIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
-//    homeIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
-//    [self.headerView addSubview:homeIcon];
-    
-    //Add in the home button in the header view
-  
-//    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [homeButton addTarget:self
-//               action:@selector(homeButtonAction:)
-//    forControlEvents:UIControlEventTouchUpInside];
-//    [homeButton setTitle:@"Home" forState:UIControlStateNormal];
-//    homeButton.frame = CGRectMake(-33.0, 16.0, 200.0, 20.0);
-//    homeButton.tintColor = [UIColor colorWithWhite:1 alpha:1];
-//    homeButton.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
-//    [self.headerView addSubview:homeButton];
     
     //Add in the block icon in the header view
     UILabel *blockIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 17, 200, 20)];
@@ -72,19 +64,56 @@
     blockIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
     [self.headerView addSubview:blockIcon];
     
-    //Add in the block title in the header view
-    UILabel *blockText = [[UILabel alloc] initWithFrame:CGRectMake(40, 17, 200, 20)];
-    blockText.text = @"Blocks";
-    blockText.textColor = [UIColor colorWithWhite:1 alpha:1];
-    blockText.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
-    [self.headerView addSubview:blockText];
     
+    UIButton *blockButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [blockButton addTarget:self
+                         action:@selector(homeButtonAction:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [blockButton setTitle:@"Blocks" forState:UIControlStateNormal];
+    blockButton.frame = CGRectMake(-33, 17, 200, 20);
+    blockButton.tintColor = [UIColor colorWithWhite:1 alpha:1];
+    blockButton.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
+    [self.headerView addSubview:blockButton];
     
+    //Add in the text sizing icon
+    UILabel *textSizingIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 5, 20, 20)];
+        textSizingIcon.text = @"\uf002";
+        textSizingIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
+        textSizingIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
+        [self.textSizingView addSubview:textSizingIcon];
     
-    //Add in a black line under the "home" title
-//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 46, 320, .5)];
-//    lineView.backgroundColor =[UIColor colorWithWhite:0 alpha:1];
-//    [self.headerView addSubview:lineView];
+    //Add in the text sizing button
+    
+       UIButton *textSizingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+       [textSizingButton addTarget:self
+                 action:@selector(textSizingButtonAction:)
+      forControlEvents:UIControlEventTouchUpInside];
+       [textSizingButton setTitle:@"Text Size" forState:UIControlStateNormal];
+       textSizingButton.frame = CGRectMake(-23.0, 6.0, 200.0, 20.0);
+       textSizingButton.tintColor = [UIColor colorWithWhite:1 alpha:1];
+       textSizingButton.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
+       [self.textSizingView addSubview:textSizingButton];
+    
+    //Add in the contact us icon
+    UILabel *contactUsIcon = [[UILabel alloc] initWithFrame:CGRectMake(16, 5, 20, 20)];
+    contactUsIcon.text = @"\uf0e0";
+    contactUsIcon.textColor = [UIColor colorWithWhite:1 alpha:1];
+    contactUsIcon.font = [UIFont fontWithName:@"FontAwesome" size:18];
+    [self.contactUsView addSubview:contactUsIcon];
+    
+    //Add in the contact us button
+    
+    UIButton *contactUsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [contactUsButton addTarget:self
+                         action:@selector(contactUsButtonAction:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [contactUsButton setTitle:@"Contact Us" forState:UIControlStateNormal];
+    contactUsButton.frame = CGRectMake(-13.0, 6.0, 200.0, 20.0);
+    contactUsButton.tintColor = [UIColor colorWithWhite:1 alpha:1];
+    contactUsButton.font = [UIFont fontWithName:@"Avenir-Heavy" size:18];
+    [self.contactUsView addSubview:contactUsButton];
+
+
     
     //Add in a blue line under the "blocks" title
     UIView *blocksLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 45, 260, 1.5)];
@@ -93,6 +122,14 @@
                                                      blue:146.0/255.0
                                                     alpha:1];
     [self.headerView addSubview:blocksLineView];
+    
+    //Add in a second blue line under the blocks
+    UIView *blocksSecondLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 145, 260, 1.5)];
+    blocksSecondLineView.backgroundColor =[UIColor colorWithRed:60.0/255.0
+                                                    green:130.0/255.0
+                                                     blue:146.0/255.0
+                                                    alpha:1];
+    [self.tableViewDrawer addSubview:blocksSecondLineView];
     
     //Load in the JSON source
     NSDictionary *json = [self fetchJSONData];
@@ -165,6 +202,11 @@
     
 }
 
+- (void)contactUsButtonAction:(UIButton*)button
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto:info@uploadapps.com"]] ];
+    
+}
 
 #pragma mark - Table view data source
 
@@ -218,7 +260,7 @@
     return cell;
 }
 
-    //Home Button leads to ViewController
+    //Home button leads to ViewController
 - (void)homeButtonAction:(UIButton*)button
 {
     ViewController * center = [[ViewController alloc] init];
@@ -235,6 +277,71 @@
 
     
 }
+
+//Text sizing button leads to TextSizingViewController
+- (void)textSizingButtonAction:(UIButton*)button
+{
+
+    //Load an instance of the text sizing view
+    TextSizingViewController *textSizing = [[TextSizingViewController alloc] init];
+    
+    [self presentViewController:textSizing animated:YES completion:nil];
+    
+    //Track the action in Mixpanel
+    [[Mixpanel sharedInstance] track:@"Text Sizing Home Button Clicked"];
+    
+    
+}
+
+
+//Contact Us button leads to TextSizingViewController
+//- (void)contactUsButtonAction:(UIButton*)button
+//{
+//    
+//    if ([MFMailComposeViewController canSendMail])
+//    {
+//        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+//        mail.mailComposeDelegate = self;
+//        [mail setSubject:@"Sample Subject"];
+//        [mail setMessageBody:@"Here is some main text in the email!" isHTML:NO];
+//        [mail setToRecipients:@[@"testingEmail@example.com"]];
+//        
+//        [self presentViewController:mail animated:YES completion:NULL];
+//    }
+//    else
+//    {
+//        NSLog(@"This device cannot send email");
+//    }
+//    
+//    //Track the action in Mixpanel
+//    [[Mixpanel sharedInstance] track:@"Contact Us Clicked"];
+//    
+//    
+//}
+//
+//- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+//{
+//    switch (result) {
+//        case MFMailComposeResultSent:
+//            NSLog(@"You sent the email.");
+//            break;
+//        case MFMailComposeResultSaved:
+//            NSLog(@"You saved a draft of this email");
+//            break;
+//        case MFMailComposeResultCancelled:
+//            NSLog(@"You cancelled sending this email.");
+//            break;
+//        case MFMailComposeResultFailed:
+//            NSLog(@"Mail failed:  An error occurred when trying to compose this email");
+//            break;
+//        default:
+//            NSLog(@"An error occurred when trying to compose this email");
+//            break;
+//    }
+//    
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+//}
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

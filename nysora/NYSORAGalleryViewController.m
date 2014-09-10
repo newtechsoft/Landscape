@@ -50,7 +50,7 @@
     _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.closeButton addTarget:self action:@selector(closeGallery:) forControlEvents:UIControlEventTouchUpInside];
     [self.closeButton setTitle:@"" forState:UIControlStateNormal];
-    self.closeButton.frame = CGRectMake(0, 0, 40, 40);
+    self.closeButton.frame = CGRectMake(0, 0, 60, 60);
     [self.closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.closeButton.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:18];
     [self.view addSubview:self.closeButton];
