@@ -16,6 +16,8 @@
 
 
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +37,6 @@
     
     //Set the subview for the slider view
     [self.view addSubview:self.sliderView];
-
 
     
     //create and initialize the slider
@@ -59,11 +60,7 @@
     
     // As the slider moves it will continously call the -valueChanged:
     self.textSizingSlider.continuous = YES; // NO makes it call only once you let go
-    [self.textSizingSlider addTarget:self
-               action:@selector(sliderChanged:)
-     forControlEvents:UIControlEventValueChanged];
-    
-    
+    [self.textSizingSlider addTarget:self action:@selector(sliderChanged:)forControlEvents:UIControlEventValueChanged];
     
     //Set the background color
     self.sliderView.backgroundColor = [UIColor blackColor];
@@ -75,13 +72,20 @@
     [self.sliderView addSubview:adjustTextTitle];
 
     //Set text for slider
-    UILabel *adjustedText = [[UILabel alloc] initWithFrame:CGRectMake(100, 300, 320, 100)];
+    UILabel *adjustedText = [[UILabel alloc] initWithFrame:CGRectMake(40, 300, 240, 100)];
     adjustedText.textColor = [UIColor colorWithWhite:1 alpha:1];
-    adjustedText.font = [UIFont fontWithName:@"FontAwesome" size:15];
+    adjustedText.backgroundColor = [UIColor redColor];
+//    adjustedText.font = [UIFont fontWithName:@"FontAwesome" size:15];
+    adjustedText.text = [NSString stringWithFormat:@"Sample Text"];
+    adjustedText.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.sliderView addSubview:adjustedText];
     
+        NSLog(@"number: %@", self.textSize);
+    
+        NSLog(@"The value stored is %@",self.adjustedText.text);
     
 
+    
     
     //Set up the close button
     _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -100,19 +104,13 @@
     // round the slider position to the nearest index of the numbers array
     NSUInteger index = (NSUInteger)(self.textSizingSlider.value + 0.5);
     [self.textSizingSlider setValue:index animated:NO];
-    NSNumber *number = numbers[index]; // <-- This numeric value you want
+    self.textSize = numbers[index]; // <-- This numeric value you want
     NSLog(@"sliderIndex: %i", (int)index);
-    NSLog(@"number: %@", number);
-    
-    self.adjustedText.text = [NSString stringWithFormat:@"Text Size: %@", number];
-    NSLog(@"The value stored is %@",self.adjustedText.text);
+
+
     
     
 }
-
-
-
-
 
 //Close the text sizing view
 -(void)closeTextSizing:(UIButton*)button
