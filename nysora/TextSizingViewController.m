@@ -16,8 +16,6 @@
 
 
 
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,20 +41,27 @@
     self.textSizingSlider = [[UISlider alloc] initWithFrame:CGRectMake(60, 250, 200, 30)];
     //Set Background color
     self.textSizingSlider.backgroundColor = [UIColor blackColor];
-    //set the minimum value
-    self.textSizingSlider.minimumValue = 0.0;
-    //set the maximum value
-    self.textSizingSlider.maximumValue = 100.0;
-    //set the initial value
-    self.textSizingSlider.value = 25.0;
+    
     [self.view addSubview:self.textSizingSlider];
     
     // These number values represent each slider position
-    numbers = @[@(-3), @(0), @(2), @(4), @(7), @(10), @(12)];
+    numbers = @[@(100), @(120), @(140), @(160)];
     // slider values go from 0 to the number of values in your numbers array
     NSInteger numberOfSteps = ((float)[numbers count] - 1);
     self.textSizingSlider.maximumValue = numberOfSteps;
     self.textSizingSlider.minimumValue = 0;
+    
+    //set the initial value
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString* _initialTextSize = [defaults objectForKey:@"textSizeKey"];
+    //Convert string to float
+    float result=[_initialTextSize floatValue];
+    float convertedResult = (result-100)/20;
+    
+    NSLog(@"initial text size: %f",convertedResult);
+    
+    self.textSizingSlider.value = convertedResult;
     
     // As the slider moves it will continously call the -valueChanged:
     self.textSizingSlider.continuous = YES; // NO makes it call only once you let go
@@ -74,16 +79,10 @@
     //Set text for slider
     UILabel *adjustedText = [[UILabel alloc] initWithFrame:CGRectMake(40, 300, 240, 100)];
     adjustedText.textColor = [UIColor colorWithWhite:1 alpha:1];
-    adjustedText.backgroundColor = [UIColor redColor];
-//    adjustedText.font = [UIFont fontWithName:@"FontAwesome" size:15];
-    adjustedText.text = [NSString stringWithFormat:@"Sample Text"];
+    adjustedText.backgroundColor = [UIColor blackColor];
+    adjustedText.text = [NSString stringWithFormat:@"Text Size increased by %@ %%", _initialTextSize];
     adjustedText.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.sliderView addSubview:adjustedText];
-    
-        NSLog(@"number: %@", self.textSize);
-    
-        NSLog(@"The value stored is %@",self.adjustedText.text);
-    
 
     
     
@@ -105,8 +104,12 @@
     NSUInteger index = (NSUInteger)(self.textSizingSlider.value + 0.5);
     [self.textSizingSlider setValue:index animated:NO];
     self.textSize = numbers[index]; // <-- This numeric value you want
-    NSLog(@"sliderIndex: %i", (int)index);
 
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //Here we set the value of the slider to the defaults value under the key textSize
+    [defaults setValue: self.textSize forKey:@"textSizeKey"];
+    
 
     
     

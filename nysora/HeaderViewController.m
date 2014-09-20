@@ -58,6 +58,9 @@
     [self renderWebView];
     
     [self setUpHelperViews];
+    
+    
+
 }
 
 -(void)setUpHelperViews
@@ -128,6 +131,18 @@
     [self.headerWebView setFrame:newFrame];
     //Set the height of the scrollview
     self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (GALLERY_HEIGHT + h));
+    
+    
+    //Pull in the global text size from the user defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.globalTextSize = [defaults objectForKey:@"textSizeKey"];
+    NSLog(@"global text size: %@",self.globalTextSize);
+    
+    //Check to see what size the font is in the web view and input the global text size
+    NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%@%%'",                            self.globalTextSize];
+    
+    [self.headerWebView stringByEvaluatingJavaScriptFromString:jsString];
 }
 
 -(void)userDidTapImage:(NSInteger)imageNumber
@@ -227,23 +242,5 @@
     NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     return htmlString;
 }
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

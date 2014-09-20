@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIButton *closeButton;
 @property (nonatomic, strong) UIView * sliderView;
 @property (nonatomic) NSNumber* textSize;
+@property (nonatomic) NSNumber* testProperty;
 @property (nonatomic, strong) IBOutlet UILabel * adjustedText;
 @property (nonatomic, strong) IBOutlet UILabel * adjustTextTitle;
 @property (nonatomic, strong) IBOutlet UISlider * textSizingSlider;
