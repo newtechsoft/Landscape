@@ -22,7 +22,7 @@
 		<key>580EAF2DC6AE4E0BB6CE92F86D7268EAA5FB66FD</key>
 		<string>..</string>
 		<key>92418440314C4D29F28506904B7B75B1F27F702A</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://bitbucket.org/MartinGreenberg/nysora.git</string>
@@ -38,7 +38,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>92418440314C4D29F28506904B7B75B1F27F702A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

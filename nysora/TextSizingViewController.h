@@ -17,6 +17,10 @@
 @property (nonatomic) NSNumber* textSize;
 @property (nonatomic) NSNumber* testProperty;
 @property (nonatomic, strong) IBOutlet UILabel * adjustedText;
+@property (nonatomic, strong) IBOutlet UILabel * sliderLabel1;
+@property (nonatomic, strong) IBOutlet UILabel * sliderLabel2;
+@property (nonatomic, strong) IBOutlet UILabel * sliderLabel3;
+@property (nonatomic, strong) IBOutlet UILabel * sliderLabel4;
 @property (nonatomic, strong) IBOutlet UILabel * adjustTextTitle;
 @property (nonatomic, strong) IBOutlet UISlider * textSizingSlider;
 

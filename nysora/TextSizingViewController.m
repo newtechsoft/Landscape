@@ -76,15 +76,45 @@
     adjustTextTitle.font = [UIFont fontWithName:@"FontAwesome" size:15];
     [self.sliderView addSubview:adjustTextTitle];
 
-    //Set text for slider
-    UILabel *adjustedText = [[UILabel alloc] initWithFrame:CGRectMake(40, 300, 240, 100)];
-    adjustedText.textColor = [UIColor colorWithWhite:1 alpha:1];
-    adjustedText.backgroundColor = [UIColor blackColor];
-    adjustedText.text = [NSString stringWithFormat:@"Text Size increased by %@ %%", _initialTextSize];
-    adjustedText.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    [self.sliderView addSubview:adjustedText];
-
+//    //Set text for slider
+//    UILabel *adjustedText = [[UILabel alloc] initWithFrame:CGRectMake(40, 300, 240, 100)];
+//    adjustedText.textColor = [UIColor colorWithWhite:1 alpha:1];
+//    adjustedText.backgroundColor = [UIColor blackColor];
+//    adjustedText.text = [NSString stringWithFormat:@"Text Size increased by %@ %%", _initialTextSize];
+//    adjustedText.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//    [self.sliderView addSubview:adjustedText];
     
+    //Set label2 for slider
+    UILabel *sliderLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(70, 275, 40, 40)];
+    sliderLabel1.textColor = [UIColor colorWithWhite:1 alpha:1];
+    sliderLabel1.backgroundColor = [UIColor blackColor];
+    sliderLabel1.text = [NSString stringWithFormat:@"A"];
+    sliderLabel1.font = [UIFont systemFontOfSize:11];
+    [self.sliderView addSubview:sliderLabel1];
+
+    //Set label2 for slider
+    UILabel *sliderLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(127, 275, 40, 40)];
+    sliderLabel2.textColor = [UIColor colorWithWhite:1 alpha:1];
+    sliderLabel2.backgroundColor = [UIColor blackColor];
+    sliderLabel2.text = [NSString stringWithFormat:@"A"];
+    sliderLabel2.font = [UIFont systemFontOfSize:18];
+    [self.sliderView addSubview:sliderLabel2];
+
+    //Set label3 for slider
+    UILabel *sliderLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(185, 275, 40, 40)];
+    sliderLabel3.textColor = [UIColor colorWithWhite:1 alpha:1];
+    sliderLabel3.backgroundColor = [UIColor blackColor];
+    sliderLabel3.text = [NSString stringWithFormat:@"A"];
+    sliderLabel3.font = [UIFont systemFontOfSize:25];
+    [self.sliderView addSubview:sliderLabel3];
+    
+    //Set label4 for slider
+    UILabel *sliderLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(240, 275, 40, 40)];
+    sliderLabel4.textColor = [UIColor colorWithWhite:1 alpha:1];
+    sliderLabel4.backgroundColor = [UIColor blackColor];
+    sliderLabel4.text = [NSString stringWithFormat:@"A"];
+    sliderLabel4.font = [UIFont systemFontOfSize:32];
+    [self.sliderView addSubview:sliderLabel4];
     
     //Set up the close button
     _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];

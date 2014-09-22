@@ -124,12 +124,12 @@
     [self.headerView addSubview:blocksLineView];
     
     //Add in a second blue line under the blocks
-    UIView *blocksSecondLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 145, 260, 1.5)];
-    blocksSecondLineView.backgroundColor =[UIColor colorWithRed:60.0/255.0
-                                                    green:130.0/255.0
-                                                     blue:146.0/255.0
-                                                    alpha:1];
-    [self.tableViewDrawer addSubview:blocksSecondLineView];
+//    UIView *blocksSecondLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 145, 260, 1.5)];
+//    blocksSecondLineView.backgroundColor =[UIColor colorWithRed:60.0/255.0
+//                                                    green:130.0/255.0
+//                                                     blue:146.0/255.0
+//                                                    alpha:1];
+//    [self.tableViewDrawer addSubview:blocksSecondLineView];
     
     //Load in the JSON source
     NSDictionary *json = [self fetchJSONData];
@@ -159,7 +159,7 @@
     self.tableViewDrawer.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     //This gets rid of the separators alltogether
-    [self.tableViewDrawer setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    [self.tableViewDrawer setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     //This will change the color of the separators in the table view
     [self.tableViewDrawer setSeparatorColor:[UIColor colorWithRed:60.0/255.0
