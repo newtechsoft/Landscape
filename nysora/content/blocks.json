@@ -3,6 +3,7 @@
 		{
 			"blockId" : "28",
 			"blockName" : "Cervical Plexus Block",
+            "thumbnailPath" : "content/28/thumbnail",
 			"sectionId" : 0
 		},
 		{
@@ -14,6 +15,7 @@
         {
             "blockId" : "33",
             "blockName" : "Forearm Block",
+            "thumbnailPath" : "content/33/thumbnail",
             "sectionId" : 2
         }
                 
@@ -25,28 +27,28 @@
     ],
     "featuredContent" : [
         {
-            "imagePath" : "content/29/featured",
-            "text" : "The Interscalene Brachial Plexus Block",
+            "imagePath" : "content/28/featured",
+            "text" : "Cervical Plexus Block Flow Chart",
             "link" : {
-                "blockId" : "29",
-                "headerNumber" : 1
+                "blockId" : "28",
+                "headerNumber" : 6
             }
         },
         {
-            "imagePath" : "content/28/featured",
-            "text" :"Cervical Plexus Block Flow Chart",
+            "imagePath" : "content/29/featured",
+            "text" :"Interscalene Brachial Plexus Block",
             "link" : {
-                "blockId" : "28",
-                "headerNumber" : 7
+                "blockId" : "29",
+                "headerNumber" : 5
             }
         },
                          
         {
             "imagePath" : "content/33/featured",
-            "text" :"The Forearm Blocks",
+            "text" :"Forearm Block",
             "link" : {
                 "blockId" : "33",
-                "headerNumber" : 3
+                "headerNumber" : 0
             }
         }
 

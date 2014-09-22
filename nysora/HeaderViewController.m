@@ -11,11 +11,17 @@
 #import <GRMustache.h>
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
+#import "NYSORAEmbeddedGallery.h"
+#import "NYSORAEmbeddedGalleryProtocol.h"
+#import "NYSORAGalleryViewController.h"
 
-@interface HeaderViewController ()
+#define GALLERY_HEIGHT 200
 
-@property (weak, nonatomic) IBOutlet UIWebView *headerWebView;
+@interface HeaderViewController () <UIScrollViewDelegate, UIWebViewDelegate, NYSORAEmbeddedGalleryProtocol>
 
+@property (strong, nonatomic) UIWebView *headerWebView;
+@property (strong, nonatomic) UIScrollView *containerScrollView;
+@property (strong, nonatomic) NYSORAEmbeddedGallery *gallery;
 @end
 
 @implementation HeaderViewController
@@ -32,11 +38,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Set up the scroll view, web view and gallery view
+    //Scrollview
+    self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 104, self.view.frame.size.width, self.view.frame.size.height-104)];
+    self.containerScrollView.delegate = self;
+    //WebView
+    self.headerWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, GALLERY_HEIGHT, 320, 568)];
+    self.headerWebView.scrollView.scrollEnabled = NO;
+    self.headerWebView.delegate = self;
+    [self.containerScrollView addSubview:self.headerWebView];
+    //Gallery view
+    NSMutableArray *imagePathsArray = [self generateImageArray];
+    self.gallery = [[NYSORAEmbeddedGallery alloc] initWithArrayOfImagePaths:imagePathsArray andFrame:CGRectMake(0, 0, 320, GALLERY_HEIGHT)];
+    self.gallery.backgroundColor = [UIColor blackColor];
+    self.gallery.delegate = self;
+    [self.containerScrollView addSubview:self.gallery];
+    [self.view addSubview:self.containerScrollView];
+    self.containerScrollView.contentSize = CGSizeMake(320, GALLERY_HEIGHT);
     [self renderWebView];
     
     [self setUpHelperViews];
     
+    
+
 }
 
 -(void)setUpHelperViews
@@ -51,10 +75,10 @@
     //Set up the swipe recognizers
     self.rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerRight:)];
     [self.rightSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.view addGestureRecognizer:self.rightSwipeRecognizer];
+    [self.headerWebView addGestureRecognizer:self.rightSwipeRecognizer];
     self.leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerLeft:)];
     [self.leftSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-    [self.view addGestureRecognizer:self.leftSwipeRecognizer];
+    [self.headerWebView addGestureRecognizer:self.leftSwipeRecognizer];
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichBlockNameAmIIn;
@@ -64,6 +88,91 @@
     //Set the color of the button
     [rightDrawerButton setTintColor:[UIColor whiteColor]];
     [self.navigationItem setRightBarButtonItem:rightDrawerButton];
+}
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSURL *URL = [request URL];
+    if ([[URL scheme] isEqualToString:@"nysora"]) {
+        // parse the rest of the URL object and execute functions
+        if([[URL host] isEqualToString:@"gallery"]) {
+            //Get the image src
+            NSArray *params = [[URL absoluteString] componentsSeparatedByString:@"?"];
+            NSString *imageName = [params lastObject];
+            NSInteger imageNumber = [self identifyImageNumberFromName:imageName];
+            
+            [self userDidTapImage:imageNumber];
+        }
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (NSInteger)identifyImageNumberFromName:(NSString*)imageName
+{
+    NSArray *comparisonArray = [self generateImageArray];
+    for(NSInteger i=0;i<[comparisonArray count];i++) {
+        if([(NSString*)comparisonArray[i] rangeOfString:imageName].location != NSNotFound) {
+            return i;
+        }
+    }
+    return 0;
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webview
+{
+    //Evaluate the height
+    int h = [[self.headerWebView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
+    //Print it to the console
+    //NSLog(@"%d", h);
+    //Set the height of the webview
+    CGRect newFrame = self.headerWebView.frame;
+    newFrame.size.height = h;
+    [self.headerWebView setFrame:newFrame];
+    //Set the height of the scrollview
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (GALLERY_HEIGHT + h));
+    
+    
+    //Pull in the global text size from the user defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.globalTextSize = [defaults objectForKey:@"textSizeKey"];
+    NSLog(@"global text size: %@",self.globalTextSize);
+    
+    //Check to see what size the font is in the web view and input the global text size
+    NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%@%%'",                            self.globalTextSize];
+    
+    [self.headerWebView stringByEvaluatingJavaScriptFromString:jsString];
+}
+
+-(void)userDidTapImage:(NSInteger)imageNumber
+{
+    //Load an instance of the gallery
+    NYSORAGalleryViewController *gallery = [[NYSORAGalleryViewController alloc] init];
+    //Set the image paths array
+    gallery.imagePathsArray = [self generateImageArray];
+    //Set the captions
+    gallery.rawCaptionsArray = [self generateCaptionArray];
+    gallery.initialImage = imageNumber;
+    [self presentViewController:gallery animated:YES completion:nil];
+}
+
+- (NSMutableArray*)generateImageArray
+{
+    NSMutableArray *imagePathsArray = [[NSMutableArray alloc] init];
+    for(id key in self.json[self.whichHeaderAmI][@"imgs"]) {
+        [imagePathsArray addObject:[self.json[self.whichHeaderAmI][@"imgs"] objectForKey: key][@"src"]];
+    }
+    return imagePathsArray;
+}
+
+- (NSMutableArray*)generateCaptionArray
+{
+    NSMutableArray *captionArray = [[NSMutableArray alloc] init];
+    for(id key in self.json[self.whichHeaderAmI][@"imgs"]) {
+        [captionArray addObject:[self.json[self.whichHeaderAmI][@"imgs"] objectForKey: key][@"alt"]];
+    }
+    return captionArray;
 }
 
 -(void) leftDrawerButtonPress:(id)sender{
@@ -133,23 +242,5 @@
     NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     return htmlString;
 }
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

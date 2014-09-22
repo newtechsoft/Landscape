@@ -5,34 +5,46 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>DA23DC9D-A6B8-42BD-92D9-4C9B6E5920FB</string>
+	<string>32FCEC00-A125-4E97-A40C-2F32AB16E537</string>
 	<key>IDESourceControlProjectName</key>
 	<string>nysora</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</key>
+		<key>580EAF2DC6AE4E0BB6CE92F86D7268EAA5FB66FD</key>
 		<string>https://bitbucket.org/MartinGreenberg/nysora.git</string>
+		<key>92418440314C4D29F28506904B7B75B1F27F702A</key>
+		<string>https://bitbucket.org/uploadllc/nsora.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>nysora.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</key>
+		<key>580EAF2DC6AE4E0BB6CE92F86D7268EAA5FB66FD</key>
 		<string>..</string>
+		<key>92418440314C4D29F28506904B7B75B1F27F702A</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://bitbucket.org/MartinGreenberg/nysora.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</string>
+	<string>580EAF2DC6AE4E0BB6CE92F86D7268EAA5FB66FD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E7A53987-91A7-4936-AD73-1B4BA42A6C9C</string>
+			<string>92418440314C4D29F28506904B7B75B1F27F702A</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>580EAF2DC6AE4E0BB6CE92F86D7268EAA5FB66FD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>nysora</string>
 		</dict>

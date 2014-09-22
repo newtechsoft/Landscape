@@ -16,6 +16,7 @@
 #import "MMExampleDrawerVisualStateManager.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
+#import <Mixpanel/Mixpanel.h>
 
 
 //Import custom table view cell
@@ -85,6 +86,14 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     //Initiate and allocate the preview image
     self.featuredContentView = [[NYSORAFeaturedContentView alloc] initWithFeaturedContent:self.json[@"featuredContent"] frame:CGRectMake(0, 64, 320, 200)];
     [self.view addSubview:self.featuredContentView];
+    
+    //timer for rotating through preview images
+    [NSTimer scheduledTimerWithTimeInterval:6.0
+                                    target:self
+                                   selector:@selector(featuredContentSwipeLeft:)
+                                   userInfo:nil
+                                    repeats:YES];
+    
     
     //Apply the left menu button to self
     [self setupRightMenuButton];
@@ -269,8 +278,8 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
         if([self.arrayOfBlocks[i][@"sectionId"] integerValue] == sectionId) {
             if(rowCount == indexPath.row) {
                 cell.blockNameLabel.text = [self.arrayOfBlocks[i] objectForKey:@"blockName"];
-                //[cell setBlockThumbnailWithImagePath:[self.arrayOfBlocks[i] objectForKey:@"thumbnailPath"]];
-                [cell setBlockThumbnailWithImageName:@"blocks_thick"];
+                [cell setBlockThumbnailWithImagePath:[self.arrayOfBlocks[i] objectForKey:@"thumbnailPath"]];
+                //[cell setBlockThumbnailWithImageName:@"blocks_thick"];
                 cell.tag = i;
             } else {
                 rowCount++;
@@ -300,6 +309,14 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
     //Deselect the row
     [self.blocksTableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //Track the action in Mixpanel
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    //Here we create an instance of NSString and assign it the block name
+    NSString *whichBlockNameAmI = self.arrayOfBlocks[[tableView cellForRowAtIndexPath:indexPath].tag][@"blockName"];
+    //Here we track the block name that was chosen
+    [mixpanel track:@"home block selected" properties:@{@"block": whichBlockNameAmI}];
 }
 
 
