@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UITextView *contentText;
 @property (nonatomic, strong) UIView *contentTextBackground;
 @property (nonatomic, strong) NSMutableArray *featuredContent;
+@property (nonatomic, strong) NSTimer *featuredContentTimer;
 
 - (id)initWithFeaturedContent:(NSMutableArray *)content frame:(CGRect)frame;
 

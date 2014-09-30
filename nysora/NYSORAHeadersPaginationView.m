@@ -18,23 +18,8 @@
         //Set the background color
         self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
         
-        //Add the page control
-        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 20, 320, 20)];
-        //Set the tint color
-        self.pageControl.pageIndicatorTintColor = [UIColor
-                                                   colorWithRed:60/255.0f
-                                                   green:130/255.0f
-                                                   blue:146/255.0f
-                                                   alpha:0.5];
-        self.pageControl.currentPageIndicatorTintColor = [UIColor
-                                                          colorWithRed:60/255.0f
-                                                          green:130/255.0f
-                                                          blue:146/255.0f
-                                                          alpha:1.0];
-        //Add the view
-        [self addSubview:self.pageControl];
         //Set up the label
-        self.headerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, 320, 20)];
+        self.headerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 13, 320, 20)];
         self.headerNameLabel.textAlignment = NSTextAlignmentCenter;
         [self.headerNameLabel setFont:[UIFont systemFontOfSize:14]];
         self.headerNameLabel.numberOfLines = 1;
@@ -79,7 +64,7 @@
     [label setFont:@"Helvetica-Bold"];
     [label setFontSize:11];
     [label setFrame:CGRectMake(0, 1, 16, 16)];
-    [label setString:[NSString stringWithFormat:@"%ld", (self.pageControl.currentPage+1)]];
+    [label setString:[NSString stringWithFormat:@"%ld", (self.currentPage+1)]];
     [label setAlignmentMode:kCAAlignmentCenter];
     [label setForegroundColor:[[UIColor colorWithRed:60/255.0f
                                                green:130/255.0f
@@ -90,12 +75,12 @@
 
 - (void)setNumberOfHeaders:(NSInteger)numberOfHeaders
 {
-    self.pageControl.numberOfPages = numberOfHeaders;
+    self.numberOfPages = numberOfHeaders;
 }
 
 - (void)setCurrentHeader:(NSInteger)currentHeader
 {
-    self.pageControl.currentPage = currentHeader;
+    self.currentPage = currentHeader;
 }
 
 - (void)setHeaderName:(NSString *)headerName

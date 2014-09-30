@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *globalTextSize;
 @property (nonatomic, strong) UIButton *nextHeaderButton;
 @property (nonatomic, strong) UIButton *prevHeaderButton;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 -(void)swipeHandlerRight:(UISwipeGestureRecognizer *)recognizer;
 -(void)swipeHandlerLeft:(UISwipeGestureRecognizer *)recognizer;

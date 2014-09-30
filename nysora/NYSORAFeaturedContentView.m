@@ -78,14 +78,40 @@
                                                           alpha:1.0];
         [self addSubview:self.pageControl];
         
-        
+        [self setTimerForFeaturedContent];
         
     }
     return self;
 }
 
+- (void)setTimerForFeaturedContent
+{
+    self.featuredContentTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(rotateFeaturedContent)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+- (void)rotateFeaturedContent
+{
+    //1. which page should we go to
+    int currentPage = self.scrollView.contentOffset.x/320;
+    if((currentPage+1) < [self.featuredContent count]) {
+        self.scrollView.contentOffset = CGPointMake((currentPage+1)*320, 0);
+        [self setContentCaption:self.featuredContent[currentPage][@"text"]];
+        self.pageControl.currentPage = currentPage+1;
+    } else {
+        //Go back to zero
+        self.scrollView.contentOffset = CGPointMake(0, 0);
+        [self setContentCaption:self.featuredContent[0][@"text"]];
+        self.pageControl.currentPage = 0;
+    }
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+
     //To get the page
     int page = scrollView.contentOffset.x/320;
     if(page >= 0 && page < [self.featuredContent count]) {

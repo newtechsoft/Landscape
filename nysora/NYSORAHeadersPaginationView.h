@@ -10,7 +10,8 @@
 
 @interface NYSORAHeadersPaginationView : UIView
 
-@property (strong, nonatomic) UIPageControl *pageControl;
+@property (nonatomic) NSInteger currentPage;
+@property (nonatomic) NSInteger numberOfPages;
 @property (strong, nonatomic) UILabel *headerNameLabel;
 @property (strong, nonatomic) CALayer *tinyCircle;
 

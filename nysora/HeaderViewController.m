@@ -43,7 +43,7 @@
     [super viewDidLoad];
     // Set up the scroll view, web view and gallery view
     //Scrollview
-    self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 104, self.view.frame.size.width, self.view.frame.size.height-104)];
+    self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 92, self.view.frame.size.width, self.view.frame.size.height-92)];
     self.containerScrollView.delegate = self;
     //WebView
     self.headerWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, ([self.containerScrollView.subviews containsObject: self.gallery])?200:0, 320, 568)];
@@ -79,12 +79,31 @@
 
 -(void)setUpHelperViews
 {
+    NSLog(@"setting up helper views");
     //Add the pagination
-    self.paginationView = [[NYSORAHeadersPaginationView alloc] initWithFrame:CGRectMake(0, 64, 320, 40)];
+    self.paginationView = [[NYSORAHeadersPaginationView alloc] initWithFrame:CGRectMake(0, 64, 320, 28)];
     [self.paginationView setNumberOfHeaders:[self.json count]];
     [self.paginationView setCurrentHeader:self.whichHeaderAmI];
     [self.paginationView setHeaderName:self.json[self.whichHeaderAmI][@"headerName"]];
     [self.view addSubview:self.paginationView];
+    
+    //Add the page control
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 20, 320, 20)];
+    //Set the tint color
+    self.pageControl.pageIndicatorTintColor = [UIColor
+                                               colorWithRed:60/255.0f
+                                               green:130/255.0f
+                                               blue:146/255.0f
+                                               alpha:0.5];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor
+                                                      colorWithRed:60/255.0f
+                                                      green:130/255.0f
+                                                      blue:146/255.0f
+                                                      alpha:1.0];
+    self.pageControl.numberOfPages = [self.json count];
+    self.pageControl.currentPage = self.whichHeaderAmI;
+    //Add the view
+    [self.containerScrollView addSubview:self.pageControl];
     
     //Set up the swipe recognizers
     self.rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerRight:)];
@@ -147,6 +166,7 @@
         //Change the pagination
         [self.paginationView setCurrentHeader:self.whichHeaderAmI];
         [self.paginationView setHeaderName:self.whichHeaderNameAmI];
+        self.pageControl.currentPage = self.whichHeaderAmI;
     }
 }
 -(void)prevTouch:(UIButton *)button
@@ -162,6 +182,8 @@
         //Change the pagination
         [self.paginationView setCurrentHeader:self.whichHeaderAmI];
         [self.paginationView setHeaderName:self.whichHeaderNameAmI];
+        self.pageControl.currentPage = self.whichHeaderAmI;
+
     }
 }
 
@@ -213,9 +235,10 @@
 
     self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (GALLERY_HEIGHT + BOTTOM_BUTTONS_MARGIN*2 + BUTTON_DIMENSION + h));
     //Move the buttons to the bottom
-    self.prevHeaderButton.frame = CGRectMake(self.view.frame.size.width/2 - BUTTON_DIMENSION - BOTTOM_BUTTONS_MARGIN/2 - BUTTON_DIMENSION, GALLERY_HEIGHT + h + BOTTOM_BUTTONS_MARGIN, BUTTON_DIMENSION, BUTTON_DIMENSION);
+    self.prevHeaderButton.frame = CGRectMake(20, GALLERY_HEIGHT + h + BOTTOM_BUTTONS_MARGIN, BUTTON_DIMENSION, BUTTON_DIMENSION);
     //Move the buttons to the bottom
-    self.nextHeaderButton.frame = CGRectMake(self.view.frame.size.width/2 + BUTTON_DIMENSION + BOTTOM_BUTTONS_MARGIN/2, GALLERY_HEIGHT + h + BOTTOM_BUTTONS_MARGIN, BUTTON_DIMENSION, BUTTON_DIMENSION);
+    self.nextHeaderButton.frame = CGRectMake(self.view.frame.size.width-20-BUTTON_DIMENSION, GALLERY_HEIGHT + h + BOTTOM_BUTTONS_MARGIN, BUTTON_DIMENSION, BUTTON_DIMENSION);
+    self.pageControl.frame = CGRectMake(0, GALLERY_HEIGHT + h + BOTTOM_BUTTONS_MARGIN, self.view.frame.size.width, 30);
 
     //Pull in the global text size from the user defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
