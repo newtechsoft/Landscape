@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NYSORAFeaturedContentView : UIView
+@interface NYSORAFeaturedContentView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) NSMutableArray *imageViews;
 @property (nonatomic, strong) UIImageView *contentImage;
 @property (nonatomic, strong) UITextView *contentText;
 @property (nonatomic, strong) UIView *contentTextBackground;

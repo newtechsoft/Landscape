@@ -108,12 +108,12 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     [self.navigationController.navigationBar setBarTintColor:barColor];
     
     //Set up the gesture recognizers
-    self.featuredContentSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(featuredContentSwipeLeft:)];
+    /*self.featuredContentSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(featuredContentSwipeLeft:)];
     [self.featuredContentSwipeLeft setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [self.featuredContentView addGestureRecognizer:self.featuredContentSwipeLeft];
     self.featuredContentSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(featuredContentSwipeRight:)];
     [self.featuredContentSwipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.featuredContentView addGestureRecognizer:self.featuredContentSwipeRight];
+    [self.featuredContentView addGestureRecognizer:self.featuredContentSwipeRight];*/
     
     //Set up the tap recognizer
     self.tapThat = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkToFeaturedContent:)];
@@ -124,8 +124,8 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 -(void)linkToFeaturedContent:(UITapGestureRecognizer *)recognizer
 {
     //You instantiate an instance of the view controller in question
-    NSString *whichBlockAmIIn = self.json[@"featuredContent"][_currentFeatured][@"link"][@"blockId"];
-    int whichHeaderAmI = [self.json[@"featuredContent"][_currentFeatured][@"link"][@"headerNumber"] intValue];
+    NSString *whichBlockAmIIn = self.json[@"featuredContent"][self.featuredContentView.pageControl.currentPage][@"link"][@"blockId"];
+    int whichHeaderAmI = [self.json[@"featuredContent"][self.featuredContentView.pageControl.currentPage][@"link"][@"headerNumber"] intValue];
     NSDictionary *json = [self fetchHeaderJSONData:whichBlockAmIIn];
     NSMutableArray *arrayOfHeaders = [json objectForKey:@"headers"];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];

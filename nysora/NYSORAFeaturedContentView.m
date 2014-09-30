@@ -26,21 +26,28 @@
     if(self) {
         //Load the content
         self.featuredContent = [[NSMutableArray alloc] init];
+        self.imageViews = [[NSMutableArray alloc] init];
+        //Set up the scrollview
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
         for(NSInteger i=0;i<[content count];i++) {
             NSString *imagePath = [[NSBundle mainBundle] pathForResource:content[i][@"imagePath"] ofType:@"png"];
             UIImage *currImg = [UIImage imageWithContentsOfFile:imagePath];
             if(currImg == nil) {
                 NSLog(@"Couldnt find image for path %@", imagePath);
             }
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(320*i,0,320,200)];
+            imageView.image = currImg;
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            [self.scrollView addSubview:imageView];
             NSDictionary *currDict = [[NSDictionary alloc] initWithObjectsAndKeys:currImg, @"image",content[i][@"text"], @"text",  nil];
             [self.featuredContent addObject:currDict];
         }
         
-        //Set up the imageview
-        self.contentImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-        self.contentImage.image = self.featuredContent[0][@"image"];
-        self.contentImage.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:self.contentImage];
+        self.scrollView.contentSize = CGSizeMake(320*[self.featuredContent count], 200);
+        self.scrollView.pagingEnabled = YES;
+        self.scrollView.delegate = self;
+        
+        [self addSubview:self.scrollView];
         
         //Set up the text view
         self.contentText = [[UITextView alloc] initWithFrame:CGRectMake(5, 5, self.frame.size.width - 10, 30)];
@@ -77,16 +84,26 @@
     return self;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //To get the page
+    int page = scrollView.contentOffset.x/320;
+    if(page >= 0 && page < [self.featuredContent count]) {
+        [self setContentCaption:self.featuredContent[page][@"text"]];
+        self.pageControl.currentPage = page;
+    }
+}
+
 - (void)setCurrentFeaturedContent:(NSInteger)currFeaturedContent
 {
-    if(currFeaturedContent >= 0 && currFeaturedContent < [self.featuredContent count]) {
+    /*if(currFeaturedContent >= 0 && currFeaturedContent < [self.featuredContent count]) {
         //Set the text
         //self.contentText.text = self.featuredContent[currFeaturedContent][@"text"];
         [self setContentCaption:self.featuredContent[currFeaturedContent][@"text"]];
         //Set the image
-        self.contentImage.image = self.featuredContent[currFeaturedContent][@"image"];
+        self.scrollView.contentOffset = CGPointMake(320*currFeaturedContent, 0);
         self.pageControl.currentPage = currFeaturedContent;
-    }
+    }*/
 }
 
 - (void)setContentCaption:(NSString*)text

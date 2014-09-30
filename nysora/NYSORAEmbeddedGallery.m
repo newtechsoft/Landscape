@@ -39,6 +39,8 @@
         
         //Initialize the array
         self.imageArray = [[NSMutableArray alloc] init];
+        //Set up the scrollview
+        self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
         for(NSInteger i=0;i<[imagePathArray count];i++) {
             NSString *processedImagePath = [imagePathArray[i] substringToIndex:[imagePathArray[i] length]-4];
             NSString *imagePath = [[NSBundle mainBundle] pathForResource:processedImagePath ofType:@"png"];
@@ -46,16 +48,19 @@
             if(currImg == nil) {
                 NSLog(@"Couldnt find image for path %@", processedImagePath);
             } else {
-                [self.imageArray addObject:currImg];
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(320*i,0,320,200)];
+                imageView.image = currImg;
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                [self.scrollView addSubview:imageView];
             }
         }
         _currImg = 0;
         //Initialize the imageView
-        //Need to construct a process that deals with zero images in the header
-        self.galleryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        self.galleryView.image = ([self.imageArray count] > 0) ? self.imageArray[0] : nil;
-        self.galleryView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:self.galleryView];
+        self.scrollView.contentSize = CGSizeMake(320*[imagePathArray                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   count], 200);
+        self.scrollView.pagingEnabled = YES;
+        self.scrollView.delegate = self;
+        
+        [self addSubview:self.scrollView];
         
         //Initialize the next button
         self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -85,12 +90,12 @@
         
         
         //Initialize the swipe recognizer
-        _leftGallerySwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipe:)];
+        /*_leftGallerySwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipe:)];
         [_leftGallerySwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
         [self addGestureRecognizer:_leftGallerySwipe];
         _rightGallerySwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipe:)];
         [_rightGallerySwipe setDirection:UISwipeGestureRecognizerDirectionRight];
-        [self addGestureRecognizer:_rightGallerySwipe];
+        [self addGestureRecognizer:_rightGallerySwipe];*/
         
         //Initializes the tap recongizer
         _galleryTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
@@ -118,12 +123,14 @@
 
 -(void)nextTouch:(UIButton *)button
 {
-    if(_currImg + 1 < [self.imageArray count]) {
+    NSLog(@"next touch");
+    if(_currImg + 1 < self.scrollView.contentSize.width/320) {
         [self goToImage:(_currImg+1)];
     }
 }
 -(void)prevTouch:(UIButton *)button
 {
+    NSLog(@"prev touch with %ld", _currImg);
     if(_currImg > 0) {
         [self goToImage:(_currImg-1)];
     }
@@ -150,8 +157,18 @@
 -(void)goToImage:(NSInteger)whichImage
 {
     _currImg = whichImage;
-    self.galleryView.image = self.imageArray[_currImg];
+    self.scrollView.contentOffset = CGPointMake(320*_currImg, 0);
     self.pageControl.currentPage = _currImg;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //To get the page
+    int page = scrollView.contentOffset.x/320;
+    if(page >= 0 && page < self.scrollView.contentSize.width/320) {
+        _currImg = page;
+        self.pageControl.currentPage = page;
+    }
 }
 
 /*

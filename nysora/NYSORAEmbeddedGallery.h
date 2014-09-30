@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "NYSORAEmbeddedGalleryProtocol.h"
 
-@interface NYSORAEmbeddedGallery : UIView
+@interface NYSORAEmbeddedGallery : UIView <UIScrollViewDelegate>
 
+@property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray *imageArray;
 @property (strong, nonatomic) UIImageView *galleryView;
 @property (strong, nonatomic) UIButton *prevButton;
