@@ -23,7 +23,8 @@
 
 @property (nonatomic, strong) NYSORAHeadersPaginationView *paginationView;
 @property (nonatomic, strong) NSString *globalTextSize;
-
+@property (nonatomic, strong) UIButton *nextHeaderButton;
+@property (nonatomic, strong) UIButton *prevHeaderButton;
 
 -(void)swipeHandlerRight:(UISwipeGestureRecognizer *)recognizer;
 -(void)swipeHandlerLeft:(UISwipeGestureRecognizer *)recognizer;

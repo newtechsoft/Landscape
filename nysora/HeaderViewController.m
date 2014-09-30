@@ -16,6 +16,9 @@
 #import "NYSORAGalleryViewController.h"
 
 #define GALLERY_HEIGHT 200
+#define BUTTON_DIMENSION 30
+#define BOTTOM_BUTTONS_MARGIN 35
+#define PRIMARY_COLOR [UIColor colorWithRed:60/255.0f green:130/255.0f blue:146/255.0f alpha:1.0]
 
 @interface HeaderViewController () <UIScrollViewDelegate, UIWebViewDelegate, NYSORAEmbeddedGalleryProtocol>
 
@@ -43,24 +46,35 @@
     self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 104, self.view.frame.size.width, self.view.frame.size.height-104)];
     self.containerScrollView.delegate = self;
     //WebView
-    self.headerWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, GALLERY_HEIGHT, 320, 568)];
+    self.headerWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, ([self.containerScrollView.subviews containsObject: self.gallery])?200:0, 320, 568)];
     self.headerWebView.scrollView.scrollEnabled = NO;
     self.headerWebView.delegate = self;
     [self.containerScrollView addSubview:self.headerWebView];
-    //Gallery view
-    NSMutableArray *imagePathsArray = [self generateImageArray];
-    self.gallery = [[NYSORAEmbeddedGallery alloc] initWithArrayOfImagePaths:imagePathsArray andFrame:CGRectMake(0, 0, 320, GALLERY_HEIGHT)];
-    self.gallery.backgroundColor = [UIColor blackColor];
-    self.gallery.delegate = self;
-    [self.containerScrollView addSubview:self.gallery];
-    [self.view addSubview:self.containerScrollView];
-    self.containerScrollView.contentSize = CGSizeMake(320, GALLERY_HEIGHT);
+    
     [self renderWebView];
     
     [self setUpHelperViews];
     
     
 
+}
+
+-(void)setUpGalleryView
+{
+    if([self.containerScrollView.subviews containsObject: self.gallery]) {
+        [self.gallery removeFromSuperview];
+        self.gallery = nil;
+    }
+    //Gallery view
+    NSMutableArray *imagePathsArray = [self generateImageArray];
+    if([imagePathsArray count] > 0) {
+        self.gallery = [[NYSORAEmbeddedGallery alloc] initWithArrayOfImagePaths:imagePathsArray andFrame:CGRectMake(0, 0, 320, GALLERY_HEIGHT)];
+        self.gallery.backgroundColor = [UIColor blackColor];
+        self.gallery.delegate = self;
+        [self.containerScrollView addSubview:self.gallery];
+        [self.view addSubview:self.containerScrollView];
+        self.containerScrollView.contentSize = CGSizeMake(320, GALLERY_HEIGHT);
+    }
 }
 
 -(void)setUpHelperViews
@@ -79,6 +93,9 @@
     self.leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerLeft:)];
     [self.leftSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [self.headerWebView addGestureRecognizer:self.leftSwipeRecognizer];
+    [self.headerWebView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.rightSwipeRecognizer];
+    [self.headerWebView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.leftSwipeRecognizer];
+
     
     //Set title in the navigation bar
     self.navigationItem.title = self.whichBlockNameAmIIn;
@@ -88,6 +105,64 @@
     //Set the color of the button
     [rightDrawerButton setTintColor:[UIColor whiteColor]];
     [self.navigationItem setRightBarButtonItem:rightDrawerButton];
+    
+    //Set up the bottom arrows
+    //Previous header button
+    self.prevHeaderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.prevHeaderButton addTarget:self action:@selector(prevTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [self.prevHeaderButton setTitle:@"" forState:UIControlStateNormal];
+    //self.prevHeaderButton.frame = CGRectMake(BUTTON_DIMENSION/4, self.view.frame.size.height/2-BUTTON_DIMENSION/2, BUTTON_DIMENSION, BUTTON_DIMENSION);
+    self.prevHeaderButton.backgroundColor = PRIMARY_COLOR;
+    [self.prevHeaderButton.layer setCornerRadius:BUTTON_DIMENSION/2];
+    [self.prevHeaderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.prevHeaderButton.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:18];
+    [self.prevHeaderButton.titleLabel setTextAlignment: NSTextAlignmentCenter];
+    self.prevHeaderButton.contentEdgeInsets = UIEdgeInsetsMake(7.5f,0,5,0);
+    [self.containerScrollView addSubview:self.prevHeaderButton];
+    //Next header button
+    self.nextHeaderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.nextHeaderButton addTarget:self action:@selector(nextTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [self.nextHeaderButton setTitle:@" " forState:UIControlStateNormal];
+    //self.nextHeaderButton.frame = CGRectMake(BUTTON_DIMENSION/4, self.view.frame.size.height/2-BUTTON_DIMENSION/2, BUTTON_DIMENSION, BUTTON_DIMENSION);
+    self.nextHeaderButton.backgroundColor = PRIMARY_COLOR;
+    [self.nextHeaderButton.layer setCornerRadius:BUTTON_DIMENSION/2];
+    [self.nextHeaderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.nextHeaderButton.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:18];
+    [self.nextHeaderButton.titleLabel setTextAlignment: NSTextAlignmentCenter];
+    self.nextHeaderButton.contentEdgeInsets = UIEdgeInsetsMake(7.5f,0,5,0);
+    [self.containerScrollView addSubview:self.nextHeaderButton];
+
+}
+
+-(void)nextTouch:(UIButton *)button
+{
+    //We should go forward one header
+    if(self.whichHeaderAmI < ([self.json count] - 1)) {
+        //Increase the counter
+        self.whichHeaderAmI++;
+        //Set the new name
+        self.whichHeaderNameAmI = [self.json[self.whichHeaderAmI] objectForKey:@"headerName"];
+        //Update the view
+        [self renderWebView];
+        //Change the pagination
+        [self.paginationView setCurrentHeader:self.whichHeaderAmI];
+        [self.paginationView setHeaderName:self.whichHeaderNameAmI];
+    }
+}
+-(void)prevTouch:(UIButton *)button
+{
+    //We should go back one header
+    if(self.whichHeaderAmI > 0) {
+        //Decrease the counter
+        self.whichHeaderAmI--;
+        //Set the new name
+        self.whichHeaderNameAmI = [self.json[self.whichHeaderAmI] objectForKey:@"headerName"];
+        //Update the view
+        [self renderWebView];
+        //Change the pagination
+        [self.paginationView setCurrentHeader:self.whichHeaderAmI];
+        [self.paginationView setHeaderName:self.whichHeaderNameAmI];
+    }
 }
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -122,17 +197,26 @@
 - (void) webViewDidFinishLoad:(UIWebView *)webview
 {
     //Evaluate the height
+    //NSLog(@"jquery says: %@", [self.headerWebView stringByEvaluatingJavaScriptFromString:@"$(document).height()"]);
     int h = [[self.headerWebView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
+    
+    //Scroll to top
+    [self.containerScrollView setContentOffset:CGPointMake(0, 0)];
     //Print it to the console
-    //NSLog(@"%d", h);
+    //NSLog(@"js says: %d", h);
     //Set the height of the webview
     CGRect newFrame = self.headerWebView.frame;
     newFrame.size.height = h;
+    newFrame.origin.y = ([self.containerScrollView.subviews containsObject: self.gallery])?200:0;
     [self.headerWebView setFrame:newFrame];
     //Set the height of the scrollview
-    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (GALLERY_HEIGHT + h));
-    
-    
+
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (GALLERY_HEIGHT + BOTTOM_BUTTONS_MARGIN*2 + BUTTON_DIMENSION + h));
+    //Move the buttons to the bottom
+    self.prevHeaderButton.frame = CGRectMake(self.view.frame.size.width/2 - BUTTON_DIMENSION - BOTTOM_BUTTONS_MARGIN/2 - BUTTON_DIMENSION, GALLERY_HEIGHT + h + BOTTOM_BUTTONS_MARGIN, BUTTON_DIMENSION, BUTTON_DIMENSION);
+    //Move the buttons to the bottom
+    self.nextHeaderButton.frame = CGRectMake(self.view.frame.size.width/2 + BUTTON_DIMENSION + BOTTOM_BUTTONS_MARGIN/2, GALLERY_HEIGHT + h + BOTTOM_BUTTONS_MARGIN, BUTTON_DIMENSION, BUTTON_DIMENSION);
+
     //Pull in the global text size from the user defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -185,6 +269,12 @@
 
 -(void)renderWebView
 {
+    [self setUpGalleryView];
+    //set the height to 1 in order to force a redraw
+    CGRect newFrame = self.headerWebView.frame;
+    newFrame.size.height = 1;
+    [self.headerWebView setFrame:newFrame];
+
     NSError *error = nil;
     
     //Load the template
