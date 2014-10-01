@@ -204,7 +204,7 @@
 
 - (void)contactUsButtonAction:(UIButton*)button
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto:info@uploadapps.com"]] ];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto:admin@uploadapps.com"]] ];
     
 }
 

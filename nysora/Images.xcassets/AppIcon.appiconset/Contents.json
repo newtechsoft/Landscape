@@ -13,8 +13,14 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "nysora_icon.png",
+      "filename" : "nysora_icon_rounded@2x.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "nysora_icon_rounded@3x.png",
+      "scale" : "3x"
     },
     {
       "idiom" : "ipad",
