@@ -80,7 +80,7 @@
     self.previewImageView.image = [UIImage imageWithContentsOfFile:imageName];
     self.previewImageView.backgroundColor = [UIColor whiteColor];
     _headerImageOffset = -20.0;
-    CGRect headerImageFrame = CGRectMake(0, _headerImageOffset, 320, 400);
+    CGRect headerImageFrame = CGRectMake(0, _headerImageOffset, 320, 200);
     [self.previewImageView setFrame: headerImageFrame];
     NSLog(@"%@", NSStringFromCGRect(self.previewImageView.frame));
     if(self.previewImageView.image == nil) {
@@ -90,7 +90,7 @@
     
     //Set the summary
     self.summaryTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, 320, 300)];
-    [self.summaryTextView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
+    [self.summaryTextView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.0]];
     [self.summaryTextView setTextColor:[UIColor whiteColor]];
     self.summaryTextView.textContainerInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
     self.summaryTextView.textAlignment = NSTextAlignmentCenter;
@@ -135,7 +135,7 @@
 #pragma mark delegate and datasource functions
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat scrollOffset = scrollView.contentOffset.y;
+    CGFloat scrollOffset = scrollView.contentOffset.y -64;
     CGRect headerImageFrame = self.previewImageView.frame;
     
     if (scrollOffset < 0) {
@@ -145,6 +145,14 @@
         // We're scrolling up, return to normal behavior
         headerImageFrame.origin.y = -scrollOffset/1;
     }
+ 
+    //allow the summary text to scroll
+    CGRect textViewFrame = self.summaryTextView.frame;
+    textViewFrame.origin.y = headerImageFrame.origin.y;
+    self.previewImageView.frame = headerImageFrame;
+    self.summaryTextView.frame = textViewFrame;
+    
+    
     self.previewImageView.frame = headerImageFrame;
 }
 
